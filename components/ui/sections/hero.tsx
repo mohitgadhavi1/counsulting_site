@@ -2,6 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as motion from "motion/react-client";
+import FallingText from "@/components/3d/fallingText";
 
 interface HeroProps {
   scrollToSection?: (sectionId: string) => void;
@@ -22,13 +23,34 @@ function Hero({ scrollToSection }: HeroProps) {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center overflow-hidden pt-16 z-10"
+      className="min-h-screen flex items-center justify-center overflow-hidden  w-7/8 relative"
     >
-      <div className="z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Critical LCP element - no animation delay */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-          Modern Web Development
-        </h1>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 rounded-3xl bg-card/20 border border-border backdrop-blur-2xl shadow-2xl" />
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1200 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden
+        >
+          <defs>
+            <filter id="blur-hero" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="60" />
+            </filter>
+          </defs>
+          <g filter="url(#blur-hero)" opacity="0.12">
+            <circle cx="220" cy="180" r="260" fill="var(--primary)" />
+            <circle cx="900" cy="420" r="300" fill="var(--secondary)" />
+            <circle cx="680" cy="120" r="160" fill="var(--background)" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Animated falling h1 element */}
+        <FallingText text="Modern Web Development" as="h1" className="text-8xl font-bold"/>
+ 
 
         <motion.p
           className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-3xl mx-auto"

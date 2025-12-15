@@ -60,9 +60,9 @@ export default function Header() {
   };
 
   return (
-    <>
+    <div className="min-h-22">
       <div className="fixed top-8 left-8 flex items-center space-x-2 z-50">
-        <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+        <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
           <Code className="w-6 h-6" />
         </div>
         <span className="text-xl font-bold text-foreground/80">ZidBit</span>
@@ -70,7 +70,7 @@ export default function Header() {
 
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed top-8 right-8 cursor-pointer bg-menu hover:bg-menu-hover text-menu-button-foreground font-medium px-6 py-3 rounded-full shadow-lg transition-colors z-[9998]"
+        className="fixed top-8 right-8 cursor-pointer bg-menu hover:bg-menu-hover text-menu-button-foreground font-medium px-6 py-3 rounded-full shadow-lg transition-colors z-9998"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -85,7 +85,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-9998"
           />
         )}
       </AnimatePresence>
@@ -98,7 +98,7 @@ export default function Header() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed top-0 right-0 h-full w-full sm:w-[500px] bg-menu shadow-2xl z-[9999] flex flex-col"
+            className="fixed  top-0 right-0 h-full w-full sm:w-[500px] bg-menu shadow-2xl z-9999 flex flex-col"
           >
             {/* Close Button */}
             <div className="flex justify-end p-8">
@@ -157,6 +157,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }

@@ -34,6 +34,7 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -55,112 +56,109 @@
 :root {
   --radius: 0.625rem;
   /* Light theme with off-white background and darker cards */
-  --background: oklch(0.98 0 0);
-  /* Off-white background */
-  --foreground: oklch(0.15 0 0);
-  /* Dark text for good contrast */
-  --card: oklch(0.95 0 0);
-  /* Light gray card background (darker than background) */
-  --card-foreground: oklch(0.15 0 0);
-  /* Dark text on cards */
-  --popover: oklch(0.95 0 0);
-  --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.25 0.15 260);
-  /* Indigo primary */
-  --primary-foreground: oklch(0.98 0 0);
-  /* Light text on primary */
-  --secondary: oklch(0.92 0 0);
-  /* Light gray secondary */
-  --secondary-foreground: oklch(0.25 0 0);
-  /* Dark text on secondary */
-  --muted: oklch(0.94 0 0);
-  /* Slightly darker gray for muted backgrounds */
-  --muted-foreground: oklch(0.45 0 0);
-  /* Medium gray for muted text */
-  --accent: oklch(0.93 0 0);
-  /* Light gray accent */
-  --accent-foreground: oklch(0.25 0 0);
-  /* Dark text on accent */
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0 0);
-  /* Light gray borders */
-  --input: oklch(0.9 0 0);
-  /* Slightly darker for inputs */
-  --ring: oklch(0.6 0.15 260);
-  /* Indigo ring color */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.96 0 0);
-  --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.25 0.15 260);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.93 0 0);
-  --sidebar-accent-foreground: oklch(0.25 0 0);
-  --sidebar-border: oklch(0.88 0 0);
-  --sidebar-ring: oklch(0.6 0.15 260);
-  --menu: oklch(0.92 0.25 130);
-  --menu-hover: oklch(0.95 0.25 130);
-  --menu-foreground: oklch(0.15 0 0);
-  --menu-button: oklch(0.92 0.25 130);
-  --menu-button-hover: oklch(0.95 0.25 130);
-  --menu-button-foreground: oklch(0.15 0 0);
-  --menu-close-button: oklch(0.15 0 0);
-  --menu-close-button-hover: oklch(0.25 0 0);
-  --menu-close-button-foreground: oklch(0.92 0.25 130);
-  --sidebar: oklch(0.96 0 0);
-  --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.25 0.15 260);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.93 0 0);
-  --sidebar-accent-foreground: oklch(0.25 0 0);
-  --sidebar-border: oklch(0.88 0 0);
-  --sidebar-ring: oklch(0.6 0.15 260);
+  --background: #E5D9B6;
+  /* Light warm tan background */
+  --foreground: #285430;
+  /* Deep green text for contrast */
+  --card: #E5D9B6;
+  /* Card background */
+  --card-foreground: #285430;
+  --popover: #E5D9B6;
+  --popover-foreground: #285430;
+  --primary: #A4BE7B;
+  /* Primary green */
+  --primary-foreground: #E5D9B6;
+  /* Light text for primary */
+  --secondary: #5F8D4E;
+  /* Secondary green */
+  --secondary-foreground: #525240;
+  /* Light text for secondary */
+  --muted: #A4BE7B;
+  /* Muted backgrounds */
+  --muted-foreground: #285430;
+  /* Muted text */
+  --accent: #A4BE7B;
+  /* Accent */
+  --accent-foreground: #285430;
+  /* Accent text */
+  --destructive: #285430;
+  --destructive-foreground: #E5D9B6;
+  --border: rgba(40, 84, 48, 0.12);
+  /* Light border derived from dark green */
+  --input: rgba(40, 84, 48, 0.08);
+  /* Input background/borders */
+  --ring: rgba(164, 190, 123, 0.28);
+  /* Focus ring */
+  --chart-1: #A4BE7B;
+  --chart-2: #5F8D4E;
+  --chart-3: #285430;
+  --chart-4: #E5D9B6;
+  --chart-5: #A4BE7B;
+  --sidebar: #E5D9B6;
+  --sidebar-foreground: #285430;
+  --sidebar-primary: #A4BE7B;
+  --sidebar-primary-foreground: #E5D9B6;
+  --sidebar-accent: #A4BE7B;
+  --sidebar-accent-foreground: #285430;
+  --sidebar-border: rgba(40, 84, 48, 0.12);
+  --sidebar-ring: rgba(164, 190, 123, 0.28);
+  --menu: #A4BE7B;
+  --menu-hover: #5F8D4E;
+  --menu-foreground: #285430;
+  --menu-button: #A4BE7B;
+  --menu-button-hover: #5F8D4E;
+  --menu-button-foreground: #285430;
+  --menu-close-button: #285430;
+  --menu-close-button-hover: #5F8D4E;
+  --menu-close-button-foreground: #A4BE7B;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-  --menu: oklch(0.92 0.25 130);
-  --menu-hover: oklch(0.95 0.25 130);
-  --menu-foreground: oklch(0.15 0 0);
-  --menu-button: oklch(0.92 0.25 130);
-  --menu-button-hover: oklch(0.95 0.25 130);
-  --menu-button-foreground: oklch(0.15 0 0);
-  --menu-close-button: oklch(0.15 0 0);
-  --menu-close-button-hover: oklch(0.25 0 0);
-  --menu-close-button-foreground: oklch(0.92 0.25 130);
+  /* In dark mode we invert roles but keep same palette only */
+  --background: #285430;
+  /* dark green background */
+  --foreground: #E5D9B6;
+  /* light tan text */
+  --card: #5F8D4E;
+  /* mid green card */
+  --card-foreground: #E5D9B6;
+  --popover: #5F8D4E;
+  --popover-foreground: #E5D9B6;
+  --primary: #A4BE7B;
+  --primary-foreground: #285430;
+  --secondary: #5F8D4E;
+  --secondary-foreground: #918a76;
+  --muted: #5F8D4E;
+  --muted-foreground: #E5D9B6;
+  --accent: #A4BE7B;
+  --accent-foreground: #285430;
+  --destructive: #E5D9B6;
+  --destructive-foreground: #285430;
+  --border: rgba(229, 217, 182, 0.12);
+  --input: rgba(229, 217, 182, 0.08);
+  --ring: rgba(40, 84, 48, 0.28);
+  --chart-1: #A4BE7B;
+  --chart-2: #5F8D4E;
+  --chart-3: #285430;
+  --chart-4: #E5D9B6;
+  --chart-5: #A4BE7B;
+  --sidebar: #5F8D4E;
+  --sidebar-foreground: #E5D9B6;
+  --sidebar-primary: #A4BE7B;
+  --sidebar-primary-foreground: #E5D9B6;
+  --sidebar-accent: #A4BE7B;
+  --sidebar-accent-foreground: #285430;
+  --sidebar-border: rgba(229, 217, 182, 0.12);
+  --sidebar-ring: rgba(40, 84, 48, 0.28);
+  --menu: #A4BE7B;
+  --menu-hover: #5F8D4E;
+  --menu-foreground: #285430;
+  --menu-button: #A4BE7B;
+  --menu-button-hover: #5F8D4E;
+  --menu-button-foreground: #285430;
+  --menu-close-button: #285430;
+  --menu-close-button-hover: #5F8D4E;
+  --menu-close-button-foreground: #A4BE7B;
 }
 
 @layer base {
@@ -176,6 +174,5 @@
 body {
   font-family: "Inter var", sans-serif;
   color: var(--foreground);
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iI2ZmNmI2YiIvPjwvc3ZnPg=="),
-    auto;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='%23285230'/></svg>") 16 16, auto;
 }

@@ -4,65 +4,64 @@
  */
 
 export const colors = {
-  // Text colors
+  // Text colors mapped to CSS variables (enforced palette)
   text: {
-    primary: 'text-gray-900',
-    secondary: 'text-gray-700',
-    tertiary: 'text-gray-800',
-    white: 'text-white',
+    primary: 'text-[color:var(--foreground)]',
+    secondary: 'text-[color:var(--secondary-foreground)]',
+    tertiary: 'text-[color:var(--muted-foreground)]',
+    white: 'text-[color:var(--primary-foreground)]',
   },
-  
-  // Indigo colors
+
+  // Primary/secondary semantic mappings using CSS vars
   indigo: {
-    light: 'text-indigo-400',
-    medium: 'text-indigo-500',
-    dark: 'text-indigo-700',
-    bg: 'bg-indigo-600',
-    bgHover: 'hover:bg-indigo-700',
-    bgHoverLight: 'hover:bg-indigo-400',
-    border: 'border-indigo-400',
-    borderDark: 'border-indigo-500',
+    light: 'text-[color:var(--primary)]',
+    medium: 'text-[color:var(--primary)]',
+    dark: 'text-[color:var(--secondary)]',
+    bg: 'bg-[color:var(--primary)]',
+    bgHover: 'hover:bg-[color:var(--secondary)]',
+    bgHoverLight: 'hover:bg-[color:var(--primary)]',
+    border: 'border-[color:var(--border)]',
+    borderDark: 'border-[color:var(--border)]',
   },
-  
-  // Purple colors
+
+  // Secondary/palette groups
   purple: {
-    light: 'text-purple-400',
-    dark: 'text-purple-700',
-    bg: 'bg-purple-600',
-    bgHover: 'hover:bg-purple-700',
+    light: 'text-[color:var(--primary)]',
+    dark: 'text-[color:var(--secondary)]',
+    bg: 'bg-[color:var(--secondary)]',
+    bgHover: 'hover:bg-[color:var(--secondary)]',
   },
-  
-  // Pink colors
+
   pink: {
-    light: 'text-pink-400',
-    dark: 'text-pink-700',
+    light: 'text-[color:var(--primary)]',
+    dark: 'text-[color:var(--secondary)]',
   },
-  
-  // Gradient classes
+
+  // Gradients built from the two greens and the tan
   gradients: {
-    hero: 'bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-700',
-    services: 'bg-gradient-to-br from-indigo-700 to-purple-700',
-    techStack: 'bg-gradient-to-br from-purple-700 to-pink-700',
-    about: 'bg-gradient-to-br from-indigo-700 to-purple-700',
-    contact: 'bg-gradient-to-br from-indigo-700 to-purple-700',
-    button: 'bg-gradient-to-br from-indigo-600 to-purple-600',
-    buttonHover: 'hover:from-indigo-700 hover:to-purple-700',
-    cardIndigo: 'bg-gradient-to-br from-indigo-500/20 to-purple-500/20',
-    cardPurple: 'bg-gradient-to-br from-purple-500/20 to-pink-500/20',
-    cardPink: 'bg-gradient-to-br from-pink-500/20 to-indigo-500/20',
+    hero: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    services: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    techStack: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    about: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    contact: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    button: 'bg-gradient-to-br from-[color:var(--primary)] to-[color:var(--secondary)]',
+    buttonHover: 'hover:from-[color:var(--secondary)] hover:to-[color:var(--primary)]',
+    cardIndigo: 'bg-gradient-to-br from-[color:var(--primary)]/20 to-[color:var(--secondary)]/20',
+    cardPurple: 'bg-gradient-to-br from-[color:var(--secondary)]/20 to-[color:var(--primary)]/20',
+    cardPink: 'bg-gradient-to-br from-[color:var(--primary)]/20 to-[color:var(--secondary)]/20',
   },
-  
-  // Background colors
+
+  // Background helpers using CSS variables
   background: {
-    overlay: 'bg-black/20',
-    card: 'bg-white/5',
-    cardHover: 'hover:bg-white/10',
+    overlay: 'bg-[color:var(--foreground)]/20',
+    card: 'bg-[color:var(--card)]',
+    cardHover: 'hover:bg-[color:var(--card)]/90',
   },
-  
+
   // Border colors
   border: {
-    white: 'border-white/10',
-    indigo: 'border-indigo-500/30',
+    white: 'border-[color:var(--border)]',
+    indigo: 'border-[color:var(--border)]',
   },
 } as const;
 

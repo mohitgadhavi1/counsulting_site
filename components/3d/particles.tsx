@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Instances, Instance, Environment } from '@react-three/drei'
 import { EffectComposer, N8AO, TiltShift2 } from '@react-three/postprocessing'
 
-const particles = Array.from({ length: 150 }, () => ({
+const particles = Array.from({ length: 100 }, () => ({
   factor: MathUtils.randInt(20, 100),
   speed: MathUtils.randFloat(0.01, 0.75),
   xFactor: MathUtils.randFloatSpread(40),
@@ -15,13 +15,13 @@ const particles = Array.from({ length: 150 }, () => ({
 export default function Particle() {
   return (
     <Canvas shadows dpr={[1, 2]} gl={{ antialias: false }} camera={{ fov: 50, position: [0, 0, 20] }}>
-      <color attach="background" args={['#f0f0f0']} />
-      <fog attach="fog" args={['red', 20, -5]} />
+      <color attach="background" args={['#E5D9B6']} />
+      <fog attach="fog" args={['#5F8D4E', 1, -1]} />
       <ambientLight intensity={1.5} />
       <pointLight position={[10, 10, 10]} intensity={1} castShadow />
       <Bubbles />
       <EffectComposer enableNormalPass={false}>
-        <N8AO aoRadius={6} intensity={2} color="red" />
+        <N8AO aoRadius={1} intensity={1} color="#5F8D4E" />
         <TiltShift2 blur={0.1} />
       </EffectComposer>
       <Environment preset="city" />
@@ -38,8 +38,8 @@ function Bubbles() {
   })
   return (
     <Instances limit={particles.length} ref={ref} castShadow receiveShadow position={[0, 2.5, 0]}>
-      <sphereGeometry args={[0.45, 64, 64]} />
-      <meshStandardMaterial roughness={1} color="#f0f0f0" />
+      <sphereGeometry args={[0.5, 24, 24]} />
+      <meshStandardMaterial roughness={1} color="#5F8D4E" />
       {particles.map((data, i) => (
         <Bubble key={i} {...data} />
       ))}

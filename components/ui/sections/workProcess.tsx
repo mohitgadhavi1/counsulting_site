@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Card } from "@/components/ui/card";
 import * as motion from "motion/react-client";
 
 const processSteps = [
@@ -47,12 +48,9 @@ function StepCard({
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="relative group"
     >
-      <motion.div
-        whileHover={{ scale: 1.02, y: -5 }}
-        transition={{ duration: 0.3 }}
-        className="relative p-8 rounded-2xl bg-card/50 border border-border backdrop-blur-sm overflow-hidden hover:bg-card/70"
-      >
-        <div className="relative z-10">
+      <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ duration: 0.3 }}>
+        <Card className="relative p-8 overflow-hidden">
+          <div className="relative z-10">
           {/* Number */}
           <motion.div
             className="mb-6"
@@ -88,6 +86,7 @@ function StepCard({
             {step.description}
           </motion.p>
         </div>
+        </Card>
       </motion.div>
     </motion.div>
   );
@@ -95,10 +94,23 @@ function StepCard({
 
 function WorkProcess() {
   return (
-    <section
-      id="work-process"
-      className="py-20 px-4 sm:px-6 lg:px-8  relative overflow-hidden z-10"
-    >
+    <section id="work-process" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <defs>
+            <filter id="blur-work" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="60" />
+            </filter>
+          </defs>
+          <g filter="url(#blur-work)" opacity="0.14">
+            <circle cx="200" cy="150" r="220" fill="var(--primary)" />
+            <circle cx="950" cy="420" r="300" fill="var(--secondary)" />
+            <circle cx="700" cy="120" r="180" fill="var(--background)" />
+          </g>
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-16 text-foreground"

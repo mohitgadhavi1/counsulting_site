@@ -8,6 +8,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { Card } from "@/components/ui/card";
 import Autoplay from "embla-carousel-autoplay";
 
 const testimonials = [
@@ -83,11 +84,24 @@ export default function Testimonials() {
   }, [api]);
 
   return (
-    <section
-      id="testimonials"
-      className="py-20 px-4 sm:px-6 lg:px-8  relative overflow-hidden z-10"
-    >
-      <div className="max-w-7xl mx-auto">
+    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <defs>
+            <filter id="blur-testimonials" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="60" />
+            </filter>
+          </defs>
+          <g filter="url(#blur-testimonials)" opacity="0.12">
+            <circle cx="240" cy="160" r="200" fill="var(--primary)" />
+            <circle cx="920" cy="420" r="300" fill="var(--secondary)" />
+            <circle cx="700" cy="120" r="160" fill="var(--background)" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
@@ -126,7 +140,7 @@ export default function Testimonials() {
                   transition={{ duration: 0.5 }}
                   className="p-1"
                 >
-                  <div className="bg-card/50 backdrop-blur-lg border border-border rounded-2xl p-8 md:p-12 hover:bg-card/70 transition-all duration-300">
+                  <Card className="p-8 md:p-12">
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       whileInView={{ scale: 1, rotate: 0 }}
@@ -201,7 +215,7 @@ export default function Testimonials() {
                         </motion.svg>
                       ))}
                     </motion.div>
-                  </div>
+                  </Card>
                 </motion.div>
               </CarouselItem>
             ))}
