@@ -40,7 +40,7 @@ function About() {
       {/* About Section with liquid-glass background */}
       <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
+          <div className="absolute inset-6 rounded-3xl bg-card/30" />
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
             <defs>
               <filter id="blur-about" x="-20%" y="-20%" width="140%" height="140%">

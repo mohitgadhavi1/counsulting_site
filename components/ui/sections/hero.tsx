@@ -23,10 +23,10 @@ function Hero({ scrollToSection }: HeroProps) {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center overflow-hidden  w-7/8 relative"
+      className="min-h-screen flex items-center justify-center overflow-hidden text-wrap w-full mx-10 relative"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 rounded-3xl bg-card/20 border border-border backdrop-blur-2xl shadow-2xl" />
+      <div className="absolute w-full inset-0 pointer-events-none">
+        <div className="w-full " />
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 1200 600"
@@ -47,7 +47,7 @@ function Hero({ scrollToSection }: HeroProps) {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10  mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Animated falling h1 element */}
         <FallingText text="Modern Web Development" as="h1" className="text-8xl font-bold"/>
  
@@ -70,14 +70,14 @@ function Hero({ scrollToSection }: HeroProps) {
         >
           <Button
             onClick={() => handleScroll("contact")}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="bg-secondary hover:bg-secondary text-primary-foreground px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             Get Started <ArrowRight className="ml-2" />
           </Button>
           <Button
             onClick={() => handleScroll("services")}
             variant="outline"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer"
+            className="border-2 border-secondary text-secondary hover:bg-primary/10 hover:text-secondary px-8 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer"
           >
             Our Services
           </Button>

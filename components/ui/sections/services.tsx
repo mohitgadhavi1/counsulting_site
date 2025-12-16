@@ -9,13 +9,13 @@ const serviceCategories = [
     title: "Development",
     icon: <Code className="w-8 h-8" />,
     items: [
-      "Static Websites",
-      "Dynamic Websites",
+      "Static & Dynamic Websites",
       "E-commerce Websites",
-      "Landing Pages",
-      "Web Apps",
-      "Portals",
-      "Mobile Applications",
+      "Business Landing Pages",
+      "Web Apps & portals",
+      "Wordpress/ Bubble.io Development",
+      "Mobile Applications with flutter",
+      "Database Design & Management",
     ],
   },
   {
@@ -23,13 +23,12 @@ const serviceCategories = [
     icon: <TrendingUp className="w-8 h-8" />,
     items: [
       "SEO",
-      "PPC Ads",
-      "SMM",
+      "Pay Per Click Ads",
+      "Social Media Marketing",
       "Video Ads",
       "Video Production",
-      "GBP Boost",
+      "Google Business Profile Boost",
       "Content Marketing",
-      "Logo Design & Branding",
     ],
   },
 ];
@@ -61,10 +60,10 @@ function Services() {
   return (
     <>
       {/* Services Section Overlay */}
-        <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10">
+        <section id="services" className="py-20 px-4 sm:px-6 lg:px-8  w-7/8 relative overflow-hidden z-10">
           {/* Liquid glass background layer */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
+            <div className="absolute inset-6 rounded-3xl   " />
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <defs>
                 <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">

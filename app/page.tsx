@@ -2,6 +2,7 @@
 import { Suspense, lazy } from "react";
 import Header from "@/components/ui/sections/header";
 import Hero from "@/components/ui/sections/hero";
+import FloatingActions from "@/components/ui/floating-actions";
 
 // Lazy load heavy components to improve initial load
 const Particle = lazy(() => import("@/components/3d/particles"));
@@ -23,9 +24,9 @@ const ConsultingWebsite = () => {
           <div className="fixed inset-0 w-full h-full -z-10 bg-background" />
         }
       >
-        <div className="fixed inset-0 w-full h-full -z-10">
+        {/* <div className="fixed inset-0 w-full h-full -z-10">
           <Particle />
-        </div>
+        </div> */}
       </Suspense>
 
       {/* All content layers - positioned above background */}
@@ -59,6 +60,9 @@ const ConsultingWebsite = () => {
           <Footer />
         </Suspense>
       </div>
+
+      {/* Floating Action Buttons */}
+      <FloatingActions />
     </div>
   );
 };

@@ -7,13 +7,23 @@ import { motion } from "motion/react";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = ["Projects", "Agency", "Expertise", "Careers", "Contact"];
+  const menuItems = ["Why Us", "Projects", "Expertise", "Join Us", "Contact"];
+
+  // Map menu labels to section IDs (anchors)
+  const menuAnchors: Record<string, string> = {
+    "Why Us": "about",
+    Projects: "projects",
+    Expertise: "services",
+    "Join Us": "contact",
+    Contact: "contact",
+  };
 
   const socialLinks = [
-    { name: "Facebook", col: 1 },
-    { name: "LinkedIn", col: 2 },
+   
+    { name: "LinkedIn", col: 1 },
     { name: "Instagram", col: 1 },
-    { name: "Twitter", col: 2 },
+      { name: "Github", col: 2 },
+ 
   ];
 
   const menuVariants = {
@@ -124,7 +134,7 @@ export default function Header() {
                     animate="open"
                   >
                     <a
-                      href={`#${item.toLowerCase()}`}
+                      href={`#${menuAnchors[item] ?? item.toLowerCase().replace(/\s+/g, "-")}`}
                       className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
                       onClick={() => setIsOpen(false)}
                     >

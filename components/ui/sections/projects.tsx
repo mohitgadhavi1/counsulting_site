@@ -77,13 +77,13 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section id="projects" className="py-20 px-4 relative overflow-hidden">
       {/* Liquid glass background layer */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
+        <div className="absolute inset-6 rounded-3xl " />
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
           <defs>
-            <filter id="blur-projects" x="-20%" y="-20%" width="140%" height="140%">
+            <filter id="blur-projects" x="-20%" y="-10%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="60" />
             </filter>
           </defs>
@@ -153,7 +153,7 @@ const Projects = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 border-(--primary)/50 text-primary hover:bg-(--primary)/20"
+                    className=" cursor-pointer flex-1 border-primary text-secondary hover:bg-primary/10"
                     onClick={() => window.open(project.liveUrl, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
@@ -182,7 +182,7 @@ const Projects = () => {
           </p>
           <Button
             size="lg"
-            className={`${colors.gradients.button} text-primary-foreground px-8 py-3`}
+            className={`${colors.gradients.button} text-primary-foreground px-8 py-3 cursor-pointer`}
           >
             Let&apos;s Collaborate
           </Button>
