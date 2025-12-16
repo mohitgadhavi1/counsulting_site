@@ -49,8 +49,11 @@ function Hero({ scrollToSection }: HeroProps) {
 
       <div className="relative z-10  mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Animated falling h1 element */}
-        <FallingText text="Modern Web Development" as="h1" className="text-8xl font-bold"/>
- 
+        <FallingText
+          text="Modern Web Development"
+          as="h1"
+          className="text-8xl font-bold"
+        />
 
         <motion.p
           className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-3xl mx-auto"

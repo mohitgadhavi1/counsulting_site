@@ -85,9 +85,14 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                We&apos;re a dynamic team of developers based in Navi Mumbai,
-                specializing in modern web technologies. Our agile approach
-                ensures rapid delivery without compromising quality.
+                <>
+                  We’re a <strong className="font-bold">skilled team of developers</strong> based in <strong className="font-bold">Navi Mumbai</strong>, focused on building <strong className="font-bold">modern, scalable web solutions</strong>. Our <strong className="font-bold">agile workflow</strong> lets us <strong className="font-bold">move fast</strong>, <strong className="font-bold">adapt quickly</strong>, and deliver <strong className="font-bold">high-quality results</strong> without cutting corners.
+
+                  <br />
+                  <br />
+
+                  By working remotely, we offer <strong className="font-bold">flexible and cost-effective engagement</strong> while keeping <strong className="font-bold">communication clear, structured, and reliable</strong>. You get the <strong className="font-bold">efficiency of a lean team</strong> with the <strong className="font-bold">professionalism of an enterprise setup</strong>.
+                </>
               </motion.p>
               <motion.p
                 className={`text-lg ${colors.text.secondary} mb-6`}
@@ -155,7 +160,7 @@ function About() {
                       24/7
                     </CardTitle>
                     <CardDescription className={colors.text.tertiary}>
-                      Support Available
+                      Priority support 
                     </CardDescription>
                   </CardHeader>
                 </Card>

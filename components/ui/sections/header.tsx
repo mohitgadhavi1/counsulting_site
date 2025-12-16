@@ -1,11 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Code } from "lucide-react";
+import { Code, Github, Linkedin, Instagram } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
+import EnquiryForm from "@/components/ui/enquiry-form";
+import JoinForm from "@/components/ui/join-form";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
+  const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
 
   const menuItems = ["Why Us", "Projects", "Expertise", "Join Us", "Contact"];
 
@@ -19,11 +23,24 @@ export default function Header() {
   };
 
   const socialLinks = [
-   
-    { name: "LinkedIn", col: 1 },
-    { name: "Instagram", col: 1 },
-      { name: "Github", col: 2 },
- 
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://linkedin.com/company/zidbit",
+      col: 1,
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      url: "https://instagram.com/zidbit",
+      col: 1,
+    },
+    {
+      name: "Github",
+      icon: Github,
+      url: "https://github.com/zidbit",
+      col: 2,
+    },
   ];
 
   const menuVariants = {
@@ -133,13 +150,38 @@ export default function Header() {
                     initial="closed"
                     animate="open"
                   >
-                    <a
-                      href={`#${menuAnchors[item] ?? item.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item}
-                    </a>
+                    {item === "Contact" ? (
+                      <button
+                        className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setIsEnquiryFormOpen(true);
+                        }}
+                      >
+                        {item}
+                      </button>
+                    ) : item === "Join Us" ? (
+                      <button
+                        className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setIsJoinFormOpen(true);
+                        }}
+                      >
+                        {item}
+                      </button>
+                    ) : (
+                      <a
+                        href={`#${
+                          menuAnchors[item] ??
+                          item.toLowerCase().replace(/\s+/g, "-")
+                        }`}
+                        className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item}
+                      </a>
+                    )}
                   </motion.li>
                 ))}
               </ul>
@@ -152,21 +194,37 @@ export default function Header() {
               animate="open"
               className="px-12 pb-12"
             >
-              <div className="grid grid-cols-2 gap-x-16 gap-y-4">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={`#${link.name.toLowerCase()}`}
-                    className="text-xl font-medium text-menu-foreground hover:opacity-70 transition-opacity"
-                  >
-                    {link.name}
-                  </a>
-                ))}
+              <div className="grid grid-cols-2 gap-x-16 gap-y-6">
+                {socialLinks.map((link) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-xl font-medium text-menu-foreground hover:opacity-70 transition-opacity group"
+                    >
+                      <IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      {link.name}
+                    </a>
+                  );
+                })}
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Enquiry Form Popup */}
+      <EnquiryForm
+        isOpen={isEnquiryFormOpen}
+        onClose={() => setIsEnquiryFormOpen(false)}
+      />
+      <JoinForm
+        isOpen={isJoinFormOpen}
+        onClose={() => setIsJoinFormOpen(false)}
+      />
     </div>
   );
 }
