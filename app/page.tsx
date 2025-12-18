@@ -1,11 +1,9 @@
 "use client";
 import { Suspense, lazy } from "react";
-import Header from "@/components/ui/sections/header";
 import Hero from "@/components/ui/sections/hero";
 import FloatingActions from "@/components/ui/floating-actions";
 
 // Lazy load heavy components to improve initial load
-const Particle = lazy(() => import("@/components/3d/particles"));
 const Services = lazy(() => import("@/components/ui/sections/services"));
 const Projects = lazy(() => import("@/components/ui/sections/projects"));
 const WorkProcess = lazy(() => import("@/components/ui/sections/workProcess"));
@@ -18,6 +16,21 @@ const Footer = lazy(() => import("@/components/ui/sections/footer"));
 const ConsultingWebsite = () => {
   return (
     <div className="min-h-screen text-foreground relative">
+      {/* Global Background Image */}
+      <div
+        className="fixed inset-0 w-full h-full -z-20"
+        style={{
+          backgroundImage: "url('/bg_counsulting_page.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.8,
+        }}
+      />
+
+      {/* Background Color Layer */}
+      <div className="fixed inset-0 w-full h-full -z-10 bg-background/80" />
+
       {/* Particle Base Layer - Fixed background behind everything */}
       <Suspense
         fallback={
@@ -32,7 +45,6 @@ const ConsultingWebsite = () => {
       {/* All content layers - positioned above background */}
       <div className="relative z-10 flex flex-col justify-between align-middle items-center">
         {/* Critical above-the-fold content - loaded immediately */}
-        <Header />
         <Hero />
 
         {/* Below-the-fold content - lazy loaded */}

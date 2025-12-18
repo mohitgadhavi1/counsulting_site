@@ -4,7 +4,7 @@ import { colors } from "./colors";
 import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
-import { ExternalLink, } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -78,12 +78,35 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" className="py-20 px-4 relative overflow-hidden">
+      {/* Section Background with 50% Opacity */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/section_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.5,
+        }}
+      />
       {/* Liquid glass background layer */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-6 rounded-3xl " />
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1200 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden
+        >
           <defs>
-            <filter id="blur-projects" x="-20%" y="-10%" width="140%" height="140%">
+            <filter
+              id="blur-projects"
+              x="-20%"
+              y="-10%"
+              width="140%"
+              height="140%"
+            >
               <feGaussianBlur stdDeviation="60" />
             </filter>
           </defs>
@@ -98,7 +121,9 @@ const Projects = () => {
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colors.gradients.hero}`}>
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colors.gradients.hero}`}
+          >
             Featured Projects
           </h2>
           <p className={`text-xl ${colors.text.secondary} max-w-3xl mx-auto`}>
@@ -110,9 +135,12 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <Card key={project.id} className="group overflow-hidden transition-all duration-300">
+            <Card
+              key={project.id}
+              className="group overflow-hidden transition-all duration-300"
+            >
               {/* Project Image */}
-                <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -132,7 +160,9 @@ const Projects = () => {
                   {project.title}
                 </h3>
 
-                <p className={`mb-4 text-sm leading-relaxed ${colors.text.secondary}`}>
+                <p
+                  className={`mb-4 text-sm leading-relaxed ${colors.text.secondary}`}
+                >
                   {project.description}
                 </p>
 

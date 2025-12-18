@@ -48,44 +48,47 @@ function StepCard({
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="relative group"
     >
-      <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ duration: 0.3 }}>
+      <motion.div
+        whileHover={{ scale: 1.02, y: -5 }}
+        transition={{ duration: 0.3 }}
+      >
         <Card className="relative p-8 overflow-hidden">
           <div className="relative z-10">
-          {/* Number */}
-          <motion.div
-            className="mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
-          >
-            <span className="text-7xl font-bold text-muted-foreground/30">
-              {step.number}
-            </span>
-          </motion.div>
+            {/* Number */}
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
+            >
+              <span className="text-7xl font-bold text-muted-foreground/30">
+                {step.number}
+              </span>
+            </motion.div>
 
-          {/* Title */}
-          <motion.h3
-            className="text-3xl font-bold text-foreground mb-4"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2 + 0.4, duration: 0.5 }}
-          >
-            {step.title}
-          </motion.h3>
+            {/* Title */}
+            <motion.h3
+              className="text-3xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 + 0.4, duration: 0.5 }}
+            >
+              {step.title}
+            </motion.h3>
 
-          {/* Description */}
-          <motion.p
-            className="text-muted-foreground leading-relaxed"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2 + 0.6, duration: 0.5 }}
-          >
-            {step.description}
-          </motion.p>
-        </div>
+            {/* Description */}
+            <motion.p
+              className="text-muted-foreground leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 + 0.6, duration: 0.5 }}
+            >
+              {step.description}
+            </motion.p>
+          </div>
         </Card>
       </motion.div>
     </motion.div>
@@ -94,10 +97,30 @@ function StepCard({
 
 function WorkProcess() {
   return (
-    <section id="work-process" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10">
+    <section
+      id="work-process"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10"
+    >
+      {/* Section Background with 50% Opacity */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/section_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.5,
+        }}
+      />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-6 rounded-3xl bg-card/30 " />
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1200 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden
+        >
           <defs>
             <filter id="blur-work" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="60" />
