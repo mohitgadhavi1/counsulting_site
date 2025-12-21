@@ -40,7 +40,7 @@ function About() {
       {/* About Section with liquid-glass background */}
       <section
         id="about"
-        className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10"
+        className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden z-10 w-full"
       >
         {/* Section Background with 50% Opacity */}
         <div

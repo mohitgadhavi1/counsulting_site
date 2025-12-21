@@ -46,7 +46,7 @@ function StepCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="relative group"
+      className="relative group "
     >
       <motion.div
         whileHover={{ scale: 1.02, y: -5 }}
@@ -99,7 +99,7 @@ function WorkProcess() {
   return (
     <section
       id="work-process"
-      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10 w-full"
     >
       {/* Section Background with 50% Opacity */}
       <div

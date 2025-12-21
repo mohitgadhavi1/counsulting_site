@@ -56,109 +56,109 @@
 :root {
   --radius: 0.625rem;
   /* Light theme with off-white background and darker cards */
-  --background: #E5D9B6;
+  --background: #e5d9b6;
   /* Light warm tan background */
   --foreground: #285430;
   /* Deep green text for contrast */
-  --card: #E5D9B6;
+  --card: #e5d9b6;
   /* Card background */
   --card-foreground: #285430;
-  --popover: #E5D9B6;
+  --popover: #e5d9b6;
   --popover-foreground: #285430;
-  --primary: #A4BE7B;
+  --primary: #a4be7b;
   /* Primary green */
-  --primary-foreground: #E5D9B6;
+  --primary-foreground: #e5d9b6;
   /* Light text for primary */
-  --secondary: #5F8D4E;
+  --secondary: #5f8d4e;
   /* Secondary green */
   --secondary-foreground: #525240;
   /* Light text for secondary */
-  --muted: #A4BE7B;
+  --muted: #a4be7b;
   /* Muted backgrounds */
   --muted-foreground: #285430;
   /* Muted text */
-  --accent: #A4BE7B;
+  --accent: #a4be7b;
   /* Accent */
   --accent-foreground: #285430;
   /* Accent text */
   --destructive: #285430;
-  --destructive-foreground: #E5D9B6;
+  --destructive-foreground: #e5d9b6;
   --border: rgba(40, 84, 48, 0.12);
   /* Light border derived from dark green */
   --input: rgba(40, 84, 48, 0.08);
   /* Input background/borders */
   --ring: rgba(164, 190, 123, 0.28);
   /* Focus ring */
-  --chart-1: #A4BE7B;
-  --chart-2: #5F8D4E;
+  --chart-1: #a4be7b;
+  --chart-2: #5f8d4e;
   --chart-3: #285430;
-  --chart-4: #E5D9B6;
-  --chart-5: #A4BE7B;
-  --sidebar: #E5D9B6;
+  --chart-4: #e5d9b6;
+  --chart-5: #a4be7b;
+  --sidebar: #e5d9b6;
   --sidebar-foreground: #285430;
-  --sidebar-primary: #A4BE7B;
-  --sidebar-primary-foreground: #E5D9B6;
-  --sidebar-accent: #A4BE7B;
+  --sidebar-primary: #a4be7b;
+  --sidebar-primary-foreground: #e5d9b6;
+  --sidebar-accent: #a4be7b;
   --sidebar-accent-foreground: #285430;
   --sidebar-border: rgba(40, 84, 48, 0.12);
   --sidebar-ring: rgba(164, 190, 123, 0.28);
-  --menu: #A4BE7B;
-  --menu-hover: #5F8D4E;
+  --menu: #a4be7b;
+  --menu-hover: #5f8d4e;
   --menu-foreground: #285430;
-  --menu-button: #A4BE7B;
-  --menu-button-hover: #5F8D4E;
+  --menu-button: #a4be7b;
+  --menu-button-hover: #5f8d4e;
   --menu-button-foreground: #285430;
   --menu-close-button: #285430;
-  --menu-close-button-hover: #5F8D4E;
-  --menu-close-button-foreground: #A4BE7B;
+  --menu-close-button-hover: #5f8d4e;
+  --menu-close-button-foreground: #a4be7b;
 }
 
 .dark {
   /* In dark mode we invert roles but keep same palette only */
   --background: #285430;
   /* dark green background */
-  --foreground: #E5D9B6;
+  --foreground: #e5d9b6;
   /* light tan text */
-  --card: #5F8D4E;
+  --card: #5f8d4e;
   /* mid green card */
-  --card-foreground: #E5D9B6;
-  --popover: #5F8D4E;
-  --popover-foreground: #E5D9B6;
-  --primary: #A4BE7B;
+  --card-foreground: #e5d9b6;
+  --popover: #5f8d4e;
+  --popover-foreground: #e5d9b6;
+  --primary: #a4be7b;
   --primary-foreground: #285430;
-  --secondary: #5F8D4E;
+  --secondary: #5f8d4e;
   --secondary-foreground: #918a76;
-  --muted: #5F8D4E;
-  --muted-foreground: #E5D9B6;
-  --accent: #A4BE7B;
+  --muted: #5f8d4e;
+  --muted-foreground: #e5d9b6;
+  --accent: #a4be7b;
   --accent-foreground: #285430;
-  --destructive: #E5D9B6;
+  --destructive: #e5d9b6;
   --destructive-foreground: #285430;
   --border: rgba(229, 217, 182, 0.12);
   --input: rgba(229, 217, 182, 0.08);
   --ring: rgba(40, 84, 48, 0.28);
-  --chart-1: #A4BE7B;
-  --chart-2: #5F8D4E;
+  --chart-1: #a4be7b;
+  --chart-2: #5f8d4e;
   --chart-3: #285430;
-  --chart-4: #E5D9B6;
-  --chart-5: #A4BE7B;
-  --sidebar: #5F8D4E;
-  --sidebar-foreground: #E5D9B6;
-  --sidebar-primary: #A4BE7B;
-  --sidebar-primary-foreground: #E5D9B6;
-  --sidebar-accent: #A4BE7B;
+  --chart-4: #e5d9b6;
+  --chart-5: #a4be7b;
+  --sidebar: #5f8d4e;
+  --sidebar-foreground: #e5d9b6;
+  --sidebar-primary: #a4be7b;
+  --sidebar-primary-foreground: #e5d9b6;
+  --sidebar-accent: #a4be7b;
   --sidebar-accent-foreground: #285430;
   --sidebar-border: rgba(229, 217, 182, 0.12);
   --sidebar-ring: rgba(40, 84, 48, 0.28);
-  --menu: #A4BE7B;
-  --menu-hover: #5F8D4E;
+  --menu: #a4be7b;
+  --menu-hover: #5f8d4e;
   --menu-foreground: #285430;
-  --menu-button: #A4BE7B;
-  --menu-button-hover: #5F8D4E;
+  --menu-button: #a4be7b;
+  --menu-button-hover: #5f8d4e;
   --menu-button-foreground: #285430;
   --menu-close-button: #285430;
-  --menu-close-button-hover: #5F8D4E;
-  --menu-close-button-foreground: #A4BE7B;
+  --menu-close-button-hover: #5f8d4e;
+  --menu-close-button-foreground: #a4be7b;
 }
 
 @layer base {
@@ -174,12 +174,16 @@
 body {
   font-family: "Inter var", sans-serif;
   color: var(--foreground);
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='%23285230'/></svg>") 16 16, auto;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='%23285230'/></svg>")
+      16 16,
+    auto;
+  overflow-x: hidden;
 }
 
 /* Smooth scrolling for anchor links and offset for fixed header */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 section {

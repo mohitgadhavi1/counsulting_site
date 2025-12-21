@@ -77,7 +77,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-4 relative overflow-hidden">
+    <section id="projects" className="py-20 px-4 relative overflow-hidden w-full">
       {/* Section Background with 50% Opacity */}
       <div
         className="absolute inset-0 -z-10"

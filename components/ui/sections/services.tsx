@@ -62,7 +62,7 @@ function Services() {
       {/* Services Section Overlay */}
       <section
         id="services"
-        className="py-20 px-4 sm:px-6 lg:px-8 w-7/8 relative overflow-hidden z-10"
+        className="py-20 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden z-10"
       >
         {/* Section Background with 50% Opacity */}
         <div
