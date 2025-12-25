@@ -99,7 +99,7 @@ function WorkProcess() {
   return (
     <section
       id="work-process"
-      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10 w-full"
+      className="py-20 px-4 sm:px-6 lg:px-8 snap-start relative overflow-hidden z-10 w-full"
     >
       {/* Section Background with 50% Opacity */}
       <div

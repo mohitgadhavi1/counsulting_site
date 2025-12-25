@@ -37,7 +37,7 @@ function TechStack() {
   return (
     <>
       {/* Tech Stack with liquid-glass background */}
-      <section id="tech-stack" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10 w-full">
+      <section id="tech-stack" className="py-20 snap-start px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10 w-full">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-6 rounded-3xl bg-card/30 border border-border backdrop-blur-2xl shadow-2xl" />
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden>

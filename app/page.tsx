@@ -15,7 +15,7 @@ const Footer = lazy(() => import("@/components/ui/sections/footer"));
 
 const ConsultingWebsite = () => {
   return (
-    <div className="min-h-screen text-foreground relative overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen text-foreground relative overflow-x-hidden w-full max-w-full ">
       {/* Global Background Image */}
       <div
         className="fixed inset-0 w-full h-full -z-20"
@@ -29,7 +29,7 @@ const ConsultingWebsite = () => {
       />
 
       {/* Background Color Layer */}
-      <div className="fixed inset-0 w-full h-full -z-10 bg-background/80" />
+      <div className="fixed inset-0 w-full h-full -z-10 bg-background/80 scroll-smooth snap-y snap-mandatory" />
 
       {/* Particle Base Layer - Fixed background behind everything */}
       <Suspense
@@ -43,7 +43,7 @@ const ConsultingWebsite = () => {
       </Suspense>
 
       {/* All content layers - positioned above background */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full ">
         {/* Critical above-the-fold content - loaded immediately */}
         <Hero />
 
