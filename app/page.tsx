@@ -2,6 +2,7 @@
 import { Suspense, lazy } from "react";
 import Hero from "@/components/ui/sections/hero";
 import FloatingActions from "@/components/ui/floating-actions";
+import AnimatedBanner from "../components/ui/sections/banner";
 
 // Lazy load heavy components to improve initial load
 const Services = lazy(() => import("@/components/ui/sections/services"));
@@ -54,6 +55,9 @@ const ConsultingWebsite = () => {
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <Projects />
+        </Suspense>
+             <Suspense fallback={<div className="py-20 bg-black/20" />}>
+         <AnimatedBanner/>
         </Suspense>
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>

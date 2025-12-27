@@ -1,8 +1,9 @@
 "use client";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { colors } from "./colors";
 import { Button } from "@/components/ui/button";
-
+import EnquiryForm from "@/components/ui/enquiry-form";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
@@ -76,7 +77,14 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   return (
+    <>
+        <EnquiryForm 
+            isOpen={isEnquiryOpen} 
+            onClose={() => setIsEnquiryOpen(false)} 
+          />
+    
     <section id="projects" className="py-20 snap-start px-4 relative overflow-hidden w-full">
       {/* Section Background with 50% Opacity */}
       <div
@@ -213,12 +221,15 @@ const Projects = () => {
           <Button
             size="lg"
             className={`${colors.gradients.button} text-primary-foreground px-8 py-3 cursor-pointer`}
+            onClick={() => setIsEnquiryOpen(true)}
           >
             Let&apos;s Collaborate
           </Button>
+          
+      
         </div>
       </div>
-    </section>
+    </section></>
   );
 };
 

@@ -5,6 +5,7 @@ import { AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
 import EnquiryForm from "@/components/ui/enquiry-form";
 import JoinForm from "@/components/ui/join-form";
+import { handleScroll } from "@/lib/utils";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Header() {
     "Why Us": "about",
     Projects: "projects",
     Expertise: "services",
-    "Join Us": "contact",
+    "Join Us": "join-us",
     Contact: "contact",
   };
 
@@ -142,8 +143,12 @@ export default function Header() {
             {/* Menu Items */}
             <nav className="flex-1 px-12 py-8">
               <ul className="space-y-6">
-                {menuItems.map((item, i) => (
-                  <motion.li
+                {menuItems.map((item, i) => 
+                  
+                {  
+                  console.log(item)
+                    
+                 return (<motion.li
                     key={item}
                     custom={i}
                     variants={itemVariants}
@@ -160,10 +165,11 @@ export default function Header() {
                       >
                         {item}
                       </button>
-                    ) : item === "Join Us" ? (
+                    ) : (item === "Join Us" || item ===  "join-us") ? (
                       <button
                         className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
                         onClick={() => {
+                          console.log(item)
                           setIsOpen(false);
                           setIsJoinFormOpen(true);
                         }}
@@ -172,18 +178,19 @@ export default function Header() {
                       </button>
                     ) : (
                       <a
-                        href={`#${
-                          menuAnchors[item] ??
-                          item.toLowerCase().replace(/\s+/g, "-")
-                        }`}
+                     
+                        // href={`#${
+                        //   menuAnchors[item] ??
+                        //   item.toLowerCase().replace(/\s+/g, "-")
+                        // }`}
                         className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => { setIsOpen(false); handleScroll(menuAnchors[item] ); }}
                       >
                         {item}
                       </a>
                     )}
-                  </motion.li>
-                ))}
+                  </motion.li>)}
+                )}
               </ul>
             </nav>
 

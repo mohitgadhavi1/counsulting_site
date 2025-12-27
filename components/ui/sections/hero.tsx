@@ -6,25 +6,15 @@ import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import FallingText from "@/components/3d/fallingText";
 import EnquiryForm from "@/components/ui/enquiry-form";
+import { handleScroll } from "@/lib/utils";
 
-interface HeroProps {
-  scrollToSection?: (sectionId: string) => void;
-}
 
-function Hero({ scrollToSection }: HeroProps) {
+
+function Hero() {
   const [isOpen, setIsOpen] = useState(false);
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
 
-  const handleScroll = (sectionId: string) => {
-    if (scrollToSection) {
-      scrollToSection(sectionId);
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
+
 
   const menuItems = ["Why Us", "Projects", "Expertise", "Join Us", "Contact"];
 
@@ -102,6 +92,7 @@ function Hero({ scrollToSection }: HeroProps) {
   };
 
   return (
+    <>
     <section
       id="home"
       className="min-h-screen flex flex-col text-wrap w-full relative "
@@ -202,11 +193,15 @@ function Hero({ scrollToSection }: HeroProps) {
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <Button
-              onClick={() => handleScroll("contact")}
+              onClick={() => setIsEnquiryFormOpen(true)}
               className="bg-primary snap-start hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer shadow-xl backdrop-blur-sm"
             >
-              Get Started <ArrowRight className="ml-2" />
+              Contact Us <ArrowRight className="ml-2" />
             </Button>
+            <EnquiryForm 
+              isOpen={isEnquiryFormOpen} 
+              onClose={() => setIsEnquiryFormOpen(false)} 
+            />
             <Button
               onClick={() => handleScroll("services")}
               variant="outline"
@@ -226,7 +221,7 @@ function Hero({ scrollToSection }: HeroProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-9998"
           />
         )}
       </AnimatePresence>
@@ -239,7 +234,7 @@ function Hero({ scrollToSection }: HeroProps) {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed top-0 right-0 h-full w-full sm:w-[500px] bg-menu shadow-2xl z-[9999] flex flex-col"
+            className="fixed top-0 right-0 h-full w-full sm:w-[500px] bg-menu shadow-2xl z-9999 flex flex-col"
           >
             {/* Close Button */}
             <div className="flex justify-end p-8">
@@ -320,12 +315,15 @@ function Hero({ scrollToSection }: HeroProps) {
         )}
       </AnimatePresence>
 
-      {/* Enquiry Form Popup */}
+  
+    </section>
+        {/* Enquiry Form Popup */}
       <EnquiryForm
         isOpen={isEnquiryFormOpen}
         onClose={() => setIsEnquiryFormOpen(false)}
       />
-    </section>
+    </>
+
   );
 }
 
