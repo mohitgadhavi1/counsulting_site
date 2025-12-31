@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import * as motion from "motion/react-client";
-import { colors } from './colors';
+import { colorClasses } from '@/lib/colors';
+
 
 const techStack = [
   "React", "Next.js", "TypeScript", "Node.js", 
@@ -56,7 +57,7 @@ function TechStack() {
 
         <div className="relative max-w-7xl mx-auto">
           <motion.h2 
-            className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent ${colors.gradients.techStack}`}
+            className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent ${colorClasses.gradients.techStack}`}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -76,9 +77,9 @@ function TechStack() {
                 key={index}
                 variants={techVariants}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className={`px-6 py-3 ${colors.gradients.cardIndigo} border ${colors.border.indigo} rounded-full backdrop-blur-lg transition-transform duration-300`}
+                className={`px-6 py-3 ${colorClasses.gradients.cardIndigo} border ${colorClasses.border.indigo} rounded-full backdrop-blur-lg transition-transform duration-300`}
               >
-                <span className={`text-lg font-semibold ${colors.text.primary}`}>{tech}</span>
+                <span className={`text-lg font-semibold ${colorClasses.text.primary}`}>{tech}</span>
               </motion.div>
             ))}
           </motion.div>

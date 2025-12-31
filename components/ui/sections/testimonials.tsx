@@ -86,7 +86,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20  px-4 sm:px-6 snap-start lg:px-8 w-full mx-10 relative overflow-hidden z-10"
+      className="py-20  px-4 sm:px-6 lg:px-8 w-full  relative overflow-hidden z-10"
     >
       {/* Section Background with 50% Opacity */}
       <div
@@ -101,30 +101,7 @@ export default function Testimonials() {
       />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-6 rounded-3xl bg-card/30" />
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1200 600"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden
-        >
-          <defs>
-            <filter
-              id="blur-testimonials"
-              x="-20%"
-              y="-20%"
-              width="140%"
-              height="140%"
-            >
-              <feGaussianBlur stdDeviation="60" />
-            </filter>
-          </defs>
-          <g filter="url(#blur-testimonials)" opacity="0.12">
-            <circle cx="240" cy="160" r="200" fill="var(--primary)" />
-            <circle cx="920" cy="420" r="300" fill="var(--secondary)" />
-            <circle cx="700" cy="120" r="160" fill="var(--background)" />
-          </g>
-        </svg>
+       
       </div>
 
       <div className="relative max-w-7xl mx-auto z-10">

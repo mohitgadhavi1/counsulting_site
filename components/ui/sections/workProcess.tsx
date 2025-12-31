@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Card } from "@/components/ui/card";
 import * as motion from "motion/react-client";
 
@@ -114,24 +114,7 @@ function WorkProcess() {
       />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-6 rounded-3xl bg-card/30 " />
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1200 600"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden
-        >
-          <defs>
-            <filter id="blur-work" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="60" />
-            </filter>
-          </defs>
-          <g filter="url(#blur-work)" opacity="0.14">
-            <circle cx="200" cy="150" r="220" fill="var(--primary)" />
-            <circle cx="950" cy="420" r="300" fill="var(--secondary)" />
-            <circle cx="700" cy="120" r="180" fill="var(--background)" />
-          </g>
-        </svg>
+        
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -144,7 +127,7 @@ function WorkProcess() {
         >
           Work Process
         </motion.h2>
-
+<WorkProcessMindMap/>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {processSteps.map((step, index) => (
             <StepCard key={index} step={step} index={index} />
@@ -156,3 +139,240 @@ function WorkProcess() {
 }
 
 export default WorkProcess;
+
+
+
+import { applyEdgeChanges, applyNodeChanges, Background ,EdgeChange,NodeChange,ReactFlow} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { addEdge } from "reactflow";
+
+
+const centerStyle = {
+  background: "#4b4f63",
+  color: "#fff",
+  borderRadius: 20,
+  padding: "18px 24px",
+  fontWeight: 600,
+};
+
+const mainStyle = (color: string) => ({
+  background: "#fff",
+  border: `2px solid ${color}`,
+  borderRadius: 18,
+  padding: "12px 16px",
+  fontWeight: 500,
+});
+
+const subStyle = (color: string) => ({
+  background: "transparent",
+  color: "#333",
+  border: `2px solid ${color}`,
+  borderRadius: 12,
+  padding: "6px 10px",
+  fontSize: 13,
+});
+
+const initialNodes = [
+  // CENTER
+  {
+    id: "center",
+    data: { label: "Work Process" },
+    position: { x: 400, y: 250 },
+    style: centerStyle,
+  },
+
+  // MAIN NODES
+  {
+    id: "01",
+    data: { label: "01 Brainstorming" },
+    position: { x: 700, y: 120 },
+    style: mainStyle("#e57373"),
+  },
+  {
+    id: "02",
+    data: { label: "02 Documentation" },
+    position: { x: 700, y: 360 },
+    style: mainStyle("#f06292"),
+  },
+  {
+    id: "03",
+    data: { label: "03 Implementation" },
+    position: { x: 100, y: 360 },
+    style: mainStyle("#7c4dff"),
+  },
+  {
+    id: "04",
+    data: { label: "04 Testing & Deployment" },
+    position: { x: 100, y: 120 },
+    style: mainStyle("#ef5350"),
+  },
+
+  // --- Brainstorming sub-nodes
+  {
+    id: "01-1",
+    data: { label: "Create Roadmap" },
+    position: { x: 930, y: 80 },
+    style: subStyle("#e57373"),
+  },
+  {
+    id: "01-2",
+    data: { label: "Generate Ideas Freely" },
+    position: { x: 930, y: 120 },
+    style: subStyle("#e57373"),
+  },
+  {
+    id: "01-3",
+    data: { label: "Strive for Perfect View" },
+    position: { x: 930, y: 160 },
+    style: subStyle("#e57373"),
+  },
+
+  // --- Documentation sub-nodes
+  {
+    id: "02-1",
+    data: { label: "Prevent Misunderstandings" },
+    position: { x: 930, y: 330 },
+    style: subStyle("#f06292"),
+  },
+  {
+    id: "02-2",
+    data: { label: "Chart Roadmap & Milestones" },
+    position: { x: 930, y: 370 },
+    style: subStyle("#f06292"),
+  },
+
+  // --- Implementation sub-nodes
+  {
+    id: "03-1",
+    data: { label: "Timely Delivery" },
+    position: { x: -150, y: 310 },
+    style: subStyle("#7c4dff"),
+  },
+  {
+    id: "03-2",
+    data: { label: "Regular Updates" },
+    position: { x: -150, y: 350 },
+    style: subStyle("#7c4dff"),
+  },
+  {
+    id: "03-3",
+    data: { label: "Dedicated Project Manager" },
+    position: { x: -150, y: 390 },
+    style: subStyle("#7c4dff"),
+  },
+  {
+    id: "03-4",
+    data: { label: "Handle Deviations" },
+    position: { x: -150, y: 430 },
+    style: subStyle("#7c4dff"),
+  },
+
+  // --- Testing & Deployment sub-nodes
+  {
+    id: "04-1",
+    data: { label: "Internal Testing" },
+    position: { x: -150, y: 80 },
+    style: subStyle("#ef5350"),
+  },
+  {
+    id: "04-2",
+    data: { label: "Client Final Confirmation" },
+    position: { x: -150, y: 120 },
+    style: subStyle("#ef5350"),
+  },
+  {
+    id: "04-3",
+    data: { label: "Go Live" },
+    position: { x: -150, y: 160 },
+    style: subStyle("#ef5350"),
+  },
+  {
+    id: "04-4",
+    data: { label: "Optimize Brand Value" },
+    position: { x: -150, y: 200 },
+    style: subStyle("#ef5350"),
+  },
+  {
+    id: "04-5",
+    data: { label: "Generate Leads" },
+    position: { x: -150, y: 240 },
+    style: subStyle("#ef5350"),
+  },
+];
+
+
+
+
+const initialEdges = [
+  // Center connections
+  connect("center", "01", "#e57373"),
+  connect("center", "02", "#f06292"),
+  connect("center", "03", "#7c4dff"),
+  connect("center", "04", "#ef5350"),
+
+  // Brainstorming
+  connect("01", "01-1", "#e57373"),
+  connect("01", "01-2", "#e57373"),
+  connect("01", "01-3", "#e57373"),
+
+  // Documentation
+  connect("02", "02-1", "#f06292"),
+  connect("02", "02-2", "#f06292"),
+
+  // Implementation
+  connect("03", "03-1", "#7c4dff"),
+  connect("03", "03-2", "#7c4dff"),
+  connect("03", "03-3", "#7c4dff"),
+  connect("03", "03-4", "#7c4dff"),
+
+  // Testing & Deployment
+  connect("04", "04-1", "#ef5350"),
+  connect("04", "04-2", "#ef5350"),
+  connect("04", "04-3", "#ef5350"),
+  connect("04", "04-4", "#ef5350"),
+  connect("04", "04-5", "#ef5350"),
+];
+
+
+
+
+export function WorkProcessMindMap() {
+    const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+    const onNodesChange = useCallback(
+    (changes: NodeChange<{ id: string; data: { label: string; }; position: { x: number; y: number; }; style: { background: string; color: string; borderRadius: number; padding: string; fontWeight: number; }; } | { id: string; data: { label: string; }; position: { x: number; y: number; }; style: { background: string; border: string; borderRadius: number; padding: string; fontWeight: number; }; } | { id: string; data: { label: string; }; position: { x: number; y: number; }; style: { background: string; color: string; border: string; borderRadius: number; padding: string; fontSize: number; }; }>[]) => setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
+    [],
+  );
+  const onEdgesChange = useCallback(
+    (changes: EdgeChange<{ id: string; source: string; target: string; type: string; style: { stroke: string; strokeWidth: number; }; }>[]) => setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
+    [],
+  );
+
+
+  return(
+       <div className="w-100vw h-196" >
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+    
+        fitView
+      />
+    </div>
+
+  );
+}
+
+
+
+function connect(source: string, target: string, color: string) {
+  return {
+    id: `${source}-${target}`,
+    source,
+    target,
+    type: "smoothstep",
+    style: { stroke: color, strokeWidth: 2 },
+  };
+}
+

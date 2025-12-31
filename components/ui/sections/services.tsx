@@ -2,8 +2,9 @@
 
 import { Code, Layers } from "lucide-react";
 import * as motion from "motion/react-client";
-import { colors } from "./colors";
+
 import { Card } from "@/components/ui/card";
+import { colorClasses } from "@/lib/colors";
 
 const serviceCategories = [
   {
@@ -64,6 +65,11 @@ function Services() {
       id="services"
       className="py-20 px-4 snap-start sm:px-6 lg:px-8 w-full relative overflow-hidden z-10"
     >
+        {/* Bottom Gradient Blur */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-background via-background/90 to-transparent pointer-events-none z-10"></div>
+  {/* Bottom Gradient Blur */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-linear-to-t from-background via-background/90 to-transparent pointer-events-none z-10"></div>
+
       {/* Background */}
       <div
         className="absolute inset-0 -z-10"
@@ -100,7 +106,7 @@ function Services() {
 
       <div className="relative max-w-7xl mx-auto z-10">
         <motion.h2
-          className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent ${colors.gradients.services}`}
+          className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent ${colorClasses.gradients.services}`}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

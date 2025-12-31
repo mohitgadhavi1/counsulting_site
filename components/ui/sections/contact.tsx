@@ -9,7 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import * as motion from "motion/react-client";
-import { colors } from "./colors";
+import { colorClasses } from "@/lib/colors";
+
 
 const contactCards = [
   {
@@ -75,7 +76,7 @@ function Contact() {
 
         <div className="relative max-w-4xl mx-auto text-center z-10">
           <motion.h2
-            className={`text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent ${colors.gradients.contact}`}
+            className={`text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent ${colorClasses.gradients.contact}`}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -84,7 +85,7 @@ function Contact() {
             Let&apos;s Build Something Amazing
           </motion.h2>
           <motion.p
-            className={`text-xl ${colors.text.secondary} mb-12`}
+            className={`text-xl ${colorClasses.text.secondary} mb-12`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -106,7 +107,7 @@ function Contact() {
               return (
                 <motion.div key={index} variants={cardVariants}>
                   <Card
-                    className={`${colors.background.card} backdrop-blur-lg ${colors.border.white} ${colors.background.cardHover} transition-all duration-300`}
+                    className={`${colorClasses.background.card} backdrop-blur-lg ${colorClasses.border.white} ${colorClasses.background.cardHover} transition-all duration-300`}
                   >
                     <CardHeader>
                       <motion.div
@@ -122,13 +123,13 @@ function Contact() {
                         className="mx-auto mb-2"
                       >
                         <IconComponent
-                          className={`w-8 h-8 ${colors.indigo.dark}`}
+                          className={`w-8 h-8 ${colorClasses.indigo.dark}`}
                         />
                       </motion.div>
-                      <CardTitle className={colors.text.primary}>
+                      <CardTitle className={colorClasses.text.primary}>
                         {contact.title}
                       </CardTitle>
-                      <CardDescription className={colors.text.secondary}>
+                      <CardDescription className={colorClasses.text.secondary}>
                         {contact.description}
                       </CardDescription>
                     </CardHeader>
@@ -152,7 +153,7 @@ function Contact() {
             whileTap={{ scale: 0.95 }}
           >
             <Button
-              className={`${colors.gradients.button} ${colors.gradients.buttonHover} ${colors.text.white} px-12 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer`}
+              className={`${colorClasses.gradients.button} ${colorClasses.gradients.buttonHover} ${colorClasses.text.white} px-12 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer`}
             >
               Start Your Project
             </Button>

@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { colors } from "./colors";
+
 import { Button } from "@/components/ui/button";
 import EnquiryForm from "@/components/ui/enquiry-form";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { colorClasses } from "@/lib/colors";
 
 const projects = [
   {
@@ -130,11 +131,11 @@ const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colors.gradients.hero}`}
+            className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colorClasses.gradients.hero}`}
           >
             Featured Projects
           </h2>
-          <p className={`text-xl ${colors.text.secondary} max-w-3xl mx-auto`}>
+          <p className={`text-xl ${colorClasses.text.secondary} max-w-3xl mx-auto`}>
             Explore a selection of my recent work showcasing innovative
             solutions and cutting-edge technologies across various industries.
           </p>
@@ -164,12 +165,12 @@ const Projects = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colorClasses">
                   {project.title}
                 </h3>
 
                 <p
-                  className={`mb-4 text-sm leading-relaxed ${colors.text.secondary}`}
+                  className={`mb-4 text-sm leading-relaxed ${colorClasses.text.secondary}`}
                 >
                   {project.description}
                 </p>
@@ -215,12 +216,12 @@ const Projects = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <p className={`${colors.text.secondary} mb-6`}>
+          <p className={`${colorClasses.text.secondary} mb-6`}>
             Interested in working together on your next project?
           </p>
           <Button
             size="lg"
-            className={`${colors.gradients.button} text-primary-foreground px-8 py-3 cursor-pointer`}
+            className={`${colorClasses.gradients.button} text-primary-foreground px-8 py-3 cursor-pointer`}
             onClick={() => setIsEnquiryOpen(true)}
           >
             Let&apos;s Collaborate

@@ -55,110 +55,57 @@
 
 :root {
   --radius: 0.625rem;
-  /* Light theme with off-white background and darker cards */
-  --background: #e5d9b6;
-  /* Light warm tan background */
-  --foreground: #285430;
-  /* Deep green text for contrast */
-  --card: #e5d9b6;
-  /* Card background */
-  --card-foreground: #285430;
-  --popover: #e5d9b6;
-  --popover-foreground: #285430;
-  --primary: #a4be7b;
-  /* Primary green */
-  --primary-foreground: #e5d9b6;
-  /* Light text for primary */
-  --secondary: #5f8d4e;
-  /* Secondary green */
-  --secondary-foreground: #525240;
-  /* Light text for secondary */
-  --muted: #a4be7b;
-  /* Muted backgrounds */
-  --muted-foreground: #285430;
-  /* Muted text */
-  --accent: #a4be7b;
-  /* Accent */
-  --accent-foreground: #285430;
-  /* Accent text */
-  --destructive: #285430;
-  --destructive-foreground: #e5d9b6;
-  --border: rgba(40, 84, 48, 0.12);
-  /* Light border derived from dark green */
-  --input: rgba(40, 84, 48, 0.08);
-  /* Input background/borders */
-  --ring: rgba(164, 190, 123, 0.28);
-  /* Focus ring */
-  --chart-1: #a4be7b;
-  --chart-2: #5f8d4e;
-  --chart-3: #285430;
-  --chart-4: #e5d9b6;
-  --chart-5: #a4be7b;
-  --sidebar: #e5d9b6;
-  --sidebar-foreground: #285430;
-  --sidebar-primary: #a4be7b;
-  --sidebar-primary-foreground: #e5d9b6;
-  --sidebar-accent: #a4be7b;
-  --sidebar-accent-foreground: #285430;
-  --sidebar-border: rgba(40, 84, 48, 0.12);
-  --sidebar-ring: rgba(164, 190, 123, 0.28);
-  --menu: #a4be7b;
-  --menu-hover: #5f8d4e;
-  --menu-foreground: #285430;
-  --menu-button: #a4be7b;
-  --menu-button-hover: #5f8d4e;
-  --menu-button-foreground: #285430;
-  --menu-close-button: #285430;
-  --menu-close-button-hover: #5f8d4e;
-  --menu-close-button-foreground: #a4be7b;
-}
 
-.dark {
-  /* In dark mode we invert roles but keep same palette only */
-  --background: #285430;
-  /* dark green background */
-  --foreground: #e5d9b6;
-  /* light tan text */
-  --card: #5f8d4e;
-  /* mid green card */
-  --card-foreground: #e5d9b6;
-  --popover: #5f8d4e;
-  --popover-foreground: #e5d9b6;
+  /* 4 Core Colors */
+  --background: #F1EFEC;
+  /* Light warm background */
+  --foreground: #222831;
+  /* Dark text */
+  --card: #a4be7b;
+  /* Sage green for cards/sidebar */
+  --accent: #5f8d4e;
+  /* Darker forest green for hover/emphasis */
+
+  /* Applied to theme variables */
+  --card-foreground: #222831;
+  --popover: #F1EFEC;
+  --popover-foreground: #222831;
   --primary: #a4be7b;
-  --primary-foreground: #285430;
+  --primary-foreground: #F1EFEC;
   --secondary: #5f8d4e;
-  --secondary-foreground: #918a76;
-  --muted: #5f8d4e;
-  --muted-foreground: #e5d9b6;
-  --accent: #a4be7b;
-  --accent-foreground: #285430;
-  --destructive: #e5d9b6;
-  --destructive-foreground: #285430;
-  --border: rgba(229, 217, 182, 0.12);
-  --input: rgba(229, 217, 182, 0.08);
-  --ring: rgba(40, 84, 48, 0.28);
-  --chart-1: #a4be7b;
-  --chart-2: #5f8d4e;
-  --chart-3: #285430;
-  --chart-4: #e5d9b6;
-  --chart-5: #a4be7b;
-  --sidebar: #5f8d4e;
-  --sidebar-foreground: #e5d9b6;
-  --sidebar-primary: #a4be7b;
-  --sidebar-primary-foreground: #e5d9b6;
-  --sidebar-accent: #a4be7b;
-  --sidebar-accent-foreground: #285430;
-  --sidebar-border: rgba(229, 217, 182, 0.12);
-  --sidebar-ring: rgba(40, 84, 48, 0.28);
+  --secondary-foreground: #F1EFEC;
+  --muted: #a4be7b;
+  --muted-foreground: #222831;
+  --accent-foreground: #F1EFEC;
+  --destructive: #5f8d4e;
+  --destructive-foreground: #F1EFEC;
+  --border: rgba(34, 40, 49, 0.1);
+  --input: rgba(34, 40, 49, 0.05);
+  --ring: rgba(164, 190, 123, 0.3);
+
+  --sidebar: #a4be7b;
+  --sidebar-foreground: #F1EFEC;
+  --sidebar-primary: #5f8d4e;
+  --sidebar-primary-foreground: #F1EFEC;
+  --sidebar-accent: #5f8d4e;
+  --sidebar-accent-foreground: #F1EFEC;
+  --sidebar-border: rgba(34, 40, 49, 0.1);
+
   --menu: #a4be7b;
   --menu-hover: #5f8d4e;
-  --menu-foreground: #285430;
+  --menu-foreground: #F1EFEC;
   --menu-button: #a4be7b;
   --menu-button-hover: #5f8d4e;
-  --menu-button-foreground: #285430;
-  --menu-close-button: #285430;
+  --menu-button-foreground: #5f8d4e;
+  --menu-close-button: #5f8d4e;
   --menu-close-button-hover: #5f8d4e;
-  --menu-close-button-foreground: #a4be7b;
+  --menu-close-button-foreground: #F1EFEC;
+
+  --chart-1: #a4be7b;
+  --chart-2: #5f8d4e;
+  --chart-3: #222831;
+  --chart-4: #F1EFEC;
+  --chart-5: #8ba86d;
 }
 
 @layer base {
@@ -168,18 +115,48 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter var", sans-serif;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='6' fill='%23222831'/><circle cx='16' cy='16' r='11' fill='none' stroke='%23222831' stroke-width='1.5' opacity='0.5'/></svg>") 16 16, auto;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  a {
+    @apply text-primary hover:text-secondary transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply bg-input border-border text-foreground;
   }
 }
 
-body {
-  font-family: "Inter var", sans-serif;
-  color: var(--foreground);
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='6' fill='%23285230'/><circle cx='16' cy='16' r='11' fill='none' stroke='%23285230' stroke-width='1.5' opacity='0.6'/></svg>") 16 16, auto;
-
-  overflow-x: hidden;
-}
-
-/* Smooth scrolling for anchor links and offset for fixed header */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -187,4 +164,70 @@ html {
 
 section {
   scroll-margin-top: 5rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection styles */
+::selection {
+  background: var(--card);
+  color: var(--background);
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--card);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Card styles */
+.card {
+  @apply bg-card text-card-foreground rounded-lg shadow-sm;
+}
+
+/* Button variants */
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-secondary px-4 py-2 rounded-md font-medium;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-accent px-4 py-2 rounded-md font-medium;
+}
+
+.btn-outline {
+  @apply border-2 border-card text-card hover:bg-card hover:text-background px-4 py-2 rounded-md font-medium;
 }
