@@ -9,12 +9,14 @@ import {
 } from "@/components/ui/card";
 import * as motion from "motion/react-client";
 import { colorClasses } from "@/lib/colors";
-import { ParsedSection } from "@/lib/markdown";
 
-type AboutClientProps = {
+interface AboutClientProps {
   title: string;
-  content: ParsedSection | null;
-};
+  content: {
+    paragraphs: string[];
+    lists: string[][];
+  } | null;
+}
 
 const statsVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -45,19 +47,15 @@ const statColors = [
   { card: colorClasses.gradients.cardIndigo, text: colorClasses.indigo.dark },
 ];
 
-export default function About({ title, content }: AboutClientProps) {
+export default function AboutClient({ title, content }: AboutClientProps) {
   const description = content?.paragraphs.join(" ") ?? "";
 
-  const stats =
-    content?.lists?.[0] ?? [
-      "📍 Based in Navi Mumbai, India",
-      "50+ Projects Delivered",
-      "100% Client Satisfaction",
-      "24/7 Priority Support",
-      "5+ Years of Experience",
-    ];
+  console.log(content,title)
 
-  const statsData = stats
+  const stats =
+    content?.lists?.[0] ?? null
+
+  const statsData = stats && stats
     .map(stat => {
       const match = stat.match(/^(.+?)\s+(.+)$/);
       if (!match) return null;
@@ -103,7 +101,7 @@ export default function About({ title, content }: AboutClientProps) {
             </motion.h2>
 
             <motion.p
-              className={`text-lg ${colorClasses.text.secondary} mb-6`}
+              className={`text-lg ${colorClasses.text.primary} mb-6`}
             >
               {description}
             </motion.p>
@@ -111,7 +109,7 @@ export default function About({ title, content }: AboutClientProps) {
             <div className={`flex items-center space-x-2 ${colorClasses.indigo.dark}`}>
               <MapPin className="w-5 h-5" />
               <span className="text-lg">
-                {stats.find(s => s.includes("📍"))?.replace("📍 ", "")}
+                {stats && stats.find(s => s.includes("📍"))?.replace("📍 ", "")}
               </span>
             </div>
           </motion.div>
@@ -123,7 +121,7 @@ export default function About({ title, content }: AboutClientProps) {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {statsData.slice(1, 5).map((stat, index) => (
+            {statsData &&  statsData.slice(1, 5).map((stat, index) => (
               <motion.div key={index} variants={statCardVariants}>
                 <Card className={`${statColors[index].card}`}>
                   <CardHeader>

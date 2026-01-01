@@ -35,6 +35,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react-client'],
   },
+  webpack: (config, { isServer }) => {
+    // Don't bundle fs module for client
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
 };
 
 export default withMDX(nextConfig);

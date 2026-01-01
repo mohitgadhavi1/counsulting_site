@@ -99,12 +99,12 @@ export default function Testimonials() {
           opacity: 0.5,
         }}
       />
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-6 rounded-3xl bg-card/30" />
+      <div className="absolute inset-0 pointer-events-none ">
+        <div className="absolute inset-0 md:inset-6 md:rounded-3xl bg-card/30" />
        
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-10">
+      <div className="relative   z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}

@@ -1,21 +1,53 @@
+
+
 import AboutClient from "./about";
-import { getMarkdownData, parseSection } from "@/lib/markdown";
+import { getMarkdownDataInternal } from "@/lib/markdown";
 
 export default async function About() {
-  const markdownData = await getMarkdownData();
+  const { frontmatter, content } =  getMarkdownDataInternal();
 
-  const aboutSection = markdownData.sections.find(
-    (s) => s.id === "about"
-  );
+ 
+  // Extract the About section from markdown
+  // Assuming your markdown has an "## About Us {#about}" section
+  const aboutMatch = content.match(/##\s+About Us\s+\{#about\}([\s\S]*?)(?=##\s+|$)/);
+  const aboutContent = aboutMatch ? aboutMatch[1].trim() : "";
 
-  const aboutContent = aboutSection
-    ? await parseSection(aboutSection.content)
-    : null;
+  
+
+  // Parse the content manually for the stats list
+  const lines = aboutContent.split('\n');
+  const paragraphs: string[] = [];
+  const lists: string[][] = [];
+  
+  let currentList: string[] = [];
+  
+  for (const line of lines) {
+    const trimmed = line.trim();
+    
+    if (trimmed.startsWith('- ')) {
+      currentList.push(trimmed.slice(2));
+    } else if (trimmed && !trimmed.startsWith('#')) {
+      if (currentList.length > 0) {
+        lists.push(currentList);
+        currentList = [];
+      }
+      paragraphs.push(trimmed);
+    }
+  }
+  
+  if (currentList.length > 0) {
+    lists.push(currentList);
+  }
+
+  const parsedContent = {
+    paragraphs,
+    lists,
+  };
 
   return (
     <AboutClient
-      title={aboutSection?.title ?? "About Us"}
-      content={aboutContent}
+      title="About Us"
+      content={parsedContent}
     />
   );
 }

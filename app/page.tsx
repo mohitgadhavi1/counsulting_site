@@ -1,4 +1,4 @@
-"use client";
+
 import { Suspense, lazy } from "react";
 import Hero from "@/components/ui/sections/hero";
 import FloatingActions from "@/components/ui/floating-actions";
@@ -11,7 +11,7 @@ const WorkProcess = lazy(() => import("@/components/ui/sections/workProcess"));
 const Testimonials = lazy(
   () => import("@/components/ui/sections/testimonials")
 );
-const About = lazy(() => import("@/components/ui/sections/about"));
+const About = lazy(() => import("@/components/ui/sections/about.server"));
 const Footer = lazy(() => import("@/components/ui/sections/footer"));
 
 const ConsultingWebsite = () => {
@@ -69,7 +69,7 @@ const ConsultingWebsite = () => {
         </Suspense>
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
-          <About />
+          <About  />
         </Suspense>
 
         <Suspense fallback={<div className="py-8 bg-black/30" />}>
