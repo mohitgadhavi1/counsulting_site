@@ -21,3 +21,5 @@ export const scrollToSection = (sectionId: string): void => {
 export const handleScroll = (sectionId: string): void => {
   scrollToSection(sectionId);
 }
+
+

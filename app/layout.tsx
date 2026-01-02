@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ZidBit - Modern Web Development Services",
+    icons: {
+    icon: "/favicon.svg", 
+    shortcut: "/icon.png",
+    // apple: "/apple-touch-icon.png",
+  },
   description:
     "Building next-generation web applications with cutting-edge technologies. Expert web development services for startups and businesses.",
   keywords: ["web development", "React", "Next.js", "TypeScript", "consulting"],

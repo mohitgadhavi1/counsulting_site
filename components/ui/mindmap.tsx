@@ -1,16 +1,23 @@
-
-
-import { useState, useCallback, useEffect } from 'react';
-import { applyEdgeChanges, applyNodeChanges, ReactFlow, Background, NodeChange, EdgeChange } from "@xyflow/react";
+import { useState, useCallback } from "react";
+import {
+  applyEdgeChanges,
+  applyNodeChanges,
+  ReactFlow,
+  Background,
+  NodeChange,
+  EdgeChange,
+  Node,
+  Edge,
+} from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { useBreakpoint } from '@/app/hooks/useBreakpoint';
+import { useBreakpoint } from "@/app/hooks/useBreakpoint";
 
 // Color palette from your config
 const colors = {
-  background: '#F1EFEC',
-  foreground: '#222831',
-  card: '#a4be7b',
-  accent: '#5f8d4e',
+  background: "#F1EFEC",
+  foreground: "#222831",
+  card: "#a4be7b",
+  accent: "#5f8d4e",
 };
 
 // Using variations of your green palette
@@ -26,6 +33,12 @@ function connect(source: string, target: string, color: string) {
     target,
     type: "smoothstep",
     style: { stroke: color, strokeWidth: 2 },
+    animated: true,
+    pathOptions: {
+      style: {
+        strokeDasharray: "5, 5",
+      },
+    },
   };
 }
 
@@ -282,13 +295,13 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
       {
         id: "04-3",
         data: { label: "Go Live" },
-        position: { x: -100, y: 140 },
+        position: { x: -100, y: 160 },
         style: subStyle(color4),
       },
       {
         id: "04-4",
         data: { label: "Optimize Value" },
-        position: { x: -100, y: 180 },
+        position: { x: -100, y: 200 },
         style: subStyle(color4),
       },
       {
@@ -347,7 +360,7 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
     {
       id: "02-2",
       data: { label: "Chart Roadmap & Milestones" },
-      position: { x: 930, y: 370 },
+      position: { x: 930, y: 400 },
       style: subStyle(color2),
     },
     {
@@ -377,7 +390,7 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
     {
       id: "03-4",
       data: { label: "Handle Deviations" },
-      position: { x: -150, y: 430 },
+      position: { x: -150, y: 550 },
       style: subStyle(color3),
     },
     {
@@ -401,19 +414,19 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
     {
       id: "04-3",
       data: { label: "Go Live" },
-      position: { x: -150, y: 160 },
+      position: { x: -150, y: 180 },
       style: subStyle(color4),
     },
     {
       id: "04-4",
       data: { label: "Optimize Brand Value" },
-      position: { x: -150, y: 200 },
+      position: { x: -150, y: 220 },
       style: subStyle(color4),
     },
     {
       id: "04-5",
       data: { label: "Generate Leads" },
-      position: { x: -150, y: 240 },
+      position: { x: -150, y: 260 },
       style: subStyle(color4),
     },
   ];
@@ -441,29 +454,30 @@ const getEdges = () => [
 ];
 
 export default function WorkProcessMindMap() {
-       const {isMobile,isTablet}=  useBreakpoint()
-  
-  const [nodes, setNodes] = useState(getNodes(isMobile, isTablet));
-  const [edges, setEdges] = useState(getEdges());
+  const { isMobile, isTablet } = useBreakpoint();
 
+  const [nodes, setNodes] = useState<Node[]>(getNodes(isMobile, isTablet));
+  const [edges, setEdges] = useState<Edge[]>(getEdges());
 
   const onNodesChange = useCallback(
-    (changes: NodeChange<{ id: string; data: { label: string; }; position: { x: number; y: number; }; style: { background: string; color: string; borderRadius: number; padding: string; fontWeight: number; fontSize: number; }; } | { id: string; data: { label: string; }; position: { x: number; y: number; }; style: { background: string; color: string; border: string; borderRadius: number; padding: string; fontSize: number; }; }>[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [],
+    (changes: NodeChange[]) =>
+      setNodes((nds) => applyNodeChanges(changes, nds)),
+    []
   );
-  
+
   const onEdgesChange = useCallback(
-    (changes: EdgeChange<{ id: string; source: string; target: string; type: string; style: { stroke: string; strokeWidth: number; }; }>[]) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [],
+    (changes: EdgeChange[]) =>
+      setEdges((eds) => applyEdgeChanges(changes, eds)),
+    []
   );
 
   return (
-    <div 
+    <div
       className="w-full rounded-lg overflow-hidden shadow-lg border-2"
-      style={{ 
-        height: isMobile ? '1300px' : isTablet ? '500px' : '600px',
+      style={{
+        height: isMobile ? "1300px" : isTablet ? "500px" : "600px",
         borderColor: colors.card,
-        background: colors.background
+        background: colors.background,
       }}
     >
       <ReactFlow
@@ -472,9 +486,12 @@ export default function WorkProcessMindMap() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        minZoom={0.5}
+        minZoom={0.9}
+        
         maxZoom={1.5}
         attributionPosition="bottom-left"
+        panOnScroll={false}
+      
       >
         <Background color={colors.accent} gap={16} />
       </ReactFlow>

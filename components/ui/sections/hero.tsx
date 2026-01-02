@@ -8,6 +8,8 @@ import { AnimatePresence } from "motion/react";
 import FallingText from "@/components/3d/fallingText";
 import EnquiryForm from "@/components/ui/enquiry-form";
 import { handleScroll } from "@/lib/utils";
+import Lottie from "lottie-react";
+import saasAnimation from "@/public/saas_animation.json";
 
 function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +25,11 @@ function Hero() {
 
     // Lazy load background images after content is ready
     const bgImg = new Image();
-    bgImg.src = '/bg_counsulting.png';
+    bgImg.src = "/bg_counsulting.png";
     bgImg.onload = () => setBgLoaded(true);
 
     const heroImg = new Image();
-    heroImg.src = '/hero_image_2.png';
+    heroImg.src = "/hero_image_2.png";
     heroImg.onload = () => setHeroLoaded(true);
   }, []);
 
@@ -107,7 +109,7 @@ function Hero() {
 
   if (!isContentReady) {
     return (
-      <section className="min-h-screen flex flex-col w-full relative bg-gray-900">
+      <section className="min-h-screen flex flex-col w-full relative bg-primary-foreground">
         <div className="relative z-50 pt-8">
           <div className="flex justify-between items-center px-8">
             <div className="flex items-center space-x-2">
@@ -117,7 +119,7 @@ function Hero() {
             <Skeleton className="w-24 h-12 rounded-full" />
           </div>
         </div>
-        
+
         <div className="flex-1 flex items-center w-1/2 px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <Skeleton className="h-16 w-full max-w-2xl" />
@@ -137,34 +139,35 @@ function Hero() {
     <>
       <section
         id="home"
-        className="min-h-screen flex flex-col text-wrap w-full relative bg-gray-900"
+        className="min-h-screen flex flex-col text-wrap w-full relative bg-primary-foreground"
       >
-        {/* Background Image with Lazy Loading */}
+        {/* Background Image with Lazy Loading - Desktop Only */}
         <div
-          className={`absolute inset-0 z-5 transition-opacity duration-700 ${
-            bgLoaded ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 z-5 transition-opacity duration-700 block ${
+            bgLoaded ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            backgroundImage: bgLoaded ? "url('/bg_counsulting.png')" : 'none',
+            backgroundImage: bgLoaded ? "url('/bg_counsulting.png')" : "none",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />
 
-        {/* Second Hero Background Image with Lazy Loading */}
+        {/* Second Hero Background Image with Lazy Loading - Desktop Only */}
         <div
-          className={`absolute inset-0 z-5 transition-opacity duration-700 ${
-            heroLoaded ? 'opacity-70' : 'opacity-0'
+          className={`absolute inset-0 z-5 transition-opacity duration-700 block ${
+            heroLoaded ? "opacity-70" : "opacity-0"
           }`}
           style={{
-            backgroundImage: heroLoaded ? "url('/hero_image_2.png')" : 'none',
+            backgroundImage:  "url('/hero_image_2.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />
 
+   
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-10"></div>
 
@@ -176,9 +179,30 @@ function Hero() {
               <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
                 <Code className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-white drop-shadow-lg">
-                ZidBit
-              </span>
+              <motion.span
+  className="text-3xl font-bold text-primary drop-shadow-xl inline-block"
+  initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+animate={{
+  opacity: 1,
+  y: 0,
+  filter: "blur(0px)",
+  textShadow: [
+    "0 0 0px rgba(0,0,0,0)",
+    "0 0 18px rgba(99,102,241,0.35)",
+    "0 0 0px rgba(0,0,0,0)",
+  ],
+}}
+transition={{
+  duration: 0.8,
+  ease: "easeOut",
+}}
+  whileHover={{
+    scale: 1.05,
+    textShadow: "0px 6px 20px rgba(0,0,0,0.25)",
+  }}
+>
+  ZidBit
+</motion.span>
             </div>
 
             {/* Menu Button */}
@@ -206,7 +230,13 @@ function Hero() {
             aria-hidden
           >
             <defs>
-              <filter id="blur-hero" x="-20%" y="-20%" width="140%" height="140%">
+              <filter
+                id="blur-hero"
+                x="-20%"
+                y="-20%"
+                width="140%"
+                height="140%"
+              >
                 <feGaussianBlur stdDeviation="60" />
               </filter>
             </defs>
@@ -219,8 +249,8 @@ function Hero() {
         </div>
 
         {/* Hero Content */}
-        <div className="flex-1 flex items-center w-1/2 relative z-20 px-4 sm:px-6 lg:px-8 text-left">
-          <div>
+        <div className=" flex md:flex-row flex-col  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
+          <div className="flex-1 mt-10  flex flex-col justify-center  items-center md:w-1/2 relative  text-center ">
             {/* Animated falling h1 element */}
             <FallingText
               text="From idea to production-ready web apps"
@@ -249,9 +279,9 @@ function Hero() {
               >
                 Contact Us <ArrowRight className="ml-2" />
               </Button>
-              <EnquiryForm 
-                isOpen={isEnquiryFormOpen} 
-                onClose={() => setIsEnquiryFormOpen(false)} 
+              <EnquiryForm
+                isOpen={isEnquiryFormOpen}
+                onClose={() => setIsEnquiryFormOpen(false)}
               />
               <Button
                 onClick={() => handleScroll("services")}
@@ -261,6 +291,9 @@ function Hero() {
                 Our Services
               </Button>
             </motion.div>
+          </div>
+          <div className="hidden md:block md:w-1/2 h-full opacity-50">
+            <Lottie animationData={saasAnimation} loop autoplay />
           </div>
         </div>
 
