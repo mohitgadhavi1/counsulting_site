@@ -9,10 +9,10 @@ export interface SEOConfig {
         title?: string
         description?: string
         image?: string
-        type?: string
+        type?: 'website' | 'article' | 'book' | 'profile'
     }
     twitter?: {
-        card?: string
+        card?: 'summary' | 'summary_large_image' | 'app' | 'player'
         title?: string
         description?: string
         image?: string
@@ -39,20 +39,24 @@ export const defaultSEO: SEOConfig = {
 
 export function generateMetadata(config: Partial<SEOConfig> = {}): Metadata {
     const seo = { ...defaultSEO, ...config }
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zidbit.com'
 
     return {
+        metadataBase: new URL(baseUrl),
         title: seo.title,
         description: seo.description,
         keywords: seo.keywords?.join(', '),
-        canonical: seo.canonical,
+        alternates: {
+            canonical: seo.canonical,
+        },
         openGraph: {
             title: seo.openGraph?.title || seo.title,
             description: seo.openGraph?.description || seo.description,
-            type: seo.openGraph?.type as any,
+            type: seo.openGraph?.type || 'website',
             images: seo.openGraph?.image ? [seo.openGraph.image] : undefined,
         },
         twitter: {
-            card: seo.twitter?.card as any,
+            card: (seo.twitter?.card as 'summary' | 'summary_large_image' | 'app' | 'player') || 'summary_large_image',
             title: seo.twitter?.title || seo.title,
             description: seo.twitter?.description || seo.description,
             images: seo.twitter?.image ? [seo.twitter.image] : undefined,
