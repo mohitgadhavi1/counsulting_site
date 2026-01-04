@@ -33,14 +33,22 @@ function Hero() {
     heroImg.onload = () => setHeroLoaded(true);
   }, []);
 
-  const menuItems = ["Why Us", "Projects", "Expertise", "Join Us", "Contact"];
+  const menuItems = [
+    "Why Us",
+    "Projects",
+    "Features",
+    "Expertise",
+    "Join Us",
+    "Contact",
+  ];
 
   const menuAnchors: Record<string, string> = {
-    "Why Us": "about",
-    Projects: "projects",
-    Expertise: "services",
+    "Why Us": "#about",
+    Projects: "#projects",
+    Expertise: "#services",
+    Features: "features",
     "Join Us": "contact",
-    Contact: "contact",
+    Contact: "#contact",
   };
 
   const socialLinks = [
@@ -160,62 +168,15 @@ function Hero() {
             heroLoaded ? "opacity-70" : "opacity-0"
           }`}
           style={{
-            backgroundImage:  "url('/hero_image_2.png')",
+            backgroundImage: "url('/hero_image_2.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
         />
 
-   
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] z-10"></div>
-
-        {/* Header Elements */}
-        <div className="relative z-50 pt-8">
-          <div className="flex justify-between items-center px-8">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
-              </div>
-              <motion.span
-  className="text-3xl font-bold text-primary drop-shadow-xl inline-block"
-  initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-animate={{
-  opacity: 1,
-  y: 0,
-  filter: "blur(0px)",
-  textShadow: [
-    "0 0 0px rgba(0,0,0,0)",
-    "0 0 18px rgba(99,102,241,0.35)",
-    "0 0 0px rgba(0,0,0,0)",
-  ],
-}}
-transition={{
-  duration: 0.8,
-  ease: "easeOut",
-}}
-  whileHover={{
-    scale: 1.05,
-    textShadow: "0px 6px 20px rgba(0,0,0,0.25)",
-  }}
->
-  ZidBit
-</motion.span>
-            </div>
-
-            {/* Menu Button */}
-            <motion.button
-              onClick={() => setIsOpen(true)}
-              className="cursor-pointer bg-primary hover:bg-white/30 backdrop-blur-sm text-white font-medium px-6 py-3 rounded-full shadow-lg transition-colors border border-white/30"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              MENU
-            </motion.button>
-          </div>
-        </div>
 
         {/* Bottom Gradient Blur */}
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-background via-background/90 to-transparent pointer-events-none z-10"></div>
@@ -249,13 +210,13 @@ transition={{
         </div>
 
         {/* Hero Content */}
-        <div className=" flex md:flex-row flex-col  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
+        <div className=" flex top-16 md:flex-row flex-col  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
           <div className="flex-1 mt-10  flex flex-col justify-center  items-center md:w-1/2 relative  text-center ">
             {/* Animated falling h1 element */}
             <FallingText
-              text="From idea to production-ready web apps"
+              text="From idea to production-ready web applications"
               as="h1"
-              className="text-6xl font-bold text-secondary drop-shadow-2xl text-wrap backdrop-blur-4xl"
+              className="text-5xl  md:text-6xl font-bold text-secondary drop-shadow-2xl text-wrap backdrop-blur-4xl"
             />
 
             <motion.p
@@ -355,7 +316,7 @@ transition={{
                         </button>
                       ) : (
                         <a
-                          href={`#${
+                          href={`${
                             menuAnchors[item] ??
                             item.toLowerCase().replace(/\s+/g, "-")
                           }`}

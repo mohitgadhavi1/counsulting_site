@@ -12,7 +12,14 @@ export default function Header() {
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
 
-  const menuItems = ["Why Us", "Projects", "Expertise", "Join Us", "Contact"];
+  const menuItems = [
+    "Why Us",
+    "Projects",
+    "Expertise",
+    "Features",
+    "Join Us",
+    "Contact",
+  ];
 
   // Map menu labels to section IDs (anchors)
   const menuAnchors: Record<string, string> = {
@@ -88,22 +95,51 @@ export default function Header() {
   };
 
   return (
-    <div className="min-h-22">
-      <div className="fixed top-8 left-8 flex items-center space-x-2 z-50">
-        <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-          <Code className="w-6 h-6" />
-        </div>
-        <span className="text-xl font-bold text-foreground/80">ZidBit</span>
-      </div>
+    <div>
+      <div className="fixed z-50 pt-8  w-full">
+        <div className="flex justify-between items-center px-8">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+              <Code className="w-6 h-6 text-white" />
+            </div>
+            <motion.span
+              className="text-3xl font-bold text-primary drop-shadow-xl inline-block"
+              initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                textShadow: [
+                  "0 0 0px rgba(0,0,0,0)",
+                  "0 0 18px rgba(99,102,241,0.35)",
+                  "0 0 0px rgba(0,0,0,0)",
+                ],
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              whileHover={{
+                scale: 1.05,
+                textShadow: "0px 6px 20px rgba(0,0,0,0.25)",
+              }}
+            >
+              ZidBit
+            </motion.span>
+          </div>
 
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className="fixed top-8 right-8 cursor-pointer bg-menu hover:bg-menu-hover text-menu-button-foreground font-medium px-6 py-3 rounded-full shadow-lg transition-colors z-9998"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        MENU
-      </motion.button>
+          {/* Menu Button */}
+          <motion.button
+            onClick={() => setIsOpen(true)}
+            className="cursor-pointer  bg-primary hover:bg-white/30 backdrop-blur-sm text-white font-medium px-6 py-3 rounded-full shadow-lg transition-colors border border-white/30"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            MENU
+          </motion.button>
+        </div>
+      </div>
 
       {/* Backdrop */}
       <AnimatePresence>
@@ -143,54 +179,64 @@ export default function Header() {
             {/* Menu Items */}
             <nav className="flex-1 px-12 py-8">
               <ul className="space-y-6">
-                {menuItems.map((item, i) => 
-                  
-                {  
-                  console.log(item)
-                    
-                 return (<motion.li
-                    key={item}
-                    custom={i}
-                    variants={itemVariants}
-                    initial="closed"
-                    animate="open"
-                  >
-                    {item === "Contact" ? (
-                      <button
-                        className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
-                        onClick={() => {
-                          setIsOpen(false);
-                          setIsEnquiryFormOpen(true);
-                        }}
-                      >
-                        {item}
-                      </button>
-                    ) : (item === "Join Us" || item ===  "join-us") ? (
-                      <button
-                        className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
-                        onClick={() => {
-                          console.log(item)
-                          setIsOpen(false);
-                          setIsJoinFormOpen(true);
-                        }}
-                      >
-                        {item}
-                      </button>
-                    ) : (
-                      <a
-                     
-                        // href={`#${
-                        //   menuAnchors[item] ??
-                        //   item.toLowerCase().replace(/\s+/g, "-")
-                        // }`}
-                        className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
-                        onClick={() => { setIsOpen(false); handleScroll(menuAnchors[item] ); }}
-                      >
-                        {item}
-                      </a>
-                    )}
-                  </motion.li>)}
-                )}
+                {menuItems.map((item, i) => {
+                  console.log(item);
+
+                  return (
+                    <motion.li
+                      key={item}
+                      custom={i}
+                      variants={itemVariants}
+                      initial="closed"
+                      animate="open"
+                    >
+                      {item === "Contact" ? (
+                        <button
+                          className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
+                          onClick={() => {
+                            setIsOpen(false);
+                            setIsEnquiryFormOpen(true);
+                          }}
+                        >
+                          {item}
+                        </button>
+                      ) : item === "Join Us" || item === "join-us" ? (
+                        <button
+                          className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
+                          onClick={() => {
+                            console.log(item);
+                            setIsOpen(false);
+                            setIsJoinFormOpen(true);
+                          }}
+                        >
+                          {item}
+                        </button>
+                      ) : item === "Features" ? (
+                        <a
+                          href="/features"
+                          className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item}
+                        </a>
+                      ) : (
+                        <a
+                          // href={`#${
+                          //   menuAnchors[item] ??
+                          //   item.toLowerCase().replace(/\s+/g, "-")
+                          // }`}
+                          className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
+                          onClick={() => {
+                            setIsOpen(false);
+                            handleScroll(menuAnchors[item]);
+                          }}
+                        >
+                          {item}
+                        </a>
+                      )}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
 
