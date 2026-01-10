@@ -118,16 +118,6 @@ function Hero() {
   if (!isContentReady) {
     return (
       <section className="min-h-screen flex flex-col w-full relative bg-primary-foreground">
-        <div className="relative z-50 pt-8">
-          <div className="flex justify-between items-center px-8">
-            <div className="flex items-center space-x-2">
-              <Skeleton className="w-10 h-10 rounded-lg" />
-              <Skeleton className="w-20 h-6" />
-            </div>
-            <Skeleton className="w-24 h-12 rounded-full" />
-          </div>
-        </div>
-
         <div className="flex-1 flex items-center w-1/2 px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             <Skeleton className="h-16 w-full max-w-2xl" />
@@ -147,7 +137,7 @@ function Hero() {
     <>
       <section
         id="home"
-        className="min-h-screen flex flex-col text-wrap w-full relative bg-primary-foreground"
+        className="h-screen flex flex-col text-wrap w-full relative bg-primary-foreground"
       >
         {/* Background Image with Lazy Loading - Desktop Only */}
         <div
@@ -210,22 +200,23 @@ function Hero() {
         </div>
 
         {/* Hero Content */}
-        <div className=" flex top-16 md:flex-row flex-col  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
-          <div className="flex-1 mt-10  flex flex-col justify-center  items-center md:w-1/2 relative  text-center ">
+        <div className=" flex  md:flex-row flex-col h-full  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
+          <div className="flex-1   h-full  flex flex-col justify-center  items-center md:w-1/2 relative  text-center ">
             {/* Animated falling h1 element */}
             <FallingText
               text="From idea to production-ready web applications"
               as="h1"
-              className="text-5xl  md:text-6xl font-bold text-secondary drop-shadow-2xl text-wrap backdrop-blur-4xl"
+              className="text-6xl  font-bold text-secondary drop-shadow-2xl text-wrap backdrop-blur-4xl"
             />
 
             <motion.p
-              className="text-xl md:text-2xl my-8 text-secondary/90 max-w-3xl mx-auto drop-shadow-lg"
+              className="text-2xl my-8 text-secondary/90 max-w-3xl mx-auto drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             >
-              We design and develop fast, secure, and maintainable web software
+              We design and develop fast, secure, and maintainable web
+              Applications
             </motion.p>
 
             <motion.div
@@ -253,7 +244,7 @@ function Hero() {
               </Button>
             </motion.div>
           </div>
-          <div className="hidden md:block md:w-1/2 h-full opacity-50">
+          <div className="hidden  md:w-1/2 h-full opacity-50  justify-center items-center  md:flex ">
             <Lottie animationData={saasAnimation} loop autoplay />
           </div>
         </div>

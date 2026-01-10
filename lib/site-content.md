@@ -17,10 +17,10 @@ sidebar:
 
 # ZidBit Consulting — From Idea to Production-Ready Web Apps
 
-**We design and develop fast, secure, and maintainable web software.**
+**We design and develop fast, secure, and maintainable web Applications.**
 
 Contact Us · Our Services  
-© 2025 ZidBit Technologies. All rights reserved.  
+© 2025 ZidBit Web Technologies. All rights reserved.  
 support@zidbit.com
 
 ## Overview {#overview}

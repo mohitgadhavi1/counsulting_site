@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Code, Github, Linkedin, Instagram } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
@@ -11,6 +11,18 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuItems = [
     "Why Us",
@@ -96,15 +108,27 @@ export default function Header() {
 
   return (
     <div>
-      <div className="fixed z-50 pt-8  w-full">
+      <div className="fixed z-50 py-2  w-full transition-all duration-100">
         <div className="flex justify-between items-center px-8">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <motion.div
+            className="flex items-center space-x-2 p-2 rounded-lg "
+            animate={{
+              backgroundColor: isScrolled
+                ? "rgba(255, 255, 255, 0.1)"
+                : "rgba(255, 255, 255, 0)",
+              backdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
+              borderBottom: isScrolled
+                ? "1px solid rgba(255, 255, 255, 0.1)"
+                : "1px solid rgba(255, 255, 255, 0)",
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
             <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
               <Code className="w-6 h-6 text-white" />
             </div>
             <motion.span
-              className="text-3xl font-bold text-primary drop-shadow-xl inline-block"
+              className="text-3xl font-bold text-secondary drop-shadow-xl inline-block"
               initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
               animate={{
                 opacity: 1,
@@ -127,12 +151,12 @@ export default function Header() {
             >
               ZidBit
             </motion.span>
-          </div>
+          </motion.div>
 
           {/* Menu Button */}
           <motion.button
             onClick={() => setIsOpen(true)}
-            className="cursor-pointer  bg-primary hover:bg-white/30 backdrop-blur-sm text-white font-medium px-6 py-3 rounded-full shadow-lg transition-colors border border-white/30"
+            className={`cursor-pointer font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 border ${"bg-primary hover:bg-white/30 backdrop-blur-sm text-white border-white/30"}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

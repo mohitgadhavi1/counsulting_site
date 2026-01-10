@@ -13,6 +13,7 @@ export default function NewYearBanner() {
 
   return (
     <div className="relative w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white overflow-hidden">
+      
       <style>{`
         @keyframes banner-marquee {
           0% { transform: translateX(100%); }
