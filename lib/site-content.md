@@ -117,7 +117,7 @@ Real-time crypto portfolio tracker with alerts and market analysis.
 
 ZidBit is an agile team of developers based in Navi Mumbai, focused on building modern, scalable web solutions. The remote and flexible workflow enables fast progress without compromising professionalism.
 
-- 📍 Based in Navi Mumbai, India  
+- 📍 Based in Surendranagar, India  
 - 50+ Projects Delivered  
 - 100% Client Satisfaction  
 - 24/7 Priority Support  

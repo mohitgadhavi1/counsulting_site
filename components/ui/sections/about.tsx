@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import * as motion from "motion/react-client";
 import { colorClasses } from "@/lib/colors";
+import Map from "@/components/ui/map";
 
 interface AboutClientProps {
   title: string;
@@ -50,19 +51,20 @@ const statColors = [
 export default function AboutClient({ title, content }: AboutClientProps) {
   const description = content?.paragraphs.join(" ") ?? "";
 
-  console.log(content,title)
+  console.log(content, title);
 
-  const stats =
-    content?.lists?.[0] ?? null
+  const stats = content?.lists?.[0] ?? null;
 
-  const statsData = stats && stats
-    .map(stat => {
-      const match = stat.match(/^(.+?)\s+(.+)$/);
-      if (!match) return null;
-      const [, value, label] = match;
-      return { value: value.replace(/[📍\s]/g, ""), label };
-    })
-    .filter(Boolean);
+  const statsData =
+    stats &&
+    stats
+      .map((stat) => {
+        const match = stat.match(/^(.+?)\s+(.+)$/);
+        if (!match) return null;
+        const [, value, label] = match;
+        return { value: value.replace(/[📍\s]/g, ""), label };
+      })
+      .filter(Boolean);
 
   return (
     <section
@@ -100,16 +102,17 @@ export default function AboutClient({ title, content }: AboutClientProps) {
               {title}
             </motion.h2>
 
-            <motion.p
-              className={`text-lg ${colorClasses.text.primary} mb-6`}
-            >
+            <motion.p className={`text-lg ${colorClasses.text.primary} mb-6`}>
               {description}
             </motion.p>
 
-            <div className={`flex items-center space-x-2 ${colorClasses.indigo.dark}`}>
+            <div
+              className={`flex items-center space-x-2 ${colorClasses.indigo.dark}`}
+            >
               <MapPin className="w-5 h-5" />
               <span className="text-lg">
-                {stats && stats.find(s => s.includes("📍"))?.replace("📍 ", "")}
+                {stats &&
+                  stats.find((s) => s.includes("📍"))?.replace("📍 ", "")}
               </span>
             </div>
           </motion.div>
@@ -121,22 +124,26 @@ export default function AboutClient({ title, content }: AboutClientProps) {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {statsData &&  statsData.slice(1, 5).map((stat, index) => (
-              <motion.div key={index} variants={statCardVariants}>
-                <Card className={`${statColors[index].card}`}>
-                  <CardHeader>
-                    <CardTitle className={`text-4xl ${statColors[index].text}`}>
-                      {stat!.value}
-                    </CardTitle>
-                    <CardDescription>
-                      {stat!.label}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-            ))}
+            {statsData &&
+              statsData.slice(1, 5).map((stat, index) => (
+                <motion.div key={index} variants={statCardVariants}>
+                  <Card className={`${statColors[index].card}`}>
+                    <CardHeader>
+                      <CardTitle
+                        className={`text-4xl ${statColors[index].text}`}
+                      >
+                        {stat!.value}
+                      </CardTitle>
+                      <CardDescription>{stat!.label}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              ))}
           </motion.div>
         </div>
+
+        {/* Map Section */}
+        <Map />
       </motion.div>
     </section>
   );

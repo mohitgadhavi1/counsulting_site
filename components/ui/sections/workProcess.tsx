@@ -123,7 +123,7 @@ function StepCard({
 
 function WorkProcess() {
   const { isMobile } = useBreakpoint();
-  const [activeTab, setActiveTab] = useState<"mindmap" | "steps">("mindmap");
+  const [activeTab, setActiveTab] = useState<"mindmap" | "steps">("steps");
 
   return (
     <section
