@@ -112,7 +112,7 @@ function Services() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Our Services
+          What We Deliver
         </motion.h2>
 
         <motion.div

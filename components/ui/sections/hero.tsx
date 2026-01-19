@@ -10,8 +10,10 @@ import EnquiryForm from "@/components/ui/enquiry-form";
 import { handleScroll } from "@/lib/utils";
 import Lottie from "lottie-react";
 import saasAnimation from "@/public/saas_animation.json";
+import { getCalApi } from "@calcom/embed-react";
 
 function Hero() {
+  
   const [isOpen, setIsOpen] = useState(false);
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
   const [isContentReady, setIsContentReady] = useState(false);
@@ -31,6 +33,10 @@ function Hero() {
     const heroImg = new Image();
     heroImg.src = "/hero_image_2.png";
     heroImg.onload = () => setHeroLoaded(true);
+        (async function () {
+      const cal = await getCalApi({"namespace":"15min"});
+      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    })();
   }, []);
 
   const menuItems = [
@@ -226,10 +232,13 @@ function Hero() {
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             >
               <Button
-                onClick={() => setIsEnquiryFormOpen(true)}
+              data-cal-namespace="15min"
+    data-cal-link="mohitgadhavi1/15min"
+    
+    data-cal-config='{"layout":"month_view"}'
                 className="bg-primary snap-start hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer shadow-xl backdrop-blur-sm"
               >
-                Contact Us <ArrowRight className="ml-2" />
+                Schedule Meeting <ArrowRight className="ml-2" />
               </Button>
               <EnquiryForm
                 isOpen={isEnquiryFormOpen}
@@ -238,7 +247,7 @@ function Hero() {
               <Button
                 onClick={() => handleScroll("services")}
                 variant="outline"
-                className="border border-secondary/50 bg-primary/5 text-white hover:bg-white/20 hover:text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-xl"
+                className=" bg-primary/5 text-secondary hover:bg-primary hover:text-secondary-foreground px-8 py-6 text-lg rounded-lg transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-xl"
               >
                 Our Services
               </Button>

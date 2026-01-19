@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Phone, X, Mail } from "lucide-react";
+import { Phone, X, Mail,  } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import * as motion from "motion/react-client";
 import {
   Tooltip,
@@ -52,7 +53,7 @@ const FloatingActions = () => {
                 className="cursor-pointer w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg border-0 p-0 flex items-center justify-center"
                 title="Chat on WhatsApp"
               >
-                <MessageCircle className="w-6 h-6" />
+                <FaWhatsapp className="w-6 h-6" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
