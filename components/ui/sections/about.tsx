@@ -1,15 +1,17 @@
 "use client";
 
-import { MapPin } from "lucide-react";
+import { MapPin, Phone, Mail, MessageSquare } from "lucide-react";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
+  CardContent,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import * as motion from "motion/react-client";
-import { colorClasses } from "@/lib/colors";
-import Map from "@/components/ui/map";
 
 interface AboutClientProps {
   title: string;
@@ -41,12 +43,10 @@ const statCardVariants = {
   },
 };
 
-const statColors = [
-  { card: colorClasses.gradients.cardIndigo, text: colorClasses.indigo.dark },
-  { card: colorClasses.gradients.cardPurple, text: colorClasses.purple.dark },
-  { card: colorClasses.gradients.cardPink, text: colorClasses.pink.dark },
-  { card: colorClasses.gradients.cardIndigo, text: colorClasses.indigo.dark },
-];
+const statColors = {
+  text: "text-blue-600",
+  label: "text-slate-500",
+};
 
 export default function AboutClient({ title, content }: AboutClientProps) {
   const description = content?.paragraphs.join(" ") ?? "";
@@ -97,17 +97,17 @@ export default function AboutClient({ title, content }: AboutClientProps) {
             transition={{ duration: 0.6 }}
           >
             <motion.h2
-              className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colorClasses.gradients.about}`}
+              className="text-4xl md:text-5xl font-extrabold mb-6 text-slate-900"
             >
               {title}
             </motion.h2>
 
-            <motion.p className={`text-lg ${colorClasses.text.primary} mb-6`}>
+            <motion.p className="text-lg text-slate-600 mb-6 font-medium">
               {description}
             </motion.p>
 
             <div
-              className={`flex items-center space-x-2 ${colorClasses.indigo.dark}`}
+              className="flex items-center space-x-2 text-blue-600 font-semibold"
             >
               <MapPin className="w-5 h-5" />
               <span className="text-lg">
@@ -127,14 +127,14 @@ export default function AboutClient({ title, content }: AboutClientProps) {
             {statsData &&
               statsData.slice(1, 5).map((stat, index) => (
                 <motion.div key={index} variants={statCardVariants}>
-                  <Card className={`${statColors[index].card}`}>
-                    <CardHeader>
+                  <Card className="bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow p-2">
+                    <CardHeader className="p-4">
                       <CardTitle
-                        className={`text-4xl ${statColors[index].text}`}
+                        className={`text-4xl font-extrabold ${statColors.text}`}
                       >
                         {stat!.value}
                       </CardTitle>
-                      <CardDescription>{stat!.label}</CardDescription>
+                      <CardDescription className={`${statColors.label} font-medium`}>{stat!.label}</CardDescription>
                     </CardHeader>
                   </Card>
                 </motion.div>
@@ -142,8 +142,101 @@ export default function AboutClient({ title, content }: AboutClientProps) {
           </motion.div>
         </div>
 
-        {/* Map Section */}
-        <Map />
+        {/* Get in Touch Section */}
+        <div className="mt-32 pt-16 border-t border-slate-100">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Left: Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-4xl font-extrabold text-slate-900 mb-4">Get in Touch</h3>
+              <p className="text-lg text-slate-500 mb-12">
+                Visit us for a consultation or book an appointment online.
+              </p>
+
+              <div className="space-y-10">
+                {/* Location */}
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">Location</h4>
+                    <p className="text-slate-500 leading-relaxed max-w-sm">
+                      403, Shaleen Plaza, Zidbit Web Technologies, Near NTM, Dalmil Road, Surendranagar, 363001
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">Phone Number</h4>
+                    <p className="text-slate-500">9137180056</p>
+                    <p className="text-slate-400 text-sm mt-1">Mon-Sat: 9AM-1PM, 4PM-8PM</p>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">Email Address</h4>
+                    <p className="text-slate-500">support.zidbit.com</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: Appointment Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Card className="rounded-3xl border-none shadow-2xl bg-white p-4 md:p-8">
+                <CardHeader className="px-0 pt-0 pb-8">
+                  <CardTitle className="text-2xl font-bold text-slate-900">Book Appointment</CardTitle>
+                </CardHeader>
+                <CardContent className="px-0 space-y-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-700">Name</label>
+                    <Input 
+                      placeholder="Enter name" 
+                      className="bg-slate-50 border-none h-14 rounded-xl px-6 focus-visible:ring-blue-600"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-700">Phone Number</label>
+                    <Input 
+                      placeholder="Enter phone number" 
+                      className="bg-slate-50 border-none h-14 rounded-xl px-6 focus-visible:ring-blue-600"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-700">Message</label>
+                    <Textarea 
+                      placeholder="Briefly describe your project..." 
+                      className="bg-slate-50 border-none rounded-xl p-6 min-h-[120px] focus-visible:ring-blue-600 resize-none"
+                    />
+                  </div>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 rounded-xl text-lg font-bold shadow-lg transition-all duration-300">
+                    Confirm Appointment via WhatsApp
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
     </section>
   );

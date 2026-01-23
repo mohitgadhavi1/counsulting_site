@@ -54,35 +54,38 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 1rem; /* More rounded for Dr. Gastro look */
 
-  /* 4 Core Colors */
-  --background: #F1EFEC;
-  /* Light warm background */
-  --foreground: #222831;
-  /* Dark text */
-  --card: #a4be7b;
-  /* Sage green for cards/sidebar */
-  --accent: #5f8d4e;
-  /* Darker forest green for hover/emphasis */
+  /* Dr. Gastro Color Palette */
+  --background: #ffffff;
+  --foreground: #0f172a; /* Slate 900 */
+  
+  --primary: #2563eb; /* Blue 600 */
+  --primary-foreground: #ffffff;
+  
+  --secondary: #eff6ff; /* Blue 50 */
+  --secondary-foreground: #2563eb;
+  
+  --muted: #f8fafc; /* Slate 50 */
+  --muted-foreground: #475569; /* Slate 600 */
+  
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  
+  --border: #e2e8f0; /* Slate 200 */
+  --input: #e2e8f0;
+  --ring: #2563eb;
 
-  /* Applied to theme variables */
-  --card-foreground: #222831;
-  --popover: #F1EFEC;
-  --popover-foreground: #222831;
-  --primary: #a4be7b;
-  --primary-foreground: #F1EFEC;
-  --secondary: #5f8d4e;
-  --secondary-foreground: #F1EFEC;
-  --muted: #a4be7b;
-  --muted-foreground: #222831;
-  --accent-foreground: #F1EFEC;
-  --destructive: #5f8d4e;
-  --destructive-foreground: #F1EFEC;
-  --border: rgba(34, 40, 49, 0.1);
-  --input: rgba(34, 40, 49, 0.05);
-  --ring: rgba(164, 190, 123, 0.3);
-
+  /* Keep Sidebar/Menu variables unchanged as requested */
   --sidebar: #a4be7b;
   --sidebar-foreground: #F1EFEC;
   --sidebar-primary: #5f8d4e;
@@ -101,11 +104,11 @@
   --menu-close-button-hover: #5f8d4e;
   --menu-close-button-foreground: #F1EFEC;
 
-  --chart-1: #a4be7b;
-  --chart-2: #5f8d4e;
-  --chart-3: #222831;
-  --chart-4: #F1EFEC;
-  --chart-5: #8ba86d;
+  --chart-1: #2563eb;
+  --chart-2: #3b82f6;
+  --chart-3: #0f172a;
+  --chart-4: #475569;
+  --chart-5: #94a3b8;
 }
 
 @layer base {

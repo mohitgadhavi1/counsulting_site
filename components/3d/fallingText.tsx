@@ -27,22 +27,39 @@ const FallingText: React.FC<FallingTextProps> = ({
   // Render the chosen wrapper tag and keep per-letter animations
   return React.createElement(
     as,
-    { className,  },
+    { className },
     letters.map((letter: string, index: number) => (
       <motion.span
         key={index}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 0.8,
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-          delay: index * 0.05,
+        initial={{ y: -100, opacity: 0, color: "#0f172a" }}
+        animate={{ 
+          y: 0, 
+          opacity: 1,
+          color: ["#0f172a", "#2563eb", "#0f172a"] 
         }}
-     className={className}
+        transition={{
+          y: {
+            duration: 0.8,
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            delay: index * 0.05,
+          },
+          opacity: {
+            duration: 0.8,
+            delay: index * 0.05,
+          },
+          color: {
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 3,
+            delay: 1.5 + (index * 0.08),
+            ease: "easeInOut",
+          }
+        }}
+        className="inline-block"
       >
-        {letter}
+        {letter === " " ? "\u00A0" : letter}
       </motion.span>
     ))
   );

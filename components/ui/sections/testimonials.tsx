@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import * as motion from "motion/react-client";
-import { Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -14,52 +14,38 @@ import Autoplay from "embla-carousel-autoplay";
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc",
-    company: "TechStart Inc",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-    content:
-      "Working with ZidBit was an absolute game-changer for our business. They delivered a stunning website that exceeded our expectations and helped us increase conversions by 150%.",
+    name: "Ayush Patel",
+    content: "Dr Hamikchandra Patel was not only skilled but also approachable. Highly recommend for Hernia surgery.",
     rating: 5,
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Founder, Digital Solutions",
-    company: "Digital Solutions",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-    content:
-      "The team's expertise in modern web technologies is unmatched. They transformed our outdated platform into a sleek, high-performance application that our users love.",
+    name: "Rajendra Khoala",
+    content: "Wonderful surgeon with smooth prep, surgery and follow up. Best hernia surgeon in Ahmedabad.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Marketing Director, GrowthCo",
-    company: "GrowthCo",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
-    content:
-      "From strategy to execution, ZidBit handled everything professionally. Their attention to detail and commitment to our success made all the difference.",
+    name: "Piyush Kumar Patel",
+    content: "The best Gastro surgeon in Ahmedabad. Exceptional pre and post surgery care. Highly appreciated!",
     rating: 5,
   },
   {
     id: 4,
-    name: "David Thompson",
-    role: "CTO, InnovateLabs",
-    company: "InnovateLabs",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
-    content:
-      "Exceptional work! They built our e-commerce platform from scratch and it's been running flawlessly. The scalability and performance are exactly what we needed.",
+    name: "Suresh Mehra",
+    content: "Very satisfied with the treatment. The staff was professional and the doctor explained everything clearly.",
     rating: 5,
   },
   {
     id: 5,
-    name: "Lisa Anderson",
-    role: "Product Manager, CloudTech",
-    company: "CloudTech",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa",
-    content:
-      "Their agile approach and transparent communication made the entire development process smooth. We launched ahead of schedule and under budget!",
+    name: "Anita Shah",
+    content: "Recovered quickly after my surgery thanks to Dr. Patel's expertise. The follow-up care was excellent.",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Vikram Rathore",
+    content: "Highly professional approach. The clinic environment is very comforting and the results are amazing.",
     rating: 5,
   },
 ];
@@ -86,138 +72,84 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20  px-4 sm:px-6 lg:px-8 w-full  relative overflow-hidden z-10"
+      className="py-24 px-4 sm:px-6 lg:px-8 w-full relative overflow-hidden z-10"
     >
-      {/* Section Background with 50% Opacity */}
-      <div
-        className="absolute inset-0 -z-10"
+      {/* Intense Blue Background */}
+      <div className="absolute inset-0 bg-[#1e40af] -z-20" />
+      
+      {/* Subtle Pattern Overlay */}
+      <div 
+        className="absolute inset-0 opacity-10 -z-10"
         style={{
-          backgroundImage: "url('/section_bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.5,
+          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+          backgroundSize: "40px 40px"
         }}
       />
-      <div className="absolute inset-0 pointer-events-none ">
-        <div className="absolute inset-0 md:inset-6 md:rounded-3xl bg-card/30" />
-       
-      </div>
 
-      <div className="relative   z-10">
+      <div className="relative z-10">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-16 text-white"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            What Our Clients Say
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+            Client Stories
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Don&apos;t just take our word for it
-          </p>
+          <div className="flex items-center justify-center gap-3">
+            <span className="text-2xl font-bold">5.0</span>
+            <div className="flex gap-1">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="w-6 h-6 fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         <Carousel
           setApi={setApi}
-          className="w-full max-w-5xl mx-auto"
+          className="w-full max-w-7xl mx-auto"
           opts={{
             align: "start",
             loop: true,
           }}
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 3000,
             }),
           ]}
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-6">
             {testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id}>
+              <CarouselItem key={testimonial.id} className="md:basis-1/3 pl-6">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="p-1"
+                  className="h-full"
                 >
-                  <Card className="p-8 md:p-12">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.6,
-                        type: "spring",
-                      }}
-                    >
-                      <Quote className="w-12 h-12 text-primary mb-6" />
-                    </motion.div>
-
-                    <motion.p
-                      className="text-lg md:text-xl text-foreground mb-8 leading-relaxed"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      &ldquo;{testimonial.content}&rdquo;
-                    </motion.p>
-
-                    <motion.div
-                      className="flex items-center gap-4"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full bg-primary/10"
-                      />
-                      <div>
-                        <h4 className="text-lg font-bold text-foreground">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-muted-foreground">
-                          {testimonial.role}
-                        </p>
-                        <p className="text-sm text-muted-foreground/70">
-                          {testimonial.company}
-                        </p>
+                  <Card className="bg-[#2d49a1] border-none p-8 md:p-10 h-full flex flex-col justify-between shadow-2xl min-h-[320px] transition-transform hover:scale-[1.02]">
+                    <div>
+                      <div className="flex gap-1 mb-6">
+                        {[1, 2, 3, 4, 5].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                        ))}
                       </div>
-                    </motion.div>
-
-                    {/* Star Rating */}
-                    <motion.div
-                      className="flex gap-1 mt-4"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <motion.svg
-                          key={i}
-                          className="w-5 h-5 text-yellow-400 fill-current"
-                          viewBox="0 0 20 20"
-                          initial={{ scale: 0, rotate: -180 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.3,
-                            delay: i * 0.1,
-                            type: "spring",
-                          }}
-                        >
-                          <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                        </motion.svg>
-                      ))}
-                    </motion.div>
+                      <p className="text-white text-lg leading-relaxed mb-8 italic font-medium">
+                        &ldquo;{testimonial.content}&rdquo;
+                      </p>
+                    </div>
+                    
+                    <div className="border-t border-white/10 pt-6">
+                      <h4 className="text-xl font-bold text-white mb-1">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-blue-100/70 text-xs font-bold uppercase tracking-widest">
+                        Verified Clients
+                      </p>
+                    </div>
                   </Card>
                 </motion.div>
               </CarouselItem>
@@ -225,17 +157,17 @@ export default function Testimonials() {
           </CarouselContent>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
+          <div className="flex justify-center gap-3 mt-12">
+            {[0, 1].map((index) => (
               <button
                 key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === current
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                onClick={() => api?.scrollTo(index * 3)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  Math.floor(current / 3) === index
+                    ? "w-10 bg-white"
+                    : "w-2.5 bg-white/30 hover:bg-white/50"
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Go to frame ${index + 1}`}
               />
             ))}
           </div>

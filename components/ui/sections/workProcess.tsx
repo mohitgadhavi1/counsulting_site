@@ -46,10 +46,10 @@ const TabButton = ({
 }) => (
   <button
     onClick={() => onClick(tab)}
-    className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+    className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
       isActive
-        ? "bg-accent text-accent-foreground shadow-md"
-        : "bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground"
+        ? "bg-primary text-white shadow-md"
+        : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
     }`}
   >
     {label}
@@ -78,7 +78,7 @@ function StepCard({
         whileHover={{ scale: 1.02, y: -5 }}
         transition={{ duration: 0.3 }}
       >
-        <Card className="relative p-8 overflow-hidden">
+        <Card className="relative p-8 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow group-hover:shadow-md">
           <div className="relative z-10">
             {/* Number */}
             <motion.div
@@ -88,14 +88,13 @@ function StepCard({
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 + 0.3, duration: 0.5 }}
             >
-              <span className="text-7xl font-bold text-muted-foreground/30">
+              <span className="text-7xl font-bold text-blue-600/10">
                 {step.number}
               </span>
             </motion.div>
 
-            {/* Title */}
             <motion.h3
-              className="text-3xl font-bold text-foreground mb-4"
+              className="text-2xl font-bold text-slate-900 mb-4"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -106,7 +105,7 @@ function StepCard({
 
             {/* Description */}
             <motion.p
-              className="text-muted-foreground leading-relaxed"
+              className="text-slate-600 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -147,13 +146,13 @@ function WorkProcess() {
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col justify-center items-center text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-16 text-foreground"
+          className="text-4xl md:text-5xl font-extrabold mb-16 text-slate-900"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Our Approach to Project Management
+          Our Strategic Approach
         </motion.h2>
 
         {/* Mobile Tab Interface */}

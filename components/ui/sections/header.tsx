@@ -108,60 +108,60 @@ export default function Header() {
 
   return (
     <div>
-      <div className="fixed z-50 py-2  w-full transition-all duration-100">
+      <div className={` z-50 py-2 w-full transition-all duration-300 bg-white shadow-sm border-b border-slate-100`}>
         <div className="flex justify-between items-center px-8">
           {/* Logo */}
-          <motion.div
-            className="flex items-center space-x-2 p-2 rounded-lg "
-            animate={{
-              backgroundColor: isScrolled
-                ? "rgba(255, 255, 255, 0.1)"
-                : "rgba(255, 255, 255, 0)",
-              backdropFilter: isScrolled ? "blur(20px)" : "blur(0px)",
-              borderBottom: isScrolled
-                ? "1px solid rgba(255, 255, 255, 0.1)"
-                : "1px solid rgba(255, 255, 255, 0)",
-            }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className="w-10 h-10 bg-linear-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-              <Code className="w-6 h-6 text-white" />
-            </div>
-            <motion.span
-              className="text-3xl font-bold text-secondary drop-shadow-xl inline-block"
-              initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-                textShadow: [
-                  "0 0 0px rgba(0,0,0,0)",
-                  "0 0 18px rgba(99,102,241,0.35)",
-                  "0 0 0px rgba(0,0,0,0)",
-                ],
-              }}
-              transition={{
-                duration: 0.8,
-                ease: "easeOut",
-              }}
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0px 6px 20px rgba(0,0,0,0.25)",
-              }}
-            >
-              ZidBit
-            </motion.span>
-          </motion.div>
+            <motion.img
+              src="/logo.png"
+              alt="ZidBit Technologies Logo"
+              className="h-16 w-auto object-contain cursor-pointer"
+              onClick={() => handleScroll("home")}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+            />
 
-          {/* Menu Button */}
-          <motion.button
-            onClick={() => setIsOpen(true)}
-            className={`cursor-pointer font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 border ${"bg-primary hover:bg-white/30 backdrop-blur-sm text-white border-white/30"}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            MENU
-          </motion.button>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex flex-1 justify-center items-center space-x-10">
+            {menuItems.map((item) => (
+              <a
+                key={item}
+                href={`#${menuAnchors[item] ?? item.toLowerCase().replace(/\s+/g, "-")}`}
+                className="text-sm font-bold text-slate-600 hover:text-primary transition-colors"
+                onClick={(e) => {
+                  if (menuAnchors[item]) {
+                    e.preventDefault();
+                    handleScroll(menuAnchors[item]);
+                  }
+                }}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA & Menu Button Toggle */}
+          <div className="flex items-center space-x-4">
+            <motion.button
+              onClick={() => setIsEnquiryFormOpen(true)}
+              className="hidden md:block cursor-pointer font-bold px-8 py-3 rounded-full shadow-lg bg-primary text-white hover:bg-blue-700 transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Book Consultation
+            </motion.button>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              onClick={() => setIsOpen(true)}
+              className="lg:hidden cursor-pointer font-bold px-6 py-2.5 rounded-full shadow-md bg-primary text-white hover:bg-blue-700 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              MENU
+            </motion.button>
+          </div>
         </div>
       </div>
 
@@ -186,81 +186,50 @@ export default function Header() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed  top-0 right-0 h-full w-full sm:w-[500px] bg-menu shadow-2xl z-9999 flex flex-col"
+            className="fixed top-0 right-0 h-full w-full sm:w-[500px] bg-white shadow-2xl z-9999 flex flex-col"
           >
             {/* Close Button */}
-            <div className="flex justify-end p-8">
+            <div className="flex justify-between items-center p-8 border-b border-slate-50">
+              <div className="flex items-center space-x-2">
+                <img src="/logo.png" alt="ZidBit Logo" className="h-8 w-auto object-contain" />
+              </div>
               <motion.button
                 onClick={() => setIsOpen(false)}
-                className="bg-menu-close-button cursor-pointer hover:bg-menu-close-button-hover text-menu-close-button-foreground font-medium px-6 py-3 rounded-full transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="text-slate-400 hover:text-slate-900 transition-colors"
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
               >
-                CLOSE
+                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center">
+                  <span className="text-2xl">×</span>
+                </div>
               </motion.button>
             </div>
 
-            {/* Menu Items */}
-            <nav className="flex-1 px-12 py-8">
-              <ul className="space-y-6">
-                {menuItems.map((item, i) => {
-                  console.log(item);
-
-                  return (
-                    <motion.li
-                      key={item}
-                      custom={i}
-                      variants={itemVariants}
-                      initial="closed"
-                      animate="open"
+            <nav className="flex-1 px-12 py-12">
+              <ul className="space-y-4">
+                {menuItems.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    custom={i}
+                    variants={itemVariants}
+                    initial="closed"
+                    animate="open"
+                  >
+                    <a
+                      href={`#${menuAnchors[item] ?? item.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="text-4xl font-bold text-slate-900 hover:text-primary transition-colors block py-2"
+                      onClick={(e) => {
+                        setIsOpen(false);
+                        if (menuAnchors[item]) {
+                          e.preventDefault();
+                          handleScroll(menuAnchors[item]);
+                        }
+                      }}
                     >
-                      {item === "Contact" ? (
-                        <button
-                          className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setIsEnquiryFormOpen(true);
-                          }}
-                        >
-                          {item}
-                        </button>
-                      ) : item === "Join Us" || item === "join-us" ? (
-                        <button
-                          className="text-5xl cursor-pointer sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block text-left w-full"
-                          onClick={() => {
-                            console.log(item);
-                            setIsOpen(false);
-                            setIsJoinFormOpen(true);
-                          }}
-                        >
-                          {item}
-                        </button>
-                      ) : item === "Features" ? (
-                        <a
-                          href="/features"
-                          className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item}
-                        </a>
-                      ) : (
-                        <a
-                          // href={`#${
-                          //   menuAnchors[item] ??
-                          //   item.toLowerCase().replace(/\s+/g, "-")
-                          // }`}
-                          className="text-5xl sm:text-6xl font-bold text-menu-foreground hover:opacity-70 transition-opacity block"
-                          onClick={() => {
-                            setIsOpen(false);
-                            handleScroll(menuAnchors[item]);
-                          }}
-                        >
-                          {item}
-                        </a>
-                      )}
-                    </motion.li>
-                  );
-                })}
+                      {item}
+                    </a>
+                  </motion.li>
+                ))}
               </ul>
             </nav>
 
@@ -271,7 +240,7 @@ export default function Header() {
               animate="open"
               className="px-12 pb-12"
             >
-              <div className="grid grid-cols-2 gap-x-16 gap-y-6">
+              <div className="grid grid-cols-2 gap-x-16 gap-y-6 border-t border-slate-50 pt-12">
                 {socialLinks.map((link) => {
                   const IconComponent = link.icon;
                   return (
@@ -280,9 +249,9 @@ export default function Header() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-xl font-medium text-menu-foreground hover:opacity-70 transition-opacity group"
+                      className="flex items-center gap-3 text-lg font-semibold text-slate-600 hover:text-primary transition-colors group"
                     >
-                      <IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform" />
                       {link.name}
                     </a>
                   );

@@ -1,37 +1,84 @@
 "use client";
 
-import { Code, Layers } from "lucide-react";
+import { 
+  Code, Layers, Cloud, Rocket, Zap, Palette, ArrowRight, 
+  ShieldCheck, Database, GitBranch, Terminal, Settings, 
+  Smartphone, BarChart3, Globe 
+} from "lucide-react";
 import * as motion from "motion/react-client";
 
 import { Card } from "@/components/ui/card";
-import { colorClasses } from "@/lib/colors";
 
 const serviceCategories = [
   {
-    title: "Web Development",
-    icon: <Code className="w-8 h-8" />,
-    items: [
-      "Custom Web Applications",
-      "Business & SaaS Platforms",
-      "Frontend Development (React / Next.js)",
-      "Backend Development & APIs",
-      "MVP Development for Startups",
-      "E-commerce & Dashboard Systems",
-    ],
+    title: "Custom Web Applications",
+    icon: <Globe className="w-5 h-5" />,
+    description: "Tailored web solutions built from scratch to meet your unique business requirements.",
   },
   {
-    title: "Engineering & Scale",
-    icon: <Layers className="w-8 h-8" />,
-    items: [
-      "Cloud Deployment (AWS / Vercel / Cloudflare / GCP)",
-      "CI/CD & Automated Deployments",
-      "Database Design & Optimization",
-      "Authentication & Role Management",
-      "Third-Party API Integrations",
-      "Performance & Speed Optimization",
-      "Refactoring & Legacy Code Cleanup",
-      "Ongoing Maintenance & Support",
-    ],
+    title: "SaaS Platforms",
+    icon: <Layers className="w-5 h-5" />,
+    description: "Scalable, secure, and multi-tenant software-as-a-service platforms for any industry.",
+  },
+  {
+    title: "Frontend Development",
+    icon: <Palette className="w-5 h-5" />,
+    description: "High-performance interfaces using modern frameworks like React and Next.js.",
+  },
+  {
+    title: "Backend Development",
+    icon: <Terminal className="w-5 h-5" />,
+    description: "Robust, secure, and efficient server-side architectures and API development.",
+  },
+  {
+    title: "MVP for Startups",
+    icon: <Rocket className="w-5 h-5" />,
+    description: "Fast-track your product launch with high-quality Minimum Viable Product development.",
+  },
+  {
+    title: "E-commerce Solutions",
+    icon: <Smartphone className="w-5 h-5" />,
+    description: "Seamless shopping experiences with integrated payments and inventory management.",
+  },
+  {
+    title: "Cloud Deployment",
+    icon: <Cloud className="w-5 h-5" />,
+    description: "Expert setup and management on AWS, Vercel, Cloudflare, and other cloud providers.",
+  },
+  {
+    title: "CI/CD Automation",
+    icon: <GitBranch className="w-5 h-5" />,
+    description: "Streamlined development workflows with automated testing and deployment pipelines.",
+  },
+  {
+    title: "Database Optimization",
+    icon: <Database className="w-5 h-5" />,
+    description: "Designing and scaling high-performance database systems for data-heavy apps.",
+  },
+  {
+    title: "Auth & Security",
+    icon: <ShieldCheck className="w-5 h-5" />,
+    description: "Implementing enterprise-grade security, RBAC, and protected user authentication.",
+  },
+  {
+    title: "API Integrations",
+    icon: <Code className="w-5 h-5" />,
+    description: "Connecting your platform with third-party services and complex external APIs.",
+  },
+  {
+    title: "Performance Tuning",
+    icon: <Zap className="w-5 h-5" />,
+    description: "Optimizing load speeds and core web vitals for the best possible user experience.",
+  },
+  {
+    title: "Legacy Code Cleanup",
+    icon: <BarChart3 className="w-5 h-5" />,
+    description: "Refactoring and modernizing legacy systems to improve maintainability.",
+  },
+  {
+    title: "Ongoing Maintenance",
+    icon: <Settings className="w-5 h-5" />,
+    description: "24/7 support and regular updates to keep your application running smoothly.",
   },
 ];
 
@@ -40,21 +87,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.05,
       delayChildren: 0.1,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 0.5,
-      
+      duration: 0.4,
     },
   },
 };
@@ -63,14 +108,11 @@ function Services() {
   return (
     <section
       id="services"
-      className="py-20 px-4 snap-start sm:px-6 lg:px-8 w-full relative overflow-hidden z-10"
+      className="py-24 px-4 snap-start sm:px-6 lg:px-8 w-full relative overflow-hidden z-10"
     >
-        {/* Bottom Gradient Blur */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-background via-background/90 to-transparent pointer-events-none z-10"></div>
-  {/* Bottom Gradient Blur */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-linear-to-t from-background via-background/90 to-transparent pointer-events-none z-10"></div>
 
-      {/* Background */}
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -78,77 +120,45 @@ function Services() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.5,
+          opacity: 0.15,
         }}
       />
 
-      {/* Liquid glass layer */}
-      <div className="absolute inset-0 pointer-events-none">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1200 600"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden
-        >
-          <defs>
-            <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="60" />
-            </filter>
-          </defs>
-          <g filter="url(#blur)" opacity="0.18">
-            <circle cx="200" cy="150" r="220" fill="#A4BE7B" />
-            <circle cx="950" cy="420" r="300" fill="#5F8D4E" />
-            <circle cx="700" cy="120" r="180" fill="#E5D9B6" />
-          </g>
-        </svg>
-      </div>
-
       <div className="relative max-w-7xl mx-auto z-10">
         <motion.h2
-          className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent ${colorClasses.gradients.services}`}
+          className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-slate-900"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          What We Deliver
+          Expertise & Specializations
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {serviceCategories.map((category, index) => (
-            <motion.div key={index} variants={cardVariants}  animate="active">
-              <Card className="rounded-xl p-8 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="text-primary">{category.icon}</div>
-                  <h3 className="text-3xl font-bold text-foreground">
+            <motion.div key={index} variants={cardVariants}>
+              <Card className="rounded-2xl border border-slate-100 bg-white p-8 h-full shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <div className="p-3 bg-blue-50 rounded-xl text-primary w-fit mb-6 transition-colors group-hover:bg-primary group-hover:text-white">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
                     {category.title}
                   </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                    {category.description}
+                  </p>
                 </div>
-
-                <ul className="space-y-4">
-                  {category.items.map((item, itemIndex) => (
-                    <motion.li
-                      key={itemIndex}
-                      className="flex items-start gap-3 text-lg text-muted-foreground"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        delay: index * 0.1 + itemIndex * 0.05,
-                      }}
-                    >
-                      <span className="text-primary mt-1">•</span>
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                <div className="flex items-center text-primary font-semibold text-sm cursor-pointer group-hover:translate-x-1 transition-transform">
+                  Learn more <ArrowRight className="w-4 h-4 ml-1.5" />
+                </div>
               </Card>
             </motion.div>
           ))}

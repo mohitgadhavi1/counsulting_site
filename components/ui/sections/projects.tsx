@@ -131,11 +131,11 @@ const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent ${colorClasses.gradients.hero}`}
+            className="text-4xl md:text-5xl font-extrabold mb-6 text-slate-900"
           >
             Featured Projects
           </h2>
-          <p className={`text-xl ${colorClasses.text.secondary} max-w-3xl mx-auto`}>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Explore a selection of my recent work showcasing innovative
             solutions and cutting-edge technologies across various industries.
           </p>
@@ -146,7 +146,7 @@ const Projects = () => {
           {projects.map((project) => (
             <Card
               key={project.id}
-              className="group overflow-hidden transition-all duration-300"
+              className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all duration-300"
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
@@ -180,7 +180,7 @@ const Projects = () => {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 text-xs bg-(--primary)/20 text-secondary-foreground rounded-full border border-(--primary)/30"
+                      className="px-3 py-1 text-xs bg-blue-50 text-blue-600 rounded-full border border-blue-100 font-medium"
                     >
                       {tech}
                     </span>
@@ -192,7 +192,7 @@ const Projects = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className=" cursor-pointer flex-1 border-primary text-secondary hover:bg-primary/10"
+                    className="cursor-pointer flex-1 border-blue-200 text-blue-600 hover:bg-blue-50 rounded-full"
                     onClick={() => window.open(project.liveUrl, "_blank")}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
@@ -221,7 +221,7 @@ const Projects = () => {
           </p>
           <Button
             size="lg"
-            className={`${colorClasses.gradients.button} text-primary-foreground px-8 py-3 cursor-pointer`}
+            className="bg-primary hover:bg-blue-700 text-white px-10 py-6 rounded-full cursor-pointer shadow-lg transition-all hover:scale-105"
             onClick={() => setIsEnquiryOpen(true)}
           >
             Let&apos;s Collaborate
