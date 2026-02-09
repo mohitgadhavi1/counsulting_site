@@ -24,7 +24,9 @@ const geistMono = Geist_Mono({
   preload: false, // Only preload critical fonts
 });
 
-export const metadata: Metadata = generateMetadata({
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://consulting.zidbit.com";
+
+const generatedMetadata = generateMetadata({
   title: "ZidBit - Modern Web Development Services",
   description:
     "Building next-generation web applications with cutting-edge technologies. Expert web development services for startups and businesses.",
@@ -45,29 +47,41 @@ export const metadata: Metadata = generateMetadata({
     image: "/og-image.png",
   },
   twitter: {
-    card: "summary_large_image",
     title: "ZidBit - Modern Web Development Services",
     description: "Expert web development services for modern businesses.",
     image: "/twitter-image.png",
   },
 });
 
+export const metadata: Metadata = {
+  ...generatedMetadata,
+  metadataBase: new URL(baseUrl), // Explicitly set again if needed, or rely on generateMetadata
+  authors: [{ name: "ZidBit Team", url: baseUrl }],
+  creator: "ZidBit Technologies",
+  publisher: "ZidBit Technologies",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
+};
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zidbit.com";
-
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/icon.png" />
-        <link rel="canonical" href={baseUrl} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-      </head>
+      <head />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -79,9 +93,8 @@ export default function RootLayout({
           logo={`${baseUrl}/icon.png`}
           description="Expert web development and consulting services for modern businesses"
           contactPoint={{
-            telephone: "+1-XXX-XXX-XXXX",
             contactType: "customer service",
-            email: "contact@zidbit.com",
+            email: "support@zidbit.com",
           }}
         />
 

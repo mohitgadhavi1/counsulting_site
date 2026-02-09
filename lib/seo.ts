@@ -39,7 +39,7 @@ export const defaultSEO: SEOConfig = {
 
 export function generateMetadata(config: Partial<SEOConfig> = {}): Metadata {
     const seo = { ...defaultSEO, ...config }
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zidbit.com'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://consulting.zidbit.com'
 
     return {
         metadataBase: new URL(baseUrl),

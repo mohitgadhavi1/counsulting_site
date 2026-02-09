@@ -6,7 +6,7 @@ interface OrganizationSchemaProps {
   logo?: string;
   description?: string;
   contactPoint?: {
-    telephone: string;
+    telephone?: string;
     contactType: string;
     email?: string;
   };
@@ -36,15 +36,15 @@ export function OrganizationSchema({
     description,
     contactPoint: contactPoint
       ? {
-          "@type": "ContactPoint",
-          ...contactPoint,
-        }
+        "@type": "ContactPoint",
+        ...contactPoint,
+      }
       : undefined,
     address: address
       ? {
-          "@type": "PostalAddress",
-          ...address,
-        }
+        "@type": "PostalAddress",
+        ...address,
+      }
       : undefined,
   };
 
@@ -125,13 +125,13 @@ export function WebsiteSchema({
     description,
     potentialAction: potentialAction
       ? {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: potentialAction.target,
-          },
-          "query-input": potentialAction.queryInput,
-        }
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: potentialAction.target,
+        },
+        "query-input": potentialAction.queryInput,
+      }
       : undefined,
   };
 
