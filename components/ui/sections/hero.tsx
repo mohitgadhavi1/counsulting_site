@@ -207,28 +207,28 @@ function Hero() {
 
         {/* Hero Content */}
         <div className=" flex  md:flex-row flex-col h-full  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
-          <div className="flex-1   h-full  flex flex-col justify-center  items-center md:w-1/2 relative  text-center ">
+          <div className="flex-1   h-full  flex flex-col justify-around  items-center md:w-1/2 relative  text-center ">
             {/* Surgeon Badge */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-6"
+              className="my-4"
             >
               <span className="bg-blue-50 text-blue-600 px-6 py-2 rounded-full text-sm font-bold tracking-wide border border-blue-100 uppercase">
                 Best Software Agency in the Town
               </span>
             </motion.div>
-
-            {/* Animated falling h1 element */}
-            <FallingText
-              text="From idea to production-ready web applications"
-              as="h2"
-              className="text-6xl lg:text-8xl font-extrabold text-slate-900 drop-shadow-sm text-wrap backdrop-blur-none"
-            />
-
+<div className="w-full    flex items-center justify-center px-2 md:px-6 lg:px-8">
+  {/* Animated falling h1 element */}
+  <FallingText
+    text="From idea to production-ready web applications"
+    as="h2"
+    className="text-4xl  md:text-5xl lg:text-6xl xl:text-8xl font-extrabold text-slate-900 drop-shadow-sm text-center"
+  />
+</div>
             <motion.p
-              className="text-2xl my-8 text-slate-600 max-w-3xl mx-auto drop-shadow-none font-medium"
+              className="text-xl md:text-2xl my-4 text-slate-600 max-w-3xl mx-auto drop-shadow-none font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
@@ -246,7 +246,7 @@ function Hero() {
                 data-cal-namespace="15min"
                 data-cal-link="mohitgadhavi1/15min"
                 data-cal-config='{"layout":"month_view"}'
-                className="bg-primary hover:bg-blue-700 text-white px-10 py-7 text-lg rounded-full transition-all duration-300 hover:scale-105 cursor-pointer shadow-xl"
+                className="bg-primary hover:bg-blue-700 text-white px-5 py-4 md:px-10 md:py-7 text-sm md:text-lg rounded-full transition-all duration-300 hover:scale-105 cursor-pointer shadow-xl"
               >
                 Schedule Meeting <ArrowRight className="ml-2" />
               </Button>
@@ -257,7 +257,7 @@ function Hero() {
               <Button
                 onClick={() => handleScroll("services")}
                 variant="outline"
-                className="bg-white/10 text-primary border-primary hover:bg-white hover:text-primary px-10 py-7 text-lg rounded-full transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-xl"
+                className="bg-white/10 text-primary border-primary hover:bg-white hover:text-primary px-5 py-4 md:px-10 md:py-7 text-sm md:text-lg rounded-full transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-xl"
               >
                 Our Services
               </Button>

@@ -53,9 +53,9 @@ const ConsultingWebsite = () => {
           <Services />
         </Suspense>
 
-        <Suspense fallback={<div className="py-20 bg-black/20" />}>
+        {/* <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <Projects />
-        </Suspense>
+        </Suspense> */}
              <Suspense fallback={<div className="py-20 bg-black/20" />}>
          <AnimatedBanner/>
         </Suspense>
@@ -64,9 +64,9 @@ const ConsultingWebsite = () => {
           <WorkProcess />
         </Suspense>
 
-        <Suspense fallback={<div className="py-20 bg-black/20" />}>
+        {/* <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <Testimonials />
-        </Suspense>
+        </Suspense> */}
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <About  />
