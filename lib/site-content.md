@@ -21,7 +21,7 @@ sidebar:
 
 Contact Us · Our Services  
 © 2025 ZidBit Web Technologies. All rights reserved.  
-support@zidbit.com
+contact@zidbit.com
 
 ## Overview {#overview}
 
@@ -115,7 +115,7 @@ Real-time crypto portfolio tracker with alerts and market analysis.
 
 ## About Us {#about}
 
-ZidBit is an agile team of developers based in Navi Mumbai, focused on building modern, scalable web solutions. The remote and flexible workflow enables fast progress without compromising professionalism.
+ZidBit is an agile team of developers focused on building modern, scalable web solutions. The remote and flexible workflow enables fast progress without compromising professionalism.
 
 - 📍 Based in Surendranagar, India  
 - 50+ Projects Delivered  

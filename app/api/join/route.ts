@@ -42,13 +42,13 @@ export async function POST(req: Request) {
         const filePath = path.join(uploadsDir, safeName);
         await fs.writeFile(filePath, buffer);
 
-        // Send email notification to support@zidbit.com with resume attachment
+        // Send email notification to contact@zidbit.com with resume attachment
         try {
             const resend = new Resend(process.env.RESEND_API_KEY);
 
             await resend.emails.send({
                 from: 'noreply@zidbit.com', // Must be a verified domain in Resend
-                to: 'support@zidbit.com',
+                to: 'contact@zidbit.com',
                 subject: 'New Job Application from Website',
                 html: `
                     <h2>New Job Application Received</h2>
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
                 ]
             });
 
-            console.log('Job application email sent successfully to support@zidbit.com');
+            console.log('Job application email sent successfully to contact@zidbit.com');
         } catch (emailError) {
             console.error('Error sending job application email:', emailError);
             // Don't fail the request if email fails, just log it

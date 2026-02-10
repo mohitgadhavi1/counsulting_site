@@ -1,13 +1,113 @@
 "use client";
 
-import { 
-  Code, Layers, Cloud, Rocket, Zap, Palette, ArrowRight, 
-  ShieldCheck, Database, GitBranch, Terminal, Settings, 
-  Smartphone, BarChart3, Globe 
+import { useState, useEffect } from "react";
+import {
+  Code, Layers, Cloud, Rocket, Zap, Palette, ArrowRight,
+  ShieldCheck, Database, GitBranch, Terminal, Settings,
+  Smartphone, BarChart3, Globe
 } from "lucide-react";
 import * as motion from "motion/react-client";
+import { useBreakpoint } from "@/app/hooks/useBreakpoint";
 
 import { Card } from "@/components/ui/card";
+
+interface ServiceCategory {
+  title: string;
+  icon: React.ReactNode;
+  description: string;
+}
+
+const ServiceCard = ({ category }: { category: ServiceCategory }) => {
+  const { isMobile } = useBreakpoint();
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(10);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (isMobile && isFlipped) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            setIsFlipped(false);
+            return 10;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      setTimeLeft(10);
+    }
+
+    return () => clearInterval(interval);
+  }, [isMobile, isFlipped]);
+
+  const handleFlip = () => {
+    if (isMobile) {
+      if (!isFlipped) {
+        setTimeLeft(10);
+      }
+      setIsFlipped(!isFlipped);
+    }
+  };
+
+  if (!isMobile) {
+    return (
+      <Card className="rounded-2xl border border-slate-100 bg-white p-8 h-full shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+        <div>
+          <div className="p-3 bg-blue-50 rounded-xl text-primary w-fit mb-6 transition-colors group-hover:bg-primary group-hover:text-white">
+            {category.icon}
+          </div>
+          <h3 className="text-xl font-bold text-slate-900 mb-2">
+            {category.title}
+          </h3>
+          <p className="text-slate-500 text-sm leading-relaxed mb-6">
+            {category.description}
+          </p>
+        </div>
+      </Card>
+    );
+  }
+
+  return (
+    <div
+      className="relative h-[200px] w-full [perspective:1000px] cursor-pointer"
+      onClick={handleFlip}
+    >
+      <motion.div
+        className="relative h-full w-full [transform-style:preserve-3d]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        {/* Front Side */}
+        <Card className="absolute inset-0 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm [backface-visibility:hidden] flex flex-col items-center justify-center text-center">
+          <div className="p-4 bg-blue-50 rounded-2xl text-primary ">
+            {category.icon}
+          </div>
+          <h3 className="text-lg font-bold text-slate-900">
+            {category.title}
+          </h3>
+          <div className="text-[8px] font-semibold text-blue-600 uppercase tracking-wider">
+            Tap to see details
+          </div>
+        </Card>
+
+        {/* Back Side */}
+        <Card className="absolute inset-0 rounded-2xl border border-blue-100 bg-blue-50/50 p-2 shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center text-center">
+          <p className="text-slate-700 text-sm leading-relaxed font-medium">
+            {category.description}
+          </p>
+          <div className="mt-2 flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-[10px]">
+              {timeLeft}
+            </span>
+
+          </div>
+        </Card>
+      </motion.div>
+    </div>
+  );
+};
 
 const serviceCategories = [
   {
@@ -144,22 +244,7 @@ function Services() {
         >
           {serviceCategories.map((category, index) => (
             <motion.div key={index} variants={cardVariants}>
-              <Card className="rounded-2xl border border-slate-100 bg-white p-8 h-full shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
-                <div>
-                  <div className="p-3 bg-blue-50 rounded-xl text-primary w-fit mb-6 transition-colors group-hover:bg-primary group-hover:text-white">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    {category.title}
-                  </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                    {category.description}
-                  </p>
-                </div>
-                <div className="flex items-center text-primary font-semibold text-sm cursor-pointer group-hover:translate-x-1 transition-transform">
-                  Learn more <ArrowRight className="w-4 h-4 ml-1.5" />
-                </div>
-              </Card>
+              <ServiceCard category={category} />
             </motion.div>
           ))}
         </motion.div>

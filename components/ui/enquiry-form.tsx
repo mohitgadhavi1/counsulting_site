@@ -91,7 +91,7 @@ const EnquiryForm = ({ isOpen, onClose }: EnquiryFormProps) => {
         onClose();
 
         // Show success message (you can replace with a toast notification)
-        alert("Thank you for your enquiry! We&apos;ll get back to you soon.");
+        alert("Thank you for your enquiry! We'll get back to you soon.");
       } else {
         throw new Error("Failed to submit enquiry");
       }
@@ -117,7 +117,7 @@ const EnquiryForm = ({ isOpen, onClose }: EnquiryFormProps) => {
 
   return (
     <motion.div
-     id="contact"
+      id="contact"
       className="fixed inset-0 z-100 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -227,9 +227,8 @@ const EnquiryForm = ({ isOpen, onClose }: EnquiryFormProps) => {
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 handleInputChange("message", e.target.value)
               }
-              className={`min-h-[100px] ${
-                errors.message ? "border-red-500" : ""
-              }`}
+              className={`min-h-[100px] ${errors.message ? "border-red-500" : ""
+                }`}
             />
             {errors.message && (
               <p className="text-red-500 text-sm mt-1">{errors.message}</p>

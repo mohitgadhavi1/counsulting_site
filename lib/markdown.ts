@@ -1,5 +1,4 @@
 // lib/markdown.ts
-"use server";
 
 import fs from 'fs';
 import path from 'path';
@@ -17,6 +16,7 @@ interface MarkdownData {
 
 // Keep this as Server Action for client-side calls
 export async function getMarkdownData(): Promise<MarkdownData> {
+    "use server";
     return getMarkdownDataInternal();
 }
 

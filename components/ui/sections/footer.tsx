@@ -13,8 +13,8 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold">Contact</h4>
-            <a href="mailto:support@zidbit.com" className="text-slate-400 hover:text-primary transition-colors">
-              support@zidbit.com
+            <a href="mailto:contact@zidbit.com" className="text-slate-400 hover:text-primary transition-colors">
+              contact@zidbit.com
             </a>
           </div>
         </div>

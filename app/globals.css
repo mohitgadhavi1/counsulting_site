@@ -54,34 +54,41 @@
 }
 
 :root {
-  --radius: 1rem; /* More rounded for Dr. Gastro look */
+  --radius: 1rem;
+  /* More rounded for Dr. Gastro look */
 
   /* Dr. Gastro Color Palette */
   --background: #ffffff;
-  --foreground: #0f172a; /* Slate 900 */
-  
-  --primary: #2563eb; /* Blue 600 */
+  --foreground: #0f172a;
+  /* Slate 900 */
+
+  --primary: #2563eb;
+  /* Blue 600 */
   --primary-foreground: #ffffff;
-  
-  --secondary: #eff6ff; /* Blue 50 */
+
+  --secondary: #eff6ff;
+  /* Blue 50 */
   --secondary-foreground: #2563eb;
-  
-  --muted: #f8fafc; /* Slate 50 */
-  --muted-foreground: #475569; /* Slate 600 */
-  
+
+  --muted: #f8fafc;
+  /* Slate 50 */
+  --muted-foreground: #475569;
+  /* Slate 600 */
+
   --accent: #2563eb;
   --accent-foreground: #ffffff;
-  
+
   --card: #ffffff;
   --card-foreground: #0f172a;
-  
+
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  
+
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  
-  --border: #e2e8f0; /* Slate 200 */
+
+  --border: #e2e8f0;
+  /* Slate 200 */
   --input: #e2e8f0;
   --ring: #2563eb;
 
@@ -189,10 +196,10 @@ section {
 }
 
 /* Selection styles */
-::selection {
+/* ::selection {
   background: var(--card);
   color: var(--background);
-}
+} */
 
 /* Focus visible for accessibility */
 *:focus-visible {

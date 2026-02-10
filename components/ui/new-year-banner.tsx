@@ -8,11 +8,11 @@ export default function NewYearBanner() {
   if (!isVisible) return null;
 
   const bannerText =
-    "🎉 NEW YEAR OFFER: Free Website Development - T&C Apply 🎉";
+    "🎉 Launch OFFER: Free Website Development - T&C Apply 🎉";
   const duplicatedText = Array(8).fill(bannerText);
 
   return (
-    <div className="relative w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white overflow-hidden">
+    <div className="relative w-full bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 text-white overflow-hidden">
       
       <style>{`
         @keyframes banner-marquee {

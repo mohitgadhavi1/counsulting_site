@@ -9,6 +9,7 @@ import {
   WebsiteSchema,
 } from "@/components/seo/structured-data";
 import { generateMetadata } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -86,7 +87,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleAnalytics />
-
+        <Analytics />
         <OrganizationSchema
           name="ZidBit Technologies"
           url={baseUrl}
@@ -94,7 +95,7 @@ export default function RootLayout({
           description="Expert web development and consulting services for modern businesses"
           contactPoint={{
             contactType: "customer service",
-            email: "support@zidbit.com",
+            email: "contact@zidbit.com",
           }}
         />
 

@@ -38,13 +38,15 @@ export async function POST(request: NextRequest) {
         // 3. Integrate with CRM
         // 4. Send to third-party service
 
-        // Send email notification to support@zidbit.com
+        // Send email notification to contact@zidbit.com
+
         try {
+            console.log(process.env.RESEND_API_KEY)
             const resend = new Resend(process.env.RESEND_API_KEY);
 
             await resend.emails.send({
                 from: 'noreply@zidbit.com', // Must be a verified domain in Resend
-                to: 'support@zidbit.com',
+                to: 'contact@zidbit.com',
                 subject: 'New Enquiry from Website',
                 html: `
                     <h2>New Enquiry Received</h2>
@@ -58,7 +60,7 @@ export async function POST(request: NextRequest) {
                 `,
             });
 
-            console.log('Email sent successfully to support@zidbit.com');
+            console.log('Email sent successfully to contact@zidbit.com');
         } catch (emailError) {
             console.error('Error sending email:', emailError);
             // Don't fail the request if email fails, just log it

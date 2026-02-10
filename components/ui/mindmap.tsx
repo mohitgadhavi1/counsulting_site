@@ -14,17 +14,18 @@ import { useBreakpoint } from "@/app/hooks/useBreakpoint";
 
 // Color palette from your config
 const colors = {
-  background: "#F1EFEC",
-  foreground: "#222831",
-  card: "#a4be7b",
-  accent: "#5f8d4e",
+  background: "#ffffff", // --background
+  foreground: "#2563eb", // --foreground
+  card: "#f8fafc",       // --muted
+  accent: "#2563eb",     // --primary
+  border: "#e2e8f0",     // --border
 };
 
-// Using variations of your green palette
-const color1 = "#a4be7b"; // card - sage green
-const color2 = "#8ba86d"; // slightly darker
-const color3 = "#729857"; // medium green
-const color4 = "#5f8d4e"; // accent - forest green
+// Using blue variations palette
+const color1 = "#2563eb"; // Blue 600
+const color2 = "#3b82f6"; // Blue 500
+const color3 = "#60a5fa"; // Blue 400
+const color4 = "#93c5fd"; // Blue 300
 
 function connect(source: string, target: string, color: string) {
   return {
@@ -77,116 +78,116 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
     return [
       {
         id: "center",
-        data: { label: "Work Process" },
+        data: { label: "Our Strategic Approach" },
         position: { x: 150, y: 50 },
         style: centerStyle,
       },
       // Main nodes in vertical layout
       {
         id: "01",
-        data: { label: "01 Brainstorming" },
+        data: { label: "01 Brainstorming & Strategy" },
         position: { x: 120, y: 150 },
         style: mainStyle(color1),
       },
       {
         id: "01-1",
-        data: { label: "Create Roadmap" },
+        data: { label: "Requirement Discovery" },
         position: { x: 80, y: 220 },
         style: subStyle(color1),
       },
       {
         id: "01-2",
-        data: { label: "Generate Ideas" },
+        data: { label: "Technical Roadmap" },
         position: { x: 80, y: 270 },
         style: subStyle(color1),
       },
       {
         id: "01-3",
-        data: { label: "Perfect View" },
+        data: { label: "Scope Finalization" },
         position: { x: 80, y: 320 },
         style: subStyle(color1),
       },
       {
         id: "02",
-        data: { label: "02 Documentation" },
+        data: { label: "02 Documentation & Architecture" },
         position: { x: 110, y: 400 },
         style: mainStyle(color2),
       },
       {
         id: "02-1",
-        data: { label: "Prevent Issues" },
+        data: { label: "System Architecture" },
         position: { x: 80, y: 470 },
         style: subStyle(color2),
       },
       {
         id: "02-2",
-        data: { label: "Chart Milestones" },
+        data: { label: "API Design & Specs" },
         position: { x: 80, y: 520 },
         style: subStyle(color2),
       },
       {
         id: "03",
-        data: { label: "03 Implementation" },
+        data: { label: "03 Implementation & Dev" },
         position: { x: 100, y: 600 },
         style: mainStyle(color3),
       },
       {
         id: "03-1",
-        data: { label: "Timely Delivery" },
+        data: { label: "Agile Sprints" },
         position: { x: 80, y: 670 },
         style: subStyle(color3),
       },
       {
         id: "03-2",
-        data: { label: "Regular Updates" },
+        data: { label: "Interactive Demos" },
         position: { x: 80, y: 720 },
         style: subStyle(color3),
       },
       {
         id: "03-3",
-        data: { label: "Project Manager" },
+        data: { label: "Continuous Feedback" },
         position: { x: 80, y: 770 },
         style: subStyle(color3),
       },
       {
         id: "03-4",
-        data: { label: "Handle Deviations" },
+        data: { label: "Production Readiness" },
         position: { x: 80, y: 820 },
         style: subStyle(color3),
       },
       {
         id: "04",
-        data: { label: "04 Testing" },
+        data: { label: "04 QA & GTM Strategy" },
         position: { x: 130, y: 900 },
         style: mainStyle(color4),
       },
       {
         id: "04-1",
-        data: { label: "Internal Testing" },
+        data: { label: "End-to-End Testing" },
         position: { x: 80, y: 970 },
         style: subStyle(color4),
       },
       {
         id: "04-2",
-        data: { label: "Client Confirmation" },
+        data: { label: "Security Audits" },
         position: { x: 80, y: 1020 },
         style: subStyle(color4),
       },
       {
         id: "04-3",
-        data: { label: "Go Live" },
+        data: { label: "Performance Tuning" },
         position: { x: 80, y: 1070 },
         style: subStyle(color4),
       },
       {
         id: "04-4",
-        data: { label: "Optimize Value" },
+        data: { label: "Deployment & Launch" },
         position: { x: 80, y: 1120 },
         style: subStyle(color4),
       },
       {
         id: "04-5",
-        data: { label: "Generate Leads" },
+        data: { label: "Brand Growth" },
         position: { x: 80, y: 1170 },
         style: subStyle(color4),
       },
@@ -198,49 +199,49 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
     return [
       {
         id: "center",
-        data: { label: "Work Process" },
+        data: { label: "Our Strategic Approach" },
         position: { x: 300, y: 200 },
         style: centerStyle,
       },
       {
         id: "01",
-        data: { label: "01 Brainstorming" },
+        data: { label: "01 Brainstorming & Strategy" },
         position: { x: 500, y: 100 },
         style: mainStyle(color1),
       },
       {
         id: "01-1",
-        data: { label: "Create Roadmap" },
+        data: { label: "Req. Discovery" },
         position: { x: 680, y: 70 },
         style: subStyle(color1),
       },
       {
         id: "01-2",
-        data: { label: "Generate Ideas" },
+        data: { label: "Tech Roadmap" },
         position: { x: 680, y: 110 },
         style: subStyle(color1),
       },
       {
         id: "01-3",
-        data: { label: "Perfect View" },
+        data: { label: "Scope Finalization" },
         position: { x: 680, y: 150 },
         style: subStyle(color1),
       },
       {
         id: "02",
-        data: { label: "02 Documentation" },
+        data: { label: "02 Doc & Architecture" },
         position: { x: 500, y: 280 },
         style: mainStyle(color2),
       },
       {
         id: "02-1",
-        data: { label: "Prevent Issues" },
+        data: { label: "System Arch" },
         position: { x: 680, y: 260 },
         style: subStyle(color2),
       },
       {
         id: "02-2",
-        data: { label: "Chart Milestones" },
+        data: { label: "API Design" },
         position: { x: 680, y: 300 },
         style: subStyle(color2),
       },
@@ -252,61 +253,61 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
       },
       {
         id: "03-1",
-        data: { label: "Timely Delivery" },
+        data: { label: "Agile Sprints" },
         position: { x: -100, y: 240 },
         style: subStyle(color3),
       },
       {
         id: "03-2",
-        data: { label: "Regular Updates" },
+        data: { label: "Interactive Demos" },
         position: { x: -100, y: 280 },
         style: subStyle(color3),
       },
       {
         id: "03-3",
-        data: { label: "Project Manager" },
+        data: { label: "Continuous Feedback" },
         position: { x: -100, y: 320 },
         style: subStyle(color3),
       },
       {
         id: "03-4",
-        data: { label: "Handle Deviations" },
+        data: { label: "Prod Readiness" },
         position: { x: -100, y: 360 },
         style: subStyle(color3),
       },
       {
         id: "04",
-        data: { label: "04 Testing" },
+        data: { label: "04 QA & GTM" },
         position: { x: 80, y: 100 },
         style: mainStyle(color4),
       },
       {
         id: "04-1",
-        data: { label: "Internal Testing" },
+        data: { label: "E2E Testing" },
         position: { x: -100, y: 60 },
         style: subStyle(color4),
       },
       {
         id: "04-2",
-        data: { label: "Client Confirm" },
+        data: { label: "Security Audits" },
         position: { x: -100, y: 100 },
         style: subStyle(color4),
       },
       {
         id: "04-3",
-        data: { label: "Go Live" },
+        data: { label: "Performance" },
         position: { x: -100, y: 160 },
         style: subStyle(color4),
       },
       {
         id: "04-4",
-        data: { label: "Optimize Value" },
+        data: { label: "Launch" },
         position: { x: -100, y: 200 },
         style: subStyle(color4),
       },
       {
         id: "04-5",
-        data: { label: "Generate Leads" },
+        data: { label: "Brand Growth" },
         position: { x: -100, y: 220 },
         style: subStyle(color4),
       },
@@ -317,115 +318,115 @@ const getNodes = (isMobile: boolean, isTablet: boolean) => {
   return [
     {
       id: "center",
-      data: { label: "Work Process" },
+      data: { label: "Our Strategic Approach" },
       position: { x: 400, y: 250 },
       style: centerStyle,
     },
     {
       id: "01",
-      data: { label: "01 Brainstorming" },
+      data: { label: "01 Brainstorming & Strategy" },
       position: { x: 700, y: 120 },
       style: mainStyle(color1),
     },
     {
       id: "01-1",
-      data: { label: "Create Roadmap" },
+      data: { label: "Requirement Discovery" },
       position: { x: 930, y: 85 },
       style: subStyle(color1),
     },
     {
       id: "01-2",
-      data: { label: "Generate Ideas Freely" },
+      data: { label: "Technical Roadmap" },
       position: { x: 940, y: 140 },
       style: subStyle(color1),
     },
     {
       id: "01-3",
-      data: { label: "Strive for Perfect View" },
+      data: { label: "Scope Finalization" },
       position: { x: 930, y: 200 },
       style: subStyle(color1),
     },
     {
       id: "02",
-      data: { label: "02 Documentation" },
+      data: { label: "02 Documentation & Architecture" },
       position: { x: 700, y: 360 },
       style: mainStyle(color2),
     },
     {
       id: "02-1",
-      data: { label: "Prevent Misunderstandings" },
+      data: { label: "System Architecture" },
       position: { x: 930, y: 330 },
       style: subStyle(color2),
     },
     {
       id: "02-2",
-      data: { label: "Chart Roadmap & Milestones" },
+      data: { label: "API Design & Specs" },
       position: { x: 930, y: 400 },
       style: subStyle(color2),
     },
     {
       id: "03",
-      data: { label: "03 Implementation" },
+      data: { label: "03 Implementation & Development" },
       position: { x: 100, y: 360 },
       style: mainStyle(color3),
     },
     {
       id: "03-1",
-      data: { label: "Timely Delivery" },
+      data: { label: "Agile Sprints" },
       position: { x: -150, y: 310 },
       style: subStyle(color3),
     },
     {
       id: "03-2",
-      data: { label: "Regular Updates" },
+      data: { label: "Interactive Demos" },
       position: { x: -150, y: 350 },
       style: subStyle(color3),
     },
     {
       id: "03-3",
-      data: { label: "Dedicated Project Manager" },
+      data: { label: "Continuous Feedback" },
       position: { x: -150, y: 390 },
       style: subStyle(color3),
     },
     {
       id: "03-4",
-      data: { label: "Handle Deviations" },
+      data: { label: "Production Readiness" },
       position: { x: -150, y: 550 },
       style: subStyle(color3),
     },
     {
       id: "04",
-      data: { label: "04 Testing & Deployment" },
+      data: { label: "04 QA & GTM Strategy" },
       position: { x: 100, y: 120 },
       style: mainStyle(color4),
     },
     {
       id: "04-1",
-      data: { label: "Internal Testing" },
+      data: { label: "End-to-End Testing" },
       position: { x: -150, y: 80 },
       style: subStyle(color4),
     },
     {
       id: "04-2",
-      data: { label: "Client Final Confirmation" },
+      data: { label: "Security Audits" },
       position: { x: -150, y: 120 },
       style: subStyle(color4),
     },
     {
       id: "04-3",
-      data: { label: "Go Live" },
+      data: { label: "Performance Tuning" },
       position: { x: -150, y: 180 },
       style: subStyle(color4),
     },
     {
       id: "04-4",
-      data: { label: "Optimize Brand Value" },
+      data: { label: "Deployment & Launch" },
       position: { x: -150, y: 220 },
       style: subStyle(color4),
     },
     {
       id: "04-5",
-      data: { label: "Generate Leads" },
+      data: { label: "Brand Growth" },
       position: { x: -150, y: 260 },
       style: subStyle(color4),
     },
@@ -476,7 +477,7 @@ export default function WorkProcessMindMap() {
       className="w-full rounded-lg overflow-hidden shadow-lg border-2"
       style={{
         height: isMobile ? "1300px" : isTablet ? "500px" : "600px",
-        borderColor: colors.card,
+        borderColor: colors.border,
         background: colors.background,
       }}
     >
@@ -487,11 +488,11 @@ export default function WorkProcessMindMap() {
         onEdgesChange={onEdgesChange}
         fitView
         minZoom={0.9}
-        
+
         maxZoom={1.5}
         attributionPosition="bottom-left"
         panOnScroll={false}
-      
+
       >
         <Background color={colors.accent} gap={16} />
       </ReactFlow>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { MapPin, Phone, Mail, MessageSquare } from "lucide-react";
 import {
   Card,
@@ -49,9 +50,13 @@ const statColors = {
 };
 
 export default function AboutClient({ title, content }: AboutClientProps) {
-  const description = content?.paragraphs.join(" ") ?? "";
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: ""
+  });
 
-  console.log(content, title);
+  const description = content?.paragraphs.join(" ") ?? "";
 
   const stats = content?.lists?.[0] ?? null;
 
@@ -65,6 +70,16 @@ export default function AboutClient({ title, content }: AboutClientProps) {
         return { value: value.replace(/[📍\s]/g, ""), label };
       })
       .filter(Boolean);
+
+  const handleWhatsAppClick = () => {
+    const { name, phone, message } = formData;
+    const whatsappNumber = "9137180056"; // Based on the phone number in the component
+    const text = `Hello, I would like to book an appointment.\n\nName: ${name}\nPhone: ${phone}\nMessage: ${message}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <section
@@ -109,11 +124,11 @@ export default function AboutClient({ title, content }: AboutClientProps) {
             <div
               className="flex items-center space-x-2 text-blue-600 font-semibold"
             >
-              <MapPin className="w-5 h-5" />
+              {/* <MapPin className="w-5 h-5" />
               <span className="text-lg">
                 {stats &&
                   stats.find((s) => s.includes("📍"))?.replace("📍 ", "")}
-              </span>
+              </span> */}
             </div>
           </motion.div>
 
@@ -160,13 +175,13 @@ export default function AboutClient({ title, content }: AboutClientProps) {
               <div className="space-y-10">
                 {/* Location */}
                 <div className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                  <div className="shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold text-slate-900 mb-2">Location</h4>
                     <p className="text-slate-500 leading-relaxed max-w-sm">
-                      403, Shaleen Plaza, Zidbit Web Technologies, Near NTM, Dalmil Road, Surendranagar, 363001
+                      104, Akshardham Complex, Opp.Vijay Anand Party Lawns, Dalmil Road, Surendranagar, 363001.
                     </p>
                   </div>
                 </div>
@@ -190,7 +205,7 @@ export default function AboutClient({ title, content }: AboutClientProps) {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold text-slate-900 mb-2">Email Address</h4>
-                    <p className="text-slate-500">support.zidbit.com</p>
+                    <p className="text-slate-500">contact@zidbit.com</p>
                   </div>
                 </div>
               </div>
@@ -210,26 +225,35 @@ export default function AboutClient({ title, content }: AboutClientProps) {
                 <CardContent className="px-0 space-y-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Name</label>
-                    <Input 
-                      placeholder="Enter name" 
+                    <Input
+                      placeholder="Enter name"
                       className="bg-slate-50 border-none h-14 rounded-xl px-6 focus-visible:ring-blue-600"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Phone Number</label>
-                    <Input 
-                      placeholder="Enter phone number" 
+                    <Input
+                      placeholder="Enter phone number"
                       className="bg-slate-50 border-none h-14 rounded-xl px-6 focus-visible:ring-blue-600"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-700">Message</label>
-                    <Textarea 
-                      placeholder="Briefly describe your project..." 
+                    <Textarea
+                      placeholder="Briefly describe your project..."
                       className="bg-slate-50 border-none rounded-xl p-6 min-h-[120px] focus-visible:ring-blue-600 resize-none"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />
                   </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 rounded-xl text-lg font-bold shadow-lg transition-all duration-300">
+                  <Button
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white h-14 rounded-xl text-lg font-bold shadow-lg transition-all duration-300"
+                    onClick={handleWhatsAppClick}
+                  >
                     Confirm Appointment via WhatsApp
                   </Button>
                 </CardContent>

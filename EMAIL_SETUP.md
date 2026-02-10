@@ -1,6 +1,6 @@
 # Email & Telegram Setup Instructions
 
-The enquiry and join APIs have been configured to send notifications to both `support@zidbit.com` (via Resend) and Telegram.
+The enquiry and join APIs have been configured to send notifications to both `contact@zidbit.com` (via Resend) and Telegram.
 
 ## Setup Steps
 
@@ -46,7 +46,7 @@ The enquiry and join APIs have been configured to send notifications to both `su
 - **Method**: POST
 - **Fields**: name, email, phone, company (optional), message
 - **Notifications**:
-  - Email to support@zidbit.com
+  - Email to contact@zidbit.com
   - Telegram message with enquiry details
 
 ### Join API (`/api/join`)
@@ -54,7 +54,7 @@ The enquiry and join APIs have been configured to send notifications to both `su
 - **Method**: POST (FormData)
 - **Fields**: role, email, resume (file)
 - **Notifications**:
-  - Email to support@zidbit.com with resume attachment
+  - Email to contact@zidbit.com with resume attachment
   - Telegram message with job application details
 
 ## Notification Templates
@@ -64,14 +64,14 @@ The enquiry and join APIs have been configured to send notifications to both `su
 #### Enquiry Email
 
 - **From**: noreply@zidbit.com
-- **To**: support@zidbit.com
+- **To**: contact@zidbit.com
 - **Subject**: "New Enquiry from Website"
 - **Contains**: Name, Email, Phone, Company, Message, Timestamp
 
 #### Job Application Email
 
 - **From**: noreply@zidbit.com
-- **To**: support@zidbit.com
+- **To**: contact@zidbit.com
 - **Subject**: "New Job Application from Website"
 - **Contains**: Role, Email, Resume filename, Timestamp
 - **Attachment**: Resume file
@@ -139,7 +139,7 @@ After setting up both Resend and Telegram:
 1. Test Telegram: Visit `http://localhost:3000/api/test-telegram`
 2. Submit an enquiry form
 3. Submit a job application
-4. Check support@zidbit.com for emails
+4. Check contact@zidbit.com for emails
 5. Check your Telegram chat for instant notifications
 6. Monitor Resend dashboard for email delivery status
 

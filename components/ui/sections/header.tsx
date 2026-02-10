@@ -12,6 +12,7 @@ export default function Header() {
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [comingSoon, setComingSoon] = useState<string | null>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Header() {
 
   const menuItems = [
     "Why Us",
-    "Projects",
+    // "Projects",
     "Expertise",
     "Features",
     "Join Us",
@@ -36,7 +37,7 @@ export default function Header() {
   // Map menu labels to section IDs (anchors)
   const menuAnchors: Record<string, string> = {
     "Why Us": "about",
-    Projects: "projects",
+    // Projects: "projects",
     Expertise: "services",
     "Join Us": "join-us",
     Contact: "contact",
@@ -58,7 +59,7 @@ export default function Header() {
     {
       name: "Github",
       icon: Github,
-      url: "https://github.com/zidbit",
+      url: "https://github.com/zidbit-llp",
       col: 2,
     },
   ];
@@ -111,16 +112,16 @@ export default function Header() {
       <div className={` z-50 py-2 w-full transition-all duration-300 bg-white shadow-sm border-b border-slate-100`}>
         <div className="flex justify-between items-center px-8">
           {/* Logo */}
-            <motion.img
-              src="/logo.png"
-              alt="ZidBit Technologies Logo"
-              className="h-16 w-auto object-contain cursor-pointer"
-              onClick={() => handleScroll("home")}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-            />
+          <motion.img
+            src="/logo.png"
+            alt="ZidBit Technologies Logo"
+            className="h-16 w-auto object-contain cursor-pointer"
+            onClick={() => handleScroll("home")}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+          />
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex flex-1 justify-center items-center space-x-10">
@@ -130,7 +131,13 @@ export default function Header() {
                 href={`#${menuAnchors[item] ?? item.toLowerCase().replace(/\s+/g, "-")}`}
                 className="text-sm font-bold text-slate-600 hover:text-primary transition-colors"
                 onClick={(e) => {
-                  if (menuAnchors[item]) {
+                  if (item === "Join Us") {
+                    e.preventDefault();
+                    setIsJoinFormOpen(true);
+                  } else if (item === "Contact") {
+                    e.preventDefault();
+                    setIsEnquiryFormOpen(true);
+                  } else if (menuAnchors[item]) {
                     e.preventDefault();
                     handleScroll(menuAnchors[item]);
                   }
@@ -220,7 +227,13 @@ export default function Header() {
                       className="text-4xl font-bold text-slate-900 hover:text-primary transition-colors block py-2"
                       onClick={(e) => {
                         setIsOpen(false);
-                        if (menuAnchors[item]) {
+                        if (item === "Join Us") {
+                          e.preventDefault();
+                          setIsJoinFormOpen(true);
+                        } else if (item === "Contact") {
+                          e.preventDefault();
+                          setIsEnquiryFormOpen(true);
+                        } else if (menuAnchors[item]) {
                           e.preventDefault();
                           handleScroll(menuAnchors[item]);
                         }
@@ -243,16 +256,46 @@ export default function Header() {
               <div className="grid grid-cols-2 gap-x-16 gap-y-6 border-t border-slate-50 pt-12">
                 {socialLinks.map((link) => {
                   const IconComponent = link.icon;
+                  const isComingSoon = comingSoon === link.name;
                   return (
                     <a
                       key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-lg font-semibold text-slate-600 hover:text-primary transition-colors group"
+                      href={isComingSoon ? "#" : link.url}
+                      target={isComingSoon ? undefined : "_blank"}
+                      rel={isComingSoon ? undefined : "noopener noreferrer"}
+                      onClick={(e) => {
+                        if (link.name === "LinkedIn" || link.name === "Instagram") {
+                          e.preventDefault();
+                          setComingSoon(link.name);
+                          setTimeout(() => setComingSoon(null), 3000);
+                        }
+                      }}
+                      className="flex items-center gap-3 text-lg font-semibold text-slate-600 hover:text-primary transition-colors group min-h-[40px]"
                     >
-                      <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                      {link.name}
+                      <AnimatePresence mode="wait">
+                        {isComingSoon ? (
+                          <motion.span
+                            key="coming-soon"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-bold whitespace-nowrap"
+                          >
+                            Coming Soon
+                          </motion.span>
+                        ) : (
+                          <motion.div
+                            key="normal"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="flex items-center gap-3"
+                          >
+                            <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                            {link.name}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </a>
                   );
                 })}

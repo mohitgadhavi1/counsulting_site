@@ -2,6 +2,7 @@
 import { Suspense, lazy } from "react";
 import Hero from "@/components/ui/sections/hero";
 import FloatingActions from "@/components/ui/floating-actions";
+import ScrollToTop from "@/components/ui/scroll-to-top";
 import AnimatedBanner from "../components/ui/sections/banner";
 
 // Lazy load heavy components to improve initial load
@@ -56,8 +57,8 @@ const ConsultingWebsite = () => {
         {/* <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <Projects />
         </Suspense> */}
-             <Suspense fallback={<div className="py-20 bg-black/20" />}>
-         <AnimatedBanner/>
+        <Suspense fallback={<div className="py-20 bg-black/20" />}>
+          <AnimatedBanner />
         </Suspense>
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
@@ -69,7 +70,7 @@ const ConsultingWebsite = () => {
         </Suspense> */}
 
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
-          <About  />
+          <About />
         </Suspense>
 
         <Suspense fallback={<div className="py-8 bg-black/30" />}>
@@ -79,6 +80,7 @@ const ConsultingWebsite = () => {
 
       {/* Floating Action Buttons */}
       <FloatingActions />
+      <ScrollToTop />
     </div>
   );
 };
