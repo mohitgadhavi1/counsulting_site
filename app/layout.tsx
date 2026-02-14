@@ -69,11 +69,14 @@ export const metadata: Metadata = {
     canonical: baseUrl,
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
   },
-  manifest: "/manifest.json",
+  manifest: "/site.webmanifest",
 };
 export default function RootLayout({
   children,
@@ -91,7 +94,7 @@ export default function RootLayout({
         <OrganizationSchema
           name="ZidBit Technologies"
           url={baseUrl}
-          logo={`${baseUrl}/icon.png`}
+          logo={`${baseUrl}/ZidBit_logo-transparent.png`}
           description="Expert web development and consulting services for modern businesses"
           contactPoint={{
             contactType: "customer service",

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Code, Github, Linkedin, Instagram } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
@@ -112,16 +113,17 @@ export default function Header() {
       <div className={` z-50 py-2 w-full transition-all duration-300 bg-white shadow-sm border-b border-slate-100`}>
         <div className="flex justify-between items-center px-8">
           {/* Logo */}
-          <motion.img
-            src="/logo.png"
-            alt="ZidBit Technologies Logo"
-            className="h-16 w-auto object-contain cursor-pointer"
-            onClick={() => handleScroll("home")}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-          />
+          <Link href="/">
+            <motion.img
+              src="/logo.png"
+              alt="ZidBit Technologies Logo"
+              className="h-16 w-auto object-contain cursor-pointer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex flex-1 justify-center items-center space-x-10">
