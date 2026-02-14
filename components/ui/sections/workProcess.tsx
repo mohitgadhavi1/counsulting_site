@@ -2,8 +2,9 @@
 
 import { Card } from "@/components/ui/card";
 import * as motion from "motion/react-client";
+import Link from "next/link";
 import WorkProcessMindMap from "../mindmap";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useBreakpoint } from "@/app/hooks/useBreakpoint";
 
 const processSteps = [
@@ -32,29 +33,6 @@ const processSteps = [
       "Every functionality, every page is tested internally before handing over the project to the client for final confirmation. The deployment process is pretty straightforward where we go live and then move towards optimizing brand value and generating leads for your business.",
   },
 ];
-
-const TabButton = ({
-  tab,
-  label,
-  isActive,
-  onClick,
-}: {
-  tab: "mindmap" | "steps";
-  label: string;
-  isActive: boolean;
-  onClick: (tab: "mindmap" | "steps") => void;
-}) => (
-  <button
-    onClick={() => onClick(tab)}
-    className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
-      isActive
-        ? "bg-primary text-white shadow-md"
-        : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50"
-    }`}
-  >
-    {label}
-  </button>
-);
 
 function StepCard({
   step,
@@ -122,7 +100,6 @@ function StepCard({
 
 function WorkProcess() {
   const { isMobile } = useBreakpoint();
-  const [activeTab, setActiveTab] = useState<"mindmap" | "steps">("steps");
 
   return (
     <section
@@ -155,59 +132,36 @@ function WorkProcess() {
           Our Strategic Approach
         </motion.h2>
 
-        {/* Mobile Tab Interface */}
-        {isMobile && (
-          <motion.div
-            className="flex gap-2 mb-8 p-2 bg-background/80 backdrop-blur-sm rounded-xl border"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <TabButton
-              tab="mindmap"
-              label="Process Flow"
-              isActive={activeTab === "mindmap"}
-              onClick={setActiveTab}
-            />
-            <TabButton
-              tab="steps"
-              label="Step Details"
-              isActive={activeTab === "steps"}
-              onClick={setActiveTab}
-            />
-          </motion.div>
-        )}
-
-        {/* Content based on screen size and active tab */}
+        {/* Content based on screen size */}
         {isMobile ? (
           <div className="w-full">
-            {activeTab === "mindmap" && (
-              <motion.div
-                key="mindmap"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <WorkProcessMindMap />
-              </motion.div>
-            )}
+            {/* Mobile: Show step cards only */}
+            <motion.div
+              className="grid grid-cols-1 gap-6 mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+            >
+              {processSteps.map((step, index) => (
+                <StepCard key={index} step={step} index={index} />
+              ))}
+            </motion.div>
 
-            {activeTab === "steps" && (
-              <motion.div
-                key="steps"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 gap-6"
+            {/* Link to full mindmap page */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Link
+                href="/mindmap"
+                className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all duration-300"
               >
-                {processSteps.map((step, index) => (
-                  <StepCard key={index} step={step} index={index} />
-                ))}
-              </motion.div>
-            )}
+                View Full Process Flow
+              </Link>
+            </motion.div>
           </div>
         ) : (
           // Desktop layout - show both mindmap and cards
