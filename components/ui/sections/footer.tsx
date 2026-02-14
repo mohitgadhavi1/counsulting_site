@@ -22,10 +22,10 @@ export default function Footer() {
           <p className="text-slate-500 text-sm">
             © {currentYear} ZidBit Technologies. All rights reserved.
           </p>
-          <div className="flex gap-6 mb-4 md:mb-0">
+          {/* <div className="flex gap-6 mb-4 md:mb-0">
             <a href="#" className="text-slate-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
             <a href="#" className="text-slate-500 hover:text-white text-sm transition-colors">Terms of Service</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

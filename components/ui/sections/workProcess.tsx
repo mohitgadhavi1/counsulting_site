@@ -50,13 +50,14 @@ function StepCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="relative group "
+      className="relative group h-full "
     >
       <motion.div
         whileHover={{ scale: 1.02, y: -5 }}
         transition={{ duration: 0.3 }}
+        className="h-full "
       >
-        <Card className="relative p-8 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow group-hover:shadow-md">
+        <Card className="relative p-8 h-full  rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow group-hover:shadow-md">
           <div className="relative z-10">
             {/* Number */}
             <motion.div
@@ -99,7 +100,7 @@ function StepCard({
 }
 
 function WorkProcess() {
-  const { isMobile } = useBreakpoint();
+
 
   return (
     <section
@@ -133,11 +134,11 @@ function WorkProcess() {
         </motion.h2>
 
         {/* Content based on screen size */}
-        {isMobile ? (
+       
           <div className="w-full">
             {/* Mobile: Show step cards only */}
             <motion.div
-              className="grid grid-cols-1 gap-6 mb-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 auto-rows-fr"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -163,17 +164,7 @@ function WorkProcess() {
               </Link>
             </motion.div>
           </div>
-        ) : (
-          // Desktop layout - show both mindmap and cards
-          <>
-            <WorkProcessMindMap />
-            <div className="grid mt-4 grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              {processSteps.map((step, index) => (
-                <StepCard key={index} step={step} index={index} />
-              ))}
-            </div>
-          </>
-        )}
+        
       </div>
     </section>
   );

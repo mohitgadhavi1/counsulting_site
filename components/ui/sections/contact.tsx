@@ -26,7 +26,7 @@ const contactCards = [
   {
     icon: MapPin,
     title: "Location",
-    description: "Navi Mumbai, India",
+    description: "Surendranagar, India",
   },
 ];
 

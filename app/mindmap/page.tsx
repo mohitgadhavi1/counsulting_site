@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Link from "next/link";
-import Image from "next/image";
+
 import FloatingActions from "@/components/ui/floating-actions";
 import ScrollToTop from "@/components/ui/scroll-to-top";
 import WorkProcessMindMap from "@/components/ui/mindmap";

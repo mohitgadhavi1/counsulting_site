@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://consulting.zidbit.com";
 
 const generatedMetadata = generateMetadata({
-  title: "ZidBit - Modern Web Development Services",
+  title: "ZidBit - Modern Software Development Services",
   description:
     "Building next-generation web applications with cutting-edge technologies. Expert web development services for startups and businesses.",
   keywords: [
@@ -41,14 +41,14 @@ const generatedMetadata = generateMetadata({
     "business solutions",
   ],
   openGraph: {
-    title: "ZidBit - Modern Web Development Services",
+    title: "ZidBit - Modern Software Development Services",
     description:
       "Building next-generation web applications with cutting-edge technologies.",
     type: "website",
     image: "/og-image.png",
   },
   twitter: {
-    title: "ZidBit - Modern Web Development Services",
+    title: "ZidBit - Modern Software Development Services",
     description: "Expert web development services for modern businesses.",
     image: "/twitter-image.png",
   },
@@ -105,7 +105,7 @@ export default function RootLayout({
         <WebsiteSchema
           name="ZidBit"
           url={baseUrl}
-          description="Modern web development services and business solutions"
+          description="Modern Software development services and business solutions"
         />
 
         <NewYearBanner />
