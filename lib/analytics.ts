@@ -4,7 +4,7 @@ declare global {
     }
 }
 
-export const GA_TRACKING_ID = "G-QCX3G9KSPC"
+export const GA_TRACKING_ID = "G-YKDJJQ8LGZ"
 
 export const pageview = (url: string) => {
     if (typeof window !== 'undefined' && GA_TRACKING_ID) {
