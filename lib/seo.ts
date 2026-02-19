@@ -5,6 +5,7 @@ export interface SEOConfig {
     description: string
     keywords?: string[]
     canonical?: string
+    languages?: Record<string, string>
     openGraph?: {
         title?: string
         description?: string
@@ -48,6 +49,7 @@ export function generateMetadata(config: Partial<SEOConfig> = {}): Metadata {
         keywords: seo.keywords?.join(', '),
         alternates: {
             canonical: seo.canonical,
+            languages: seo.languages,
         },
         openGraph: {
             title: seo.openGraph?.title || seo.title,
