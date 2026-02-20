@@ -5,8 +5,8 @@ import { colorClasses } from '@/lib/colors';
 
 
 const techStack = [
-  "Frontend", "Backend", "Database", "Cloud",
-  "UI/UX", "API", "Mobile", "DevOps"
+  "React", "Next.js", "TypeScript", "Node.js",
+  "Tailwind CSS", "Three.js", "GraphQL", "PostgreSQL"
 ];
 
 const containerVariants = {
