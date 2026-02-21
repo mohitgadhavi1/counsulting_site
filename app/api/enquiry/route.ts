@@ -41,7 +41,6 @@ export async function POST(request: NextRequest) {
         // Send email notification to contact@zidbit.com
 
         try {
-            console.log(process.env.RESEND_API_KEY)
             const resend = new Resend(process.env.RESEND_API_KEY);
 
             await resend.emails.send({
