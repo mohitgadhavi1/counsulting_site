@@ -64,9 +64,9 @@ const ConsultingWebsite = () => {
           <LocalBusinessBanner />
         </Suspense>
 
-        <Suspense fallback={<div className="py-20 bg-black/20" />}>
+        {/* <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <TechStack />
-        </Suspense>
+        </Suspense> */}
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <AnimatedBanner />
         </Suspense>
