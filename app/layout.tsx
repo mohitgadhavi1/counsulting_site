@@ -7,6 +7,7 @@ import { GoogleAnalytics } from "@/components/seo/google-analytics";
 import {
   OrganizationSchema,
   WebsiteSchema,
+  ServiceSchema,
 } from "@/components/seo/structured-data";
 import { generateMetadata } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next"
@@ -33,13 +34,17 @@ const generatedMetadata = generateMetadata({
     "Building next-generation web applications with cutting-edge technologies. Expert web development services for startups and businesses.",
   keywords: [
     "web development",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "consulting",
-    "startup",
+    "software engineering",
+    "application development",
     "business solutions",
+    "consulting",
+    "startup development",
+    "digital transformation",
   ],
+  languages: {
+    en: baseUrl,
+    "x-default": baseUrl,
+  },
   openGraph: {
     title: "ZidBit - Modern Software Development Services",
     description:
@@ -106,6 +111,16 @@ export default function RootLayout({
           name="ZidBit"
           url={baseUrl}
           description="Modern Software development services and business solutions"
+        />
+
+        <ServiceSchema
+          name="Software Consulting & Web Development"
+          description="Expert web development and consulting services for startups and modern businesses. We build production-ready applications with a focus on performance and scalability."
+          provider={{
+            name: "ZidBit Technologies",
+            url: baseUrl,
+          }}
+          serviceType="Software Consulting"
         />
 
         <NewYearBanner />

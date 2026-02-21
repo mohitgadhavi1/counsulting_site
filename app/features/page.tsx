@@ -192,12 +192,12 @@ export default function FeaturesPage() {
               technologies for optimal performance and scalability.
             </p>
             <ul className="space-y-2 text-blue-800">
-              <li>• React & Next.js for frontend development</li>
-              <li>• TypeScript for type-safe code</li>
-              <li>• Tailwind CSS for responsive design</li>
-              <li>• Node.js & Express for backend services</li>
-              <li>• PostgreSQL/MongoDB for data storage</li>
-              <li>• AWS/Vercel for cloud deployment</li>
+              <li>• Modern web frameworks for frontend development</li>
+              <li>• Type-safe languages for robust code</li>
+              <li>• Utility-first CSS for responsive design</li>
+              <li>• Scalable server-side architectures</li>
+              <li>• Performance-optimized databases</li>
+              <li>• Leading cloud infrastructure providers</li>
             </ul>
           </div>
 

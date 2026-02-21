@@ -123,7 +123,7 @@ const serviceCategories = [
   {
     title: "Frontend Development",
     icon: <Palette className="w-5 h-5" />,
-    description: "High-performance interfaces using modern frameworks like React and Next.js.",
+    description: "High-performance interfaces using modern web frameworks for seamless user experiences.",
   },
   {
     title: "Backend Development",

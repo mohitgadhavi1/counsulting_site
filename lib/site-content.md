@@ -35,7 +35,7 @@ ZidBit specializes in custom web development and engineering solutions focused o
 
 - Custom Web Applications  
 - Business & SaaS Platforms  
-- Frontend Development (React / Next.js)  
+- Frontend Development & Interactive Interfaces
 - Backend Development & APIs  
 - MVP Development for Startups  
 - E-commerce & Dashboard Systems
@@ -57,7 +57,7 @@ ZidBit specializes in custom web development and engineering solutions focused o
 
 ### E-Commerce Platform
 
-A full-stack e-commerce solution with React, Node.js, and Stripe integration. Includes product catalog, shopping cart, and payment processing.
+A full-stack e-commerce solution with integrated payment systems. Includes product catalog, shopping cart, and payment processing.
 
 ### Task Management App
 

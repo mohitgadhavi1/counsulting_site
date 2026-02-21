@@ -223,7 +223,7 @@ function Hero() {
   {/* Animated falling h1 element */}
   <FallingText
     text="From idea to production-ready web applications"
-    as="h2"
+    as="h1"
     className="text-4xl  md:text-5xl lg:text-6xl xl:text-8xl font-extrabold text-slate-900 drop-shadow-sm text-center"
   />
 </div>

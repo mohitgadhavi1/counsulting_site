@@ -5,7 +5,7 @@ import { colorClasses } from '@/lib/colors';
 
 
 const techStack = [
-  "React", "Next.js", "TypeScript", "Node.js", 
+  "React", "Next.js", "TypeScript", "Node.js",
   "Tailwind CSS", "Three.js", "GraphQL", "PostgreSQL"
 ];
 

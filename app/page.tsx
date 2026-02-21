@@ -13,6 +13,7 @@ const Testimonials = lazy(
   () => import("@/components/ui/sections/testimonials")
 );
 const About = lazy(() => import("@/components/ui/sections/about.server"));
+const TechStack = lazy(() => import("@/components/ui/sections/techStack"));
 const LocalBusinessBanner = lazy(() => import("@/components/ui/local-buness-banner"));
 const Footer = lazy(() => import("@/components/ui/sections/footer"));
 
@@ -62,6 +63,10 @@ const ConsultingWebsite = () => {
         <Suspense fallback={<div className="py-20 bg-black/20 "  />}>
           <LocalBusinessBanner />
         </Suspense>
+
+        {/* <Suspense fallback={<div className="py-20 bg-black/20" />}>
+          <TechStack />
+        </Suspense> */}
         <Suspense fallback={<div className="py-20 bg-black/20" />}>
           <AnimatedBanner />
         </Suspense>

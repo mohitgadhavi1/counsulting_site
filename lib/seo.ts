@@ -5,6 +5,7 @@ export interface SEOConfig {
     description: string
     keywords?: string[]
     canonical?: string
+    languages?: Record<string, string>
     openGraph?: {
         title?: string
         description?: string
@@ -20,19 +21,19 @@ export interface SEOConfig {
 }
 
 export const defaultSEO: SEOConfig = {
-    title: 'Zidbit Consulting - Expert Business Solutions',
-    description: 'Transform your business with expert consulting services. We provide strategic guidance, digital transformation, and growth solutions.',
-    keywords: ['consulting', 'business solutions', 'digital transformation', 'strategy', 'growth'],
+    title: 'Zidbit Consulting - Modern Software Development Services',
+    description: 'Transform your business with expert software consulting and web development services. We build scalable, high-performance web applications tailored to your needs.',
+    keywords: ['software consulting', 'web development', 'digital transformation', 'custom applications', 'software engineering'],
     openGraph: {
-        title: 'Zidbit Consulting - Expert Business Solutions',
-        description: 'Transform your business with expert consulting services. We provide strategic guidance, digital transformation, and growth solutions.',
+        title: 'Zidbit Consulting - Modern Software Development Services',
+        description: 'Transform your business with expert software consulting and web development services.',
         type: 'website',
         image: '/og-image.png'
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Zidbit Consulting - Expert Business Solutions',
-        description: 'Transform your business with expert consulting services.',
+        title: 'Zidbit Consulting - Modern Software Development Services',
+        description: 'Transform your business with expert software consulting and web development services.',
         image: '/twitter-image.png'
     }
 }
@@ -48,6 +49,7 @@ export function generateMetadata(config: Partial<SEOConfig> = {}): Metadata {
         keywords: seo.keywords?.join(', '),
         alternates: {
             canonical: seo.canonical,
+            languages: seo.languages,
         },
         openGraph: {
             title: seo.openGraph?.title || seo.title,
