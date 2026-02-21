@@ -1,6 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ArrowRight, Code, Github, Linkedin, Instagram, Star } from "lucide-react";
+import {
+  ArrowRight,
+  Code,
+  Github,
+  Linkedin,
+  Instagram,
+  Star,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import * as motion from "motion/react-client";
@@ -13,7 +20,6 @@ import saasAnimation from "@/public/saas_animation.json";
 import { getCalApi } from "@calcom/embed-react";
 
 function Hero() {
-  
   const [isOpen, setIsOpen] = useState(false);
   const [isEnquiryFormOpen, setIsEnquiryFormOpen] = useState(false);
   const [isContentReady, setIsContentReady] = useState(false);
@@ -33,9 +39,9 @@ function Hero() {
     const heroImg = new Image();
     heroImg.src = "/hero_image_2.png";
     heroImg.onload = () => setHeroLoaded(true);
-        (async function () {
-      const cal = await getCalApi({"namespace":"15min"});
-      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    (async function () {
+      const cal = await getCalApi({ namespace: "15min" });
+      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
     })();
   }, []);
 
@@ -206,9 +212,8 @@ function Hero() {
         </div>
 
         {/* Hero Content */}
-        <div className=" flex  md:flex-row flex-col h-full  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
-          <div className="flex-1   h-full  flex flex-col justify-around  items-center md:w-1/2 relative  text-center ">
-            {/* Surgeon Badge */}
+        <div className=" flex   md:flex-row flex-col h-full  relative w-full justify-between  z-20 px-4 sm:px-6 lg:px-8 ">
+          <div className="flex-1    h-full  flex flex-col justify-around  items-center md:w-1/2 relative  text-center ">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -219,21 +224,22 @@ function Hero() {
                 Best Software Agency in the Town
               </span>
             </motion.div>
-<div className="w-full    flex items-center justify-center px-2 md:px-6 lg:px-8">
-  {/* Animated falling h1 element */}
-  <FallingText
-    text="From idea to production-ready web applications"
-    as="h1"
-    className="text-4xl  md:text-5xl lg:text-6xl xl:text-8xl font-extrabold text-slate-900 drop-shadow-sm text-center"
-  />
-</div>
+            <div className="w-full   flex items-center justify-center px-2 md:px-6 lg:px-8">
+              {/* Animated falling h1 element */}
+              <FallingText
+                text="From Idea to Production Ready Web Applications"
+                as="h1"
+                className="text-5xl lg:text-6xl xl:text-8xl  font-extrabold text-slate-900 drop-shadow-sm text-center"
+              />
+            </div>
             <motion.p
-              className="text-xl md:text-2xl my-4 text-slate-600 max-w-3xl mx-auto drop-shadow-none font-medium"
+              className="text-xl md:text-2xl  text-slate-600 max-w-3xl mx-auto drop-shadow-none font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             >
-              We design and develop fast, secure, and maintainable web applications
+              We design and develop fast, secure, and maintainable web
+              applications
             </motion.p>
 
             <motion.div
@@ -265,7 +271,7 @@ function Hero() {
 
             {/* Reviews & Happy client Section */}
             <motion.div
-              className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12"
+              className="md:mt-16  flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -273,17 +279,24 @@ function Hero() {
               <div className="flex flex-col items-center sm:items-end">
                 <div className="flex gap-1 mb-2">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    <Star
+                      key={s}
+                      className="w-5 h-5 fill-amber-400 text-amber-400"
+                    />
                   ))}
                 </div>
-                <p className="text-slate-600 font-semibold text-sm">30+ Verified Reviews</p>
+                <p className="text-slate-600 font-semibold text-sm">
+                  30+ Verified Reviews
+                </p>
               </div>
 
               <div className="hidden sm:block w-px h-12 bg-slate-200" />
 
               <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
                 <h4 className="text-3xl font-extrabold text-slate-900">50+</h4>
-                <p className="text-slate-600 font-semibold text-sm">projects completed</p>
+                <p className="text-slate-600 font-semibold text-sm">
+                  projects completed
+                </p>
               </div>
             </motion.div>
           </div>

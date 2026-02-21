@@ -24,12 +24,12 @@ const FallingText: React.FC<FallingTextProps> = ({
 
   return React.createElement(
     as,
-    { 
-      className: `${className || ''}`,
-      style: { 
-        display: 'inline-block',
-        maxWidth: '100%',
-      }
+    {
+      className: `${className || ""}`,
+      style: {
+        display: "inline-block",
+        maxWidth: "100%",
+      },
     },
     words.map((word: string, wordIndex: number) => {
       // Calculate the starting index for this word's letters
@@ -39,23 +39,23 @@ const FallingText: React.FC<FallingTextProps> = ({
 
       return (
         <React.Fragment key={wordIndex}>
-          <span 
+          <span
             className="inline-block"
-            style={{ 
-              whiteSpace: 'nowrap',
+            style={{
+              whiteSpace: "nowrap",
             }}
           >
             {word.split("").map((letter: string, letterIndex: number) => {
               const globalIndex = letterOffset + letterIndex;
-              
+
               return (
                 <motion.span
                   key={letterIndex}
                   initial={{ y: -100, opacity: 0, color: "#0f172a" }}
-                  animate={{ 
-                    y: 0, 
+                  animate={{
+                    y: 0,
                     opacity: 1,
-                    color: ["#0f172a", "#2563eb", "#0f172a"] 
+                    color: ["#0f172a", "#2563eb", "#0f172a"],
                   }}
                   transition={{
                     y: {
@@ -73,9 +73,9 @@ const FallingText: React.FC<FallingTextProps> = ({
                       duration: 2,
                       repeat: Infinity,
                       repeatDelay: 3,
-                      delay: 1.5 + (globalIndex * 0.08),
+                      delay: 1.5 + globalIndex * 0.08,
                       ease: "easeInOut",
-                    }
+                    },
                   }}
                   style={letterStyle}
                   className="inline-block"
@@ -88,7 +88,7 @@ const FallingText: React.FC<FallingTextProps> = ({
           {wordIndex < words.length - 1 && " "}
         </React.Fragment>
       );
-    })
+    }),
   );
 };
 
